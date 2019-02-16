@@ -12,9 +12,9 @@ Welcome page: http://147.91.204.116:11000/
 You can register!
 User portal: http://147.91.204.116:11002
 
-Admin Login:
-Username: admin
-Password: aDmIn?1312
+Admin Login:<br>
+Username: admin<br>
+Password: aDmIn?1312<br>
 
 Admin portal: http://147.91.204.116:11001/
 
