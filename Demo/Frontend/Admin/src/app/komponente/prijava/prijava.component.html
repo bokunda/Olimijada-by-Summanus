@@ -1,0 +1,25 @@
+<div class="prijavaWrapper">
+    <mat-card class="kartica">
+
+      <h1 style="text-align: center; width: 100% ">{{'prijava' | translate}}</h1>
+
+        <mat-card-content>
+          <form  (ngSubmit)="PrijaviAdmina()">
+            <mat-form-field>
+              <input matInput placeholder="{{'username' | translate}}" [formControl]="username" required>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput type="password" placeholder="{{'password' | translate}}" [formControl]="password" required>
+            </mat-form-field>
+
+            <button mat-raised-button type="submit" color="primary">
+              {{'prijava' | translate}}
+            </button>
+
+            <div *ngIf="pogresno" class="div-greska">
+				{{'pogresno' | translate}}
+            </div>
+          </form>
+        </mat-card-content>
+    </mat-card>
+</div>

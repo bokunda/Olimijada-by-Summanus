@@ -1,0 +1,38 @@
+.mat-icon
+{
+    width: 100px;
+}
+
+mat-form-field, button {
+    width: 100%;
+    font-size: 96%;
+    margin-top: 10px;
+
+}
+
+#fab-upload, #icon-upload {
+    width: 40px;
+    height: 40px;
+}
+
+.samoZip{
+	color: blue;
+	font-size: 80%;
+}
+
+.fajlUpload::-webkit-file-upload-button {
+    visibility: hidden;
+}
+
+.fajlUpload::before
+{
+    content: 'Izaberite datoteku';
+    background: -webkit-linear-gradient(top, #03A9F4, #03A9F4);
+    border-radius: 10px;
+    padding: 5px 8px;
+    color: white;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-size: 10pt;
+}
+

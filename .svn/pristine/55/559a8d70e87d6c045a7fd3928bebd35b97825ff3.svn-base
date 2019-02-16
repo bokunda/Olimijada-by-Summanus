@@ -1,0 +1,148 @@
+			<form (ngSubmit)="DodajTurnir()" >
+				<div class="inli">
+
+				<mat-form-field class="lapo" id="proba">				<!--Unosenje naziva turnira-->
+					<input matInput placeholder="{{ 'Naziv turnira' | translate }}"  [formControl]="naziv" required>
+					<mat-error *ngIf="naziv.invalid">{{ greskaNazivTurnira() }}</mat-error>
+				</mat-form-field>
+
+
+
+				<mat-form-field class="lapo">				<!--Biranje tipa turnira Kup/Liga-->
+					<mat-select placeholder="{{ 'tipTurnira' | translate }}" [formControl]="odabraniTipTurnira" name="tipTurnira"  required>
+						<mat-option *ngFor="let tipTurnira of tipoviTurnira" [value]="tipTurnira.id">
+							{{tipTurnira.naziv}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				</div>
+
+
+
+				<mat-form-field>				<!--Biranje igre-->
+					<mat-select placeholder="{{ 'Izaberite igru' | translate }}" [formControl]="odabranaIgra" name="tipIgre" required >
+						<mat-option *ngFor="let igra of igre" [value]="igra.id">
+							{{igra.naziv}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-divider></mat-divider>
+
+				<p style="font-weight:bold">{{ 'vremePrijavaNaT' | translate }}</p>
+
+				<!--///////////////////////         PRIJAVE POCETAK          //////////////////////////////[(ngModel)]="datumPocetkaPrijava"-->
+				<div class="inli">
+				<mat-form-field class="unos">			<!--Datum pocekta prijave-->
+					<input matInput [min]="minDatum" [matDatepicker]="pickerPocetakPrijava" placeholder="{{ 'DatumPocetkaPrijava' | translate }}" [formControl]="datumPocetkaPrijava" name="prijavePoc" required>
+					<mat-datepicker-toggle matSuffix [for]="pickerPocetakPrijava" ></mat-datepicker-toggle>
+					  <mat-datepicker #pickerPocetakPrijava disabled="false"></mat-datepicker>
+					  <mat-error *ngIf="datumPocetkaPrijava.invalid">{{GreskaPocetakPrijava()}}</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="unos">			<!--Sati pocetka prijava-->
+					<mat-select placeholder="{{ 'sati' | translate }}" [formControl]="pocetakPrijavaSati" name="prijavePocSati" required>
+						<mat-option *ngFor="let sat of sati" [value]="sat">
+							{{sat + " h"}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field class="unos">			<!--Minuti pocetka prijava-->
+					<mat-select placeholder="{{ 'minuti' | translate }}" [formControl]="pocetakPrijavaMinuti" name="prijavePocMinuti" required>
+						<mat-option *ngFor="let minut of minuti" [value]="minut">
+							{{minut + " min"}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+				<!--///////////////////////         PRIJAVE ZAVRSETAK          //////////////////////////////-->
+				<div class="inli">
+				<mat-form-field class="unos">			<!--Datum zavrsetka prijave-->
+					<input matInput [min]="minDatum" [matDatepicker]="pickerZavrsetakPrijava" placeholder="{{ 'Datum zavrsetka prijava' | translate }}" [formControl]="datumZavrsetkaPrijava" name="prijaveZav" required>
+					<mat-datepicker-toggle matSuffix [for]="pickerZavrsetakPrijava"></mat-datepicker-toggle>
+					<mat-datepicker #pickerZavrsetakPrijava disabled="false"></mat-datepicker>
+					<mat-error *ngIf="datumZavrsetkaPrijava.invalid">{{GreskaZavrsetakPrijava()}}</mat-error>
+				</mat-form-field>
+
+				<mat-form-field class="unos">			<!--Sati zavrsetka prijava-->
+					<mat-select placeholder="{{ 'sati' | translate }}" [formControl]="zavrsetakPrijavaSati" name="prijaveZavSati" required>
+						<mat-option *ngFor="let sat of sati" [value]="sat">
+							{{sat + " h"}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field class="unos">			<!--Minuti zavrsetka prijava-->
+					<mat-select placeholder="{{ 'minuti' | translate }}" [formControl]="zavrsetakPrijavaMinuti" name="prijaveZavMinuti" required>
+						<mat-option *ngFor="let minut of minuti" [value]="minut">
+							{{minut + " min"}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+
+			<mat-divider></mat-divider>
+
+				<p style="font-weight:bold">{{ 'Vreme trajanja turnira' | translate }}</p>
+
+				<!--///////////////////////         TURNIR POCETAK          //////////////////////////////-->
+				<div class="inli">
+				<mat-form-field class="unos">			<!--Datum pocekta turnira-->
+					<input matInput [min]="minDatum" [matDatepicker]="pickerPocetakTurnira" placeholder="{{ 'DatumPocetkaTurnira' | translate }}" [formControl]="datumPocetka" name="prviDatum" required>
+					<mat-datepicker-toggle matSuffix [for]="pickerPocetakTurnira"></mat-datepicker-toggle>
+					<mat-datepicker #pickerPocetakTurnira disabled="false"></mat-datepicker>
+				</mat-form-field>
+
+				<mat-form-field class="unos">			<!--Sati pocetka turnira-->
+					<mat-select placeholder="{{ 'sati' | translate }}" [formControl]="pocetakTurniraSati" name="pocSati" required>
+						<mat-option *ngFor="let sat of sati" [value]="sat">
+							{{sat + " h"}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field class="unos">			<!--Minuti pocetka turnira-->
+					<mat-select placeholder="{{ 'minuti' | translate }}" [formControl]="pocetakTurniraMinuti" name="pocMinuti" required>
+						<mat-option *ngFor="let minut of minuti" [value]="minut">
+							{{minut + " min"}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+				<!--///////////////////////         TURNIR ZAVRSETAK          //////////////////////////////-->
+				<div class="inli">
+				<mat-form-field class="unos">			<!--Datum zvrsetka turnira-->
+					<input matInput [min]="minDatum" [matDatepicker]="pickerZavrsetakTurnira" placeholder="{{ 'DatumZavrsetkaTurnira' | translate }}" [formControl]="datumZavrsetka" name="drugiDatum" required>
+					<mat-datepicker-toggle matSuffix [for]="pickerZavrsetakTurnira"></mat-datepicker-toggle>
+					<mat-datepicker #pickerZavrsetakTurnira disabled="false"></mat-datepicker>
+				</mat-form-field>
+
+				<mat-form-field class="unos">			<!--Sati zavrsetka turnira-->
+					<mat-select placeholder="{{ 'sati' | translate }}" [formControl]="zavrsetakTurniraSati" name="zavSati" required>
+						<mat-option *ngFor="let sat of sati" [value]="sat">
+							{{sat + " h"}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+				<mat-form-field class="unos">			<!--Minuti zavrsetka turnira-->
+					<mat-select placeholder="{{ 'minuti' | translate }}" [formControl]="zavrsetakTurniraMinuti" name="zavMinuti" required>
+						<mat-option *ngFor="let minut of minuti" [value]="minut">
+							{{minut + " min"}}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+			</div>
+				<div *ngIf="losDatum" class="div-greska">
+					{{poruka}}
+				</div>
+
+				<button mat-raised-button type="submit" color="primary">
+					{{ 'Kreiraj turnir' | translate }}
+				</button>
+
+
+
+			</form>

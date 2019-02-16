@@ -1,0 +1,49 @@
+<div class="pocetnaWrapper">
+	<mat-card class="kartica">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon aria-label="Profil" class="profilIkonicaBox">face</mat-icon>
+      </div>
+      <mat-card-title>{{ 'Administratori' | translate }}</mat-card-title>
+	</mat-card-header>
+	<mat-card-content>
+		<mat-tab-group>
+			<div *ngIf="daLiJeGlavniAdmin">
+			<mat-tab label="{{ 'Prikaz administratora' | translate }}">
+				<mat-form-field>
+					<input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{ 'Pretraga' | translate }}">
+				</mat-form-field>
+	
+				<mat-table #table [dataSource]="dataSource"  matSort>
+	
+					<!-- Admini Column -->
+					<ng-container matColumnDef="adminUsername" class="sirina">
+					  <mat-header-cell *matHeaderCellDef> {{ 'Admin' | translate }} </mat-header-cell>
+					  <mat-cell *matCellDef="let admin"> {{admin.username}} </mat-cell>
+					</ng-container>
+	
+					<!-- Dugme za brisanje admina -->
+					<ng-container matColumnDef="obrisiAdmina" class="sirina">
+						<mat-header-cell *matHeaderCellDef></mat-header-cell>
+						<mat-cell *matCellDef="let admin"><button mat-button (click)="ObrisiAdmina(admin.id,admin.username)"><mat-icon>cancel</mat-icon></button></mat-cell>
+					  </ng-container>
+	
+					<!--  Neka podesavanja za tabelu  -->
+					<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+					<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+				  </mat-table>
+				  <!-- <mat-paginator #paginator
+					 [pageSize]="5"
+					 [pageSizeOptions]="[5, 10, 20]"
+					 [showFirstLastButtons]="true">
+					</mat-paginator> -->
+			</mat-tab>
+			</div>
+			
+			<mat-tab label="{{ 'Dodavanje administratora' | translate }}">
+				<app-registracija></app-registracija>
+			</mat-tab>
+		</mat-tab-group>
+	</mat-card-content>
+	</mat-card>
+</div>

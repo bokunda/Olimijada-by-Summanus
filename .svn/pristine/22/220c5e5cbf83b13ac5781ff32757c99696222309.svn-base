@@ -1,0 +1,7 @@
+import { Hero } from './hero';	//importovali smo klasu hero
+
+export const HEROES: Hero[] = [
+	{ id: 10, name: 'Keba kraba' },
+	{ id: 11, name: 'Spajdermen' },
+	{ id: 12, name: 'Gospodja Pufna'}
+];

@@ -1,0 +1,42 @@
+<div class="sirina-80">
+	<mat-form-field >
+		<input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{ 'Pretraga' | translate }}">
+	</mat-form-field>
+</div>
+
+
+<mat-table #table [dataSource]="dataSource"  matSort  class="sirina-80">
+
+	
+	<!-- Naziv igre Column -->
+	<ng-container matColumnDef="nazivIgre" class="sirina">
+		<mat-header-cell *matHeaderCellDef class="sirina"> {{ 'Igra' | translate }} </mat-header-cell>
+		<mat-cell *matCellDef="let igra" class="sirina"> {{igra.naziv}} </mat-cell>
+	</ng-container>
+
+<!-- Dugme za izmenu igre -->
+<ng-container matColumnDef="izmeniIgru" class="sirina-20">
+		<mat-header-cell *matHeaderCellDef class="sirina-20">{{ 'Izmeni' | translate }}</mat-header-cell>
+		<mat-cell *matCellDef="let igra" class="sirina-20"><button mat-icon-button (click)="IzmeniIgru(igra)"><mat-icon>edit</mat-icon></button></mat-cell>
+</ng-container>
+
+	<!-- Dugme za brisanje igre -->
+	<ng-container matColumnDef="obrisiIgru" class="sirina-20">
+		<mat-header-cell *matHeaderCellDef class="sirina-20">{{ 'Obrisi' | translate }}</mat-header-cell>
+		<mat-cell *matCellDef="let igra" class="sirina-20"><button mat-icon-button (click)="ObrisiIgru(igra.id,igra.naziv)"><mat-icon>cancel</mat-icon></button></mat-cell>
+	</ng-container>
+
+	
+
+	<!--  Neka podesavanja za tabelu  -->
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<div class="sirina-80">
+		<mat-paginator #paginator
+		[pageSize]="5"
+		[pageSizeOptions]="[5, 10, 20]"
+		[showFirstLastButtons]="true">
+	</mat-paginator>
+</div>

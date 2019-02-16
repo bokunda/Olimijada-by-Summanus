@@ -1,0 +1,48 @@
+#content {
+	width: 95%;
+	margin-left: 2%;
+	margin-top: 10px;
+	text-align: left;
+}
+
+button {
+	width: 100%;
+	text-align: left;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.sidebarKorisnikHeader
+{
+    padding: 26px;
+    padding-bottom: 0;
+}
+
+.sidebarKorisnikHeader img
+{
+    border-radius: 50%;
+    display: table;
+    margin: 0 auto;
+    border: solid 3px #0288D1;
+}
+
+.sidebarKorisnikHeader p
+{
+    text-align: center;
+}
+
+.odjava button
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    color: black;
+}

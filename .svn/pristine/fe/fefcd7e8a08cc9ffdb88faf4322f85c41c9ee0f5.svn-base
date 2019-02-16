@@ -1,0 +1,133 @@
+
+			<mat-tab-group (selectedTabChange)="setovanjeKalendara($event)">
+				<mat-tab label="Turniri">
+
+					<mat-form-field class="pretraga">
+						<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraga">
+					</mat-form-field>
+
+
+          <div class="responsive_table">
+					<mat-table #table [dataSource]="dataSource"  matSort>
+
+
+						<!-- Sve da se ubudzi u jednu kolonu -->
+						<ng-container matColumnDef="Turnir">
+							<mat-header-cell *matHeaderCellDef>
+								Turnir
+							</mat-header-cell>
+
+							<mat-cell *matCellDef="let turnir">
+
+								<!-- U ovom divu sve se budzi -->
+								<div>
+									{{turnir.nazivTurnira}} | {{turnir.nazivIgre}}
+								</div>
+							</mat-cell>
+						</ng-container>
+
+						<!-- Naziv turnira Column -->
+						<!--
+						<ng-container matColumnDef="Turnir" class="sakrij" >
+						  <mat-header-cell *matHeaderCellDef class="sakrij"> Turnir </mat-header-cell>
+              <mat-cell *matCellDef="let turnir" class="sakrij"><span class="mobile-label">Turnir: </span> {{turnir.nazivTurnira}} </mat-cell>
+						</ng-container>
+						-->
+						<!-- Naziv igre Column -->
+						<ng-container matColumnDef="Igra" class="sakrij" >
+						  <mat-header-cell *matHeaderCellDef class="sakrij" > Igra </mat-header-cell>
+						  <mat-cell *matCellDef="let turnir" class="sakrij" ><span class="mobile-label">Igra: </span> {{turnir.nazivIgre}} </mat-cell>
+						</ng-container>
+
+						<!-- Pocetak prijava Column -->
+						<ng-container matColumnDef="pocetakPrijava" class="sakrij" >
+							<mat-header-cell *matHeaderCellDef class="sakrij"> Pocetak prijava </mat-header-cell>
+							<mat-cell *matCellDef="let turnir" class="sakrij"><span class="mobile-label">Početak prijava: </span> {{turnir.pocetakPrijava*1000 | date:'dd.MM.yyyy HH:mm'}}h </mat-cell>
+						  </ng-container>
+
+						  <!-- Kraj prijava Column -->
+						<ng-container matColumnDef="krajPrijava" class="sakrij" >
+							<mat-header-cell *matHeaderCellDef class="sakrij"> Kraj prijava </mat-header-cell>
+							<mat-cell *matCellDef="let turnir" class="sakrij"><span class="mobile-label">Kraj prijava: </span> {{turnir.krajPrijava*1000 | date:'dd.MM.yyyy HH:mm'}}h </mat-cell>
+						  </ng-container>
+
+						  <!-- Pocetak turnira Column -->
+						<ng-container matColumnDef="pocetakTurnira" class="sakrij" >
+							<mat-header-cell *matHeaderCellDef class="sakrij"> Pocetak turnira </mat-header-cell>
+							<mat-cell *matCellDef="let turnir" class="sakrij"><span class="mobile-label">Početak turnira: </span> {{turnir.datumVremePocetka*1000 | date:'dd.MM.yyyy HH:mm'}}h </mat-cell>
+						  </ng-container>
+
+						  <!-- Kraj Turnira Column -->
+						<ng-container matColumnDef="krajTurnira" class="sakrij" >
+							<mat-header-cell *matHeaderCellDef class="sakrij"> Kraj turnira </mat-header-cell>
+							<mat-cell *matCellDef="let turnir" class="sakrij"><span class="mobile-label">Kraj turnira: </span> {{turnir.datumVremeZavrsetka*1000 | date:'dd.MM.yyyy HH:mm'}}h </mat-cell>
+						  </ng-container>
+
+						  <!-- Otkazivanje turnira Column -->
+						<ng-container matColumnDef="otkazivanje" class="sirina smanji" class="sakrij">
+							<mat-header-cell *matHeaderCellDef class="smanji" class="sakrij"> Otkazi </mat-header-cell>
+							<mat-cell *matCellDef="let turnir" class="smanji" class="sakrij">
+								<button mat-icon-button (click)="ObrisiTurnir(turnir)" class="smanji" class="sakrij">
+									<mat-icon class="smanji" class="sakrij"> cancel </mat-icon>
+								</button>
+							</mat-cell>
+						  </ng-container>
+
+						  <!-- Azuriranje turnira Column -->
+						<ng-container matColumnDef="azuriranje" class="sirina smanji">
+							<mat-header-cell *matHeaderCellDef class="smanji">Ažuriraj</mat-header-cell>
+							<mat-cell *matCellDef="let turnir" class="smanji">
+								<button mat-icon-button="edit" (click)="AzurirajTurnir(turnir)" class="smanji">
+									<mat-icon class="smanji">edit</mat-icon>
+								</button>
+              </mat-cell>
+						  </ng-container>
+
+						  <!-- Prikaz meceva Column -->
+						<ng-container matColumnDef="prikaziMeceve"  >
+							<mat-header-cell *matHeaderCellDef> Prikaži mečeve </mat-header-cell>
+							<mat-cell *matCellDef="let turnir"> <button mat-button (click)="PrikaziMeceve(turnir)" class="meceviPrijave">Mečevi</button></mat-cell>
+						</ng-container>
+
+						<!-- Prikaz prijava Column -->
+						<ng-container matColumnDef="prikaziPrijave"  >
+							<mat-header-cell *matHeaderCellDef> Prikaži prijave </mat-header-cell>
+							<mat-cell *matCellDef="let turnir"> <button mat-button (click)="PrikaziPrijave(turnir)" class="meceviPrijave">Prijave</button></mat-cell>
+						</ng-container>
+
+
+						<!--
+						Kreiranje meceva Column
+						<ng-container matColumnDef="kreirajMeceve"  >
+							<mat-header-cell *matHeaderCellDef> Prikaži mečeve </mat-header-cell>
+							<mat-cell *matCellDef="let turnir"> <button mat-button (click)="KreirajMeceve(turnir)">Kreiraj mečeve</button></mat-cell>
+						</ng-container>
+						-->
+						<!--  Neka podesavanja za tabelu  -->
+						<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+						<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+					  </mat-table>
+
+
+
+					  <mat-paginator #paginator
+                 		[pageSize]="5"
+                 		[pageSizeOptions]="[5, 10, 20]"
+                 		[showFirstLastButtons]="true">
+  					  </mat-paginator>
+          </div>
+				</mat-tab>
+
+
+
+
+				<!--  Tab sa google kalendarom  -->
+        <mat-tab label="Kalendar">
+		  <!--<iframe src="https://calendar.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;height=600&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=8ihdb6i7dulfeblbml65h8q9mo%40group.calendar.google.com&amp;color=%23333333&amp;ctz=Europe%2FBelgrade" frameborder="0" scrolling="no" style="border-width:0; width: 100%;"></iframe>-->
+		      <div *ngIf="prikazi">
+            <app-kalendar></app-kalendar>
+          </div>
+        </mat-tab>
+
+
+			  </mat-tab-group>

@@ -1,0 +1,21 @@
+.pocetnaWrapper
+{
+	margin: 26px;
+}
+
+.kartica
+{
+    max-width: 1048px;
+}
+
+#greska-404
+{
+    font-size: 100px;
+    text-align: center;
+}
+
+#poruka
+{
+    text-align: center;
+    font-size: 30px;
+}

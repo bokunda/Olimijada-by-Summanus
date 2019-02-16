@@ -1,0 +1,85 @@
+<script>
+
+    function generisiformu(koliko)
+    {
+        var text = "<form action='/tipuj' method='get'>";
+
+        text += "<input type='hidden' name='kolikopolja' value='" + koliko + "'>";
+
+        for(var i = 0; i < koliko; i++) {
+
+            text += "Domacin: <select name='d'>";
+            text += "{{#each klubovi}}";
+            text += "<option name=\"{{idkluba}}\" value=\"{{idkluba}}\">{{imeKluba}}</option>";
+            text += "{{/each}}";
+            text += "</select> ";
+
+            text += "vs ";
+
+            text += "Gost: <select name='g'>";
+            text += "{{#each klubovi}}";
+            text += "<option name=\"{{idkluba}}\" value=\"{{idkluba}}\">{{imeKluba}}</option>";
+            text += "{{/each}}";
+            text += "</select> ";
+
+            text += "Tip: <select name='t'>";
+            text += "{{#each tipovi}}";
+            text += "<option name=\"{{id}}\" value=\"{{id}}\">{{tip}}</option>";
+            text += "{{/each}}";
+            text += "</select> ";
+
+            text += "<br><br>";
+        }
+
+        text += "<br><input type=\"text\" name=\"mejl\" placeholder=\"Unesite email\"> ";
+        text += "<br><br><input type=\"submit\" name=\"posalji\" value=\"posalji\"> ";
+
+        document.getElementById('tipuj').innerHTML = text;
+    }
+
+</script>
+
+<h1>{{title}}</h1>
+<p>Dobrodošli na sajt {{title}}!</p>
+
+<p>U formi ispod možete postavljati svoje tipove, osoba sa najviše pogođenih tipova biće nagrađena!</p>
+
+Koliko parova (1-9)? <input type="number" min="1" max="9" onchange="generisiformu(value)"><br><br>
+
+<div style="display:inline-block;width:1200px;">
+
+    <div id="tipuj" style="display:block;float:left; width:650px;">
+
+    </div>
+
+    <div id="toptipovi" style="display:block;float:right; width:421px;height: 321px; background: crimson; margin-top: -86px; padding: 6px;">
+        <h2 style="background-color: #00B7FF;" >PL najigranijih 6:</h2>
+
+        <center><table>
+
+            <tr><th>Domacin</th><th>Gost</th><th style="text-align:center;">Tip</th><th style="text-align:center;">Koliko puta</th></tr>
+
+            {{#each toptipovi}}
+                <tr><td>{{Domacin}}</td><td>{{Gost}}</td><td style="text-align:center;">{{Tip}}</td><td style="text-align:center;">{{Koliko}}</td></tr>
+            {{/each}}
+
+        </table></center>
+
+    </div>
+
+</div>
+<hr>
+<div id="sviTipovi">
+
+    <h2>Svi tipovi (poslednjih 60 tipova):</h2>
+    <table>
+
+        <tr><th>Datum</th><th>Domacin</th><th>Gost</th><th>Tip</th></tr>
+
+        {{#each svitipovi}}
+            <tr><td>{{Datum}}</td><td>{{Domacin}}</td><td>{{Gost}}</td><td style="text-align:center;">{{Tip}}</td></tr>
+        {{/each}}
+
+    </table>
+
+</div>

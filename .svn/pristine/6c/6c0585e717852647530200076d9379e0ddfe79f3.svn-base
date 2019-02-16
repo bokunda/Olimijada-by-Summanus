@@ -1,0 +1,6 @@
+<div class="pocetnaWrapper">
+	<mat-card style="width: 300px; text-align: center; display: table; margin: 0 auto; margin-bottom: 28px;"><h1>Kontrolna tabla</h1></mat-card>
+	<!--<app-kalendar></app-kalendar>-->
+  <app-dashboard></app-dashboard>
+
+</div>

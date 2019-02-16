@@ -1,0 +1,148 @@
+<!-- <div class="example-container mat-elevation-z8">
+
+    <div class="example-header"> -->
+		<mat-card>
+			<mat-card-title> Spisak mečeva </mat-card-title>
+		
+			<mat-card-content>
+		<mat-tab-group [dynamicHeight]="true" (selectedTabChange)="PromenaTaba($event)">
+			<mat-tab label="Aktuelni mečevi">
+				<mat-form-field>
+					<input matInput (keyup)="applyFilterAktuelni($event.target.value)" placeholder="Pretraga">
+				</mat-form-field>
+			
+				<mat-table #table [dataSource]="dataSourceAktuelni" matSort style="overflow-x:auto;">
+					<!-- Position Column -->
+					<ng-container matColumnDef="redniBroj">
+						<mat-header-cell *matHeaderCellDef mat-sort-header> Rb. </mat-header-cell>
+						<mat-cell *matCellDef="let element"><span class="mobile-label">Redni broj: </span> {{element.id}} </mat-cell>
+					</ng-container>
+			
+					<!-- Name Column -->
+					<ng-container matColumnDef="domacin">
+						<mat-header-cell *matHeaderCellDef mat-sort-header> Domaćin </mat-header-cell>
+						<mat-cell *matCellDef="let element"><span class="mobile-label">Domaćin: </span>{{element.korisnik1}} <div class="prikaziNaTelefonu"></div> </mat-cell>
+					</ng-container>
+			
+					<!-- Weight Column -->
+					<ng-container matColumnDef="gost">
+						<mat-header-cell *matHeaderCellDef mat-sort-header> Gost: </mat-header-cell>
+						<mat-cell *matCellDef="let element"><span class="mobile-label">Gost: </span>{{element.korisnik2}} </mat-cell>
+					</ng-container>
+			
+			
+			
+					<!-- Symbol Column -->
+					<ng-container matColumnDef="datum">
+						<mat-header-cell *matHeaderCellDef mat-sort-header> Datum </mat-header-cell>
+						<mat-cell *matCellDef="let element"><span class="mobile-label">Datum: </span>{{element.datumVremePocetka*1000 | date:'dd.MM.yyyy'}} </mat-cell>
+					</ng-container>
+			
+					<!-- Symbol Column -->
+					<ng-container matColumnDef="rezultat">
+						<mat-header-cell *matHeaderCellDef mat-sort-header> Rezultat </mat-header-cell>
+						<mat-cell *matCellDef="let element"> <span class="mobile-label">Rezultat: </span>{{element.rezultat1}}: {{element.rezultat2}}</mat-cell>
+					</ng-container>
+			
+					<!-- Symbol Column -->
+					<ng-container matColumnDef="gledaj">
+						<mat-header-cell *matHeaderCellDef mat-sort-header> Gledaj </mat-header-cell>
+						<mat-cell *matCellDef="let element">
+							<!---- prvi button je na desktopu, drugi na telefonu ---->
+							<button mat-icon-button routerLink="/prenos/{{element.id}}" class="neresponsiveDugme"><mat-icon>play_circle_outline</mat-icon></button>
+							<button mat-raised-button color="primary" routerLink="/prenos/{{element.id}}" class="responsiveDugme"><mat-icon>play_circle_outline</mat-icon></button>
+						</mat-cell>
+					</ng-container>
+			
+			
+					<!-- Symbol Column -->
+					<ng-container matColumnDef="turnir">
+						<mat-header-cell *matHeaderCellDef mat-sort-header> Turnir </mat-header-cell>
+						<mat-cell *matCellDef="let element"><span class="mobile-label">Turnir: </span>{{element.naziv}}</mat-cell>
+					</ng-container>
+			
+					<mat-header-row *matHeaderRowDef="displayedColumnsAktuelni"></mat-header-row>
+					<mat-row *matRowDef="let row; columns: displayedColumnsAktuelni;"></mat-row>
+				</mat-table>
+			
+				<mat-paginator #paginatorAktuelni
+							   [pageSize]="10"
+							   [pageSizeOptions]="[5, 10, 20]"
+							   [showFirstLastButtons]="true">
+				</mat-paginator>
+			</mat-tab>
+			<mat-tab label="Završeni mečevi">
+				<div *ngIf="this.drugiTab">
+						<mat-form-field>
+								<input matInput (keyup)="applyFilterProsli($event.target.value)" placeholder="Pretraga">
+							</mat-form-field>
+							
+							<mat-table #table [dataSource]="dataSourceProsli" matSort style="overflow-x:auto;">
+								<!-- Position Column -->
+								<ng-container matColumnDef="redniBroj">
+									<mat-header-cell *matHeaderCellDef mat-sort-header> Rb. </mat-header-cell>
+									<mat-cell *matCellDef="let element"><span class="mobile-label">Redni broj: </span> {{element.id}} </mat-cell>
+								</ng-container>
+						
+								<!-- Name Column -->
+								<ng-container matColumnDef="domacin">
+									<mat-header-cell *matHeaderCellDef mat-sort-header> Domaćin </mat-header-cell>
+									<mat-cell *matCellDef="let element"><span class="mobile-label">Domaćin: </span>{{element.korisnik1}} <div class="prikaziNaTelefonu"></div> </mat-cell>
+								</ng-container>
+						
+								<!-- Weight Column -->
+								<ng-container matColumnDef="gost">
+									<mat-header-cell *matHeaderCellDef mat-sort-header> Gost: </mat-header-cell>
+									<mat-cell *matCellDef="let element"><span class="mobile-label">Gost: </span>{{element.korisnik2}} </mat-cell>
+								</ng-container>
+						
+						
+						
+								<!-- Symbol Column -->
+								<ng-container matColumnDef="datum">
+									<mat-header-cell *matHeaderCellDef mat-sort-header> Datum </mat-header-cell>
+									<mat-cell *matCellDef="let element"><span class="mobile-label">Datum: </span>{{element.datumVremePocetka*1000 | date:'dd.MM.yyyy'}} </mat-cell>
+								</ng-container>
+						
+								<!-- Symbol Column -->
+								<ng-container matColumnDef="rezultat">
+									<mat-header-cell *matHeaderCellDef mat-sort-header> Rezultat </mat-header-cell>
+									<mat-cell *matCellDef="let element"> <span class="mobile-label">Rezultat: </span>{{element.rezultat1}}: {{element.rezultat2}}</mat-cell>
+								</ng-container>
+						
+								<!-- Symbol Column -->
+								<ng-container matColumnDef="gledaj">
+									<mat-header-cell *matHeaderCellDef mat-sort-header> Gledaj </mat-header-cell>
+									<mat-cell *matCellDef="let element">
+										<!---- prvi button je na desktopu, drugi na telefonu ---->
+										<button mat-icon-button routerLink="/prenos/{{element.id}}" class="neresponsiveDugme"><mat-icon>play_circle_outline</mat-icon></button>
+										<button mat-raised-button color="primary" routerLink="/prenos/{{element.id}}" class="responsiveDugme"><mat-icon>play_circle_outline</mat-icon></button>
+									</mat-cell>
+								</ng-container>
+						
+						
+								<!-- Symbol Column -->
+								<ng-container matColumnDef="turnir">
+									<mat-header-cell *matHeaderCellDef mat-sort-header> Turnir </mat-header-cell>
+									<mat-cell *matCellDef="let element"><span class="mobile-label">Turnir: </span>{{element.naziv}}</mat-cell>
+								</ng-container>
+						
+								<mat-header-row *matHeaderRowDef="displayedColumnsProsli"></mat-header-row>
+								<mat-row *matRowDef="let row; columns: displayedColumnsProsli;"></mat-row>
+							</mat-table>
+						
+							<mat-paginator #paginatorProsli
+										   [pageSize]="10"
+										   [pageSizeOptions]="[5, 10, 20]"
+										   [showFirstLastButtons]="true">
+							</mat-paginator>
+						</div>
+					
+			</mat-tab>
+				
+		</mat-tab-group>
+	</mat-card-content>
+	</mat-card>
+<!--         
+</div>
+ -->

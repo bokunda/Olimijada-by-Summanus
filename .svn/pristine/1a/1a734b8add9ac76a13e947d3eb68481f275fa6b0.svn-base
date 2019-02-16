@@ -1,0 +1,102 @@
+<div id="header">
+
+    <mat-toolbar color="primary">
+        <mat-toolbar-row class="mat-elevation-z6">
+
+            <button mat-mini-fab (click)="sidenav.toggle()" *ngIf="authService.DaLiJePrijavljen()">
+                <mat-icon aria-label="Dugme za leviSidebarMeni">menu</mat-icon>
+            </button>
+            <span><a href="/" id="logoText">Ol<span class="smor">IMI</span>jada<span class="sakrij">.<span id="adminOlimijada">admin</span></span></a></span>
+            <span class="razdelnik"></span>
+            <!--<button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>apps</mat-icon></button>
+            <mat-menu class="faksMeni" #menu="matMenu" xPosition="after">
+                <a href="https://imi.pmf.kg.ac.rs" class="linkDugme"><button mat-menu-item class="faksDugme">Institut za Informatiku i Matematiku</button></a>
+                <a href="https://www.pmf.kg.ac.rs" class="linkDugme"><button mat-menu-item class="faksDugme">Prirodno-matematički fakultet</button></a>
+            </mat-menu>-->
+
+
+<!--<mat-icon class="ikonica">notifications</mat-icon>-->
+
+			<mat-menu #jezikmeni="matMenu">
+                <button mat-menu-item (click)="changeLang('sr'); jezik='SRB'" value="SRB"><span class="jezikTekst">SRB</span></button>
+                <button mat-menu-item (click)="changeLang('en'); jezik='ENG'" value="ENG"><span class="jezikTekst">ENG</span></button>
+            </mat-menu>
+
+            <button mat-button [matMenuTriggerFor]="jezikmeni" class="dugmejezik" style="background-color: none!important;">{{jezik}}</button>
+
+            <button mat-button class="prijavaodjava" (click)="Odjava()" *ngIf="authService.DaLiJePrijavljen()">
+                <span class="ikonica">{{'odjava' | translate}}</span>
+            </button>
+
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+
+
+<div>
+    <mat-sidenav-container class="sidebaroviKontejner">
+
+    <mat-sidenav #sidenav mode="side" class="leviSidebar" class="mat-elevation-z6">
+        <nav>
+            <button mat-button routerLink="/pocetna" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                <mat-icon>home</mat-icon>
+                <span style="margin-left: 6px;">{{'pocetna' | translate}}</span>
+            </button>
+            <button mat-button routerLink="/turniri" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                <mat-icon>extension</mat-icon>
+                <span style="margin-left: 6px;">{{'turniri' | translate}}</span>
+            </button>
+            <button mat-button routerLink="/igre" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                <mat-icon>videogame_asset</mat-icon>
+                <span style="margin-left: 6px;">{{'igre' | translate}}</span>
+			</button>
+			<button mat-button routerLink="/prikazKorisnika" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+				<mat-icon>supervisor_account</mat-icon>
+				<span style="margin-left: 6px;">{{'korisnici' | translate}}</span>
+			</button>
+            <button mat-button routerLink="/dodajAdmina" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                <mat-icon>face</mat-icon>
+                <span style="margin-left: 6px;">{{'admini' | translate}}</span>
+			</button>
+			<button mat-button routerLink="/faq" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                <mat-icon>public</mat-icon>
+                <span style="margin-left: 6px;">FAQ</span>
+			</button>
+			<!--
+			<button *ngIf="daLiJeGlavniAdmin" mat-button class="buttonMeni" (click)="OtvoriPotvrdu();" routerLinkActive="kliknuo">
+                <mat-icon>delete</mat-icon>
+                <span style="margin-left: 6px;">Obrisi nalog</span>
+            </button>
+			-->
+			
+			<!--<button mat-button routerLink="/slanjeMejla" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">                  <mat-icon>mail_outline</mat-icon>
+                 <span style="margin-left: 6px;">demo:Slanje mejla</span>
+            </button>
+            <button mat-button routerLink="/slanjeMejla" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                  <mat-icon>bug_report</mat-icon>
+                  <span style="margin-left: 6px;">demo:Botovi</span>
+            </button>
+            <button mat-button routerLink="/slanjeMejla" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                  <mat-icon>message</mat-icon>
+              ---->
+
+            <!--<div class="odjava" *ngIf="authService.DaLiJePrijavljen()">
+              <button mat-button class="odjava" (click)="Odjava();">
+                <mat-icon class="ikonica">highlight_off</mat-icon>
+                <span class="ikonica">odjava</span>
+              </button>
+            </div>-->
+        </nav>
+    </mat-sidenav>
+
+        <mat-sidenav #desniSidenav [mode]="mode.value" position="end">
+		    	<app-prijava></app-prijava>
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>

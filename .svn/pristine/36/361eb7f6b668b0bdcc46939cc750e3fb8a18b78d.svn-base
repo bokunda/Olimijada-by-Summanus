@@ -1,0 +1,36 @@
+
+<mat-form-field>
+	<input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{ 'Pretraga' | translate }}">
+</mat-form-field>
+
+<mat-table #table [dataSource]="dataSource">
+
+	<!-- Korisnik Column -->
+	<ng-container matColumnDef="korisnik" class="sirina">
+	  <mat-header-cell *matHeaderCellDef> {{ 'Korisnik' | translate }} </mat-header-cell>
+	  <mat-cell *matCellDef="let prijave"> {{prijave.usernameKorisnika}} </mat-cell>
+	</ng-container>
+
+	<!-- Bot Column -->
+	<ng-container matColumnDef="bot" class="sirina">
+		<div *ngIf="timska"><mat-header-cell *matHeaderCellDef> {{ 'Tim' | translate }} </mat-header-cell>
+		<mat-cell *matCellDef="let prijave"> {{prijave.nazivTima}} </mat-cell></div>
+		<div *ngIf="!timska"><mat-header-cell *matHeaderCellDef> {{ 'Bot' || translate }} </mat-header-cell>
+		<mat-cell *matCellDef="let prijave"> {{prijave.nazivTima.substring(prijave.nazivTima.indexOf('_')+1,prijave.nazivTima.lastIndexOf('.'))}} </mat-cell></div>
+	  </ng-container>
+
+	  <!-- Datum i vreme prijave Column -->
+	<ng-container matColumnDef="datumVremePrijave" class="sirina">
+		<mat-header-cell *matHeaderCellDef> {{ 'VremePrijave' | translate }} </mat-header-cell>
+		<mat-cell *matCellDef="let prijave"> {{prijave.datumVremePrijave*1000 | date:'dd.MM.yyyy HH:mm'}}h </mat-cell>
+	  </ng-container>
+
+	<!--  Neka podesavanja za tabelu  -->
+	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+  <mat-paginator #paginator
+	 [pageSize]="5"
+	 [pageSizeOptions]="[5, 10, 20]"
+	 [showFirstLastButtons]="true">
+	</mat-paginator>

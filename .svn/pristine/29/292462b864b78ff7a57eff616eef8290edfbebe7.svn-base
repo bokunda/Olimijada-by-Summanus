@@ -1,0 +1,108 @@
+.kartica
+{
+    max-width: 1048px;
+}
+
+.pocetnaWrapper
+{
+	margin: 26px;
+}
+
+.mat-card-title
+{
+    font-size: 120%;
+}
+
+.sirina
+{
+	width: 200px;
+}
+
+.mat-table
+{
+	overflow: auto;
+	max-height: 500px;
+}
+
+#editor
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#editor p
+{
+	color: gray;
+}
+
+mat-cell
+{
+	padding: 5px;
+}
+
+.skupi
+{
+	width: 72px;
+}
+
+@media(max-width: 901px)
+{
+	mat-header-cell, mat-cell
+	{
+	  text-align: left;
+	}
+  
+	.mobile-label
+	{
+	  width: 120px;
+	  display: inline-block;
+	  font-weight: bold;
+	  float: left;
+	}
+  
+	.mat-header-row 
+	{
+	  display: none;
+	}
+  
+	.mat-row 
+	{
+	  flex-direction: column;
+	  align-items: start;
+	  padding: 8px 24px;
+	}
+  
+	.dugmeResponsive
+	{
+	  display: inline;
+	  width: 100%;
+	  min-width: 100%;
+	  max-width: 100%;
+	  margin-top: 8px;
+	  float: left;
+	}
+  
+	.neresponsiveDugme
+	{
+	  display: none;
+	}
+  
+	.mat-row
+	{
+	  padding: 8px;
+	  margin: 0;
+	  height: auto!important;
+	  min-height: auto!important;
+	  max-height: auto!important;
+	}
+  
+	.dugmeResponsive, mat-cell
+	{
+	  width: 100%;
+	}
+  }
+
+mat-header-cell, mat-cell
+{
+  text-align: center;
+}

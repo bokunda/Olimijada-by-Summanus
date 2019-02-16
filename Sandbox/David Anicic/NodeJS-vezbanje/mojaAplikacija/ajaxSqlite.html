@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    
+</body>
+</html>>
+<html>
+    <head>
+        <title>
+            Ajax Sqlite
+        </title>
+        <script>
+            var podaci = function()
+            {
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = stigliPodaci();
+                xhttp.open("GET", "data", true);
+                xhttp.send();
+            };
+            var stigliPodaci = function()
+            {
+                if (this.readyState == 4 && this.status == 200)
+                {
+                    alert(this.responseText);
+                    var stavke = JSON.parse(this.responseText);
+                    var padajuca = document.getElementById("lista");
+                    for(var i = 0; i < stavke.lenght; i++)
+                    {
+                        var stavka = document.createElement("option");
+                        var tekst = document.createTextNode(stavke[i].info);
+                        stavka.appendChild(tekst);
+                        padajuca.appendChild(stavka);
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body onload="podaci()">
+        Lista <select id="lista"></select>
+    </body>
+</html>

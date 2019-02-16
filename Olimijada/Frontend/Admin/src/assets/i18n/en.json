@@ -1,0 +1,14 @@
+{
+	"pocetna":"Home",
+	"turniri":"Tournaments",
+	"igre":"Games",
+	"korisnici":"Users",
+	"admini":"Administrators",
+	"odjava":"Sign out",
+	"prijava":"Sign in",
+	"username":"Username",
+	"password":"Password",
+	"pogresno":"Invalid username or password",
+	"kreirajTurnir":"Create a tournament",
+	"spisakTurnira":"Tournament list"
+}

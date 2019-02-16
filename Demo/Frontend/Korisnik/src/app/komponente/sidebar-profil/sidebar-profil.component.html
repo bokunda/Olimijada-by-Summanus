@@ -1,0 +1,65 @@
+<div [ngStyle]="{'background-color': darkModeLocal ? '#424242' : 'white', 'color': darkModeLocal ? 'white' : 'black' }">
+
+    <div class="sidebarKorisnikHeader">
+        <img class="slikaKorisnika" src="{{slikaAvatara}}" height="124px" width="124px">
+
+        <p>{{'username' | translate}}: <br><span>{{ korisnik.username }}</span></p>
+        <p><span>{{ korisnik.ime }}</span> <span>{{ korisnik.prezime }}</span></p>
+        <!--- <p><a href="#" routerLink="/profil"><span>Uredi profil</span></a></p>--->
+
+    </div>
+    <mat-divider></mat-divider> <!---- horizontalna linija ---->
+    <div style="display: table; margin: 0 auto; margin-top: 6px; margin-bottom: 6px;">
+        <mat-slide-toggle [checked]="cekiran" (change)="PromeniTemu()">Dark mode!</mat-slide-toggle>
+    </div>
+    <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+    <div class="sidebarSadrzaj">
+        <div>
+            <button mat-button style="text-align: center;" href="#" routerLink="/botovi">
+                <mat-icon class="ikonica">adb</mat-icon>
+                <span class="ikonica">{{'botovi' | translate}}</span>
+            </button>
+
+            <button mat-button style="text-align: center;" href="#" routerLink="/timovi">
+                <mat-icon class="ikonica">group_add</mat-icon>
+                <span class="ikonica">{{'Timovi' | translate}}</span>
+            </button>
+
+            <button mat-button style="text-align: center;" href="#" routerLink="/profil">
+                <mat-icon class="ikonica">edit</mat-icon>
+                <span class="ikonica">{{'profil' | translate}}</span>
+            </button>
+
+            <button mat-button (click)="Odjava();" style="text-align: center;">
+                <mat-icon class="ikonica">highlight_off</mat-icon>
+                <span class="ikonica">{{'odjava' | translate}}</span>
+            </button>
+
+
+        <!-----
+        <button mat-button routerLink="botovi">
+            <mat-icon class="ikonica">adb</mat-icon>
+            <span class="ikonica">Botovi</span>
+        </button>
+        <!-----
+        <button mat-button>
+            <mat-icon class="ikonica">directions_run</mat-icon>
+            <span class="ikonica">Igrači</span>
+        </button>
+        <button mat-button>
+            <mat-icon class="ikonica">group_add</mat-icon>
+            <span class="ikonica">Timovi</span>
+        </button>
+        ----->
+    </div>
+
+    <!----<div class="odjava">
+        <button mat-button class="odjava" (click)="Odjava();">
+            <mat-icon class="ikonica">highlight_off</mat-icon>
+            <span class="ikonica">odjava</span>
+        </button>
+    </div> ---->
+
+</div>
+

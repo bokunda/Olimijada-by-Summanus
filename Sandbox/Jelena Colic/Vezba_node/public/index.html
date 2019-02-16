@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Vezba - node</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/style.css"/>
+
+        <script type="text/javascript" src="js/functions.js">
+        </script>
+    </head>
+    <body onload="ucitajPesme(); ucitajPlejliste()">
+        
+        <div id="content">
+            <h1>Muzika</h1>
+            <hr>
+            <table>
+                <tr>
+                    <td>
+                        Pesma:  
+                    </td>
+                    <td>
+                        <select id="selectPesma">
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Plejlista:
+                    </td>
+                    <td>
+                        <select id="selectPlejlista">
+
+                        </select>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <button id="dodaj" type="button" onclick="dodajUPlejlistu()">Dodaj u listu</button>
+            <button id="obrisi" type="button" onclick="obrisiIzPlejliste()">Skloni iz liste</button>
+
+            <div id="prikaz">
+            </div>
+            <div id="prikaz2">
+            </div>
+        </div>
+
+    </body>
+</html>

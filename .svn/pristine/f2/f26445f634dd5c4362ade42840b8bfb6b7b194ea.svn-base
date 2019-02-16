@@ -1,0 +1,10 @@
+<h1>{{title}}</h1>
+<nav>
+  <a routerLink="/dashboard">Dashboard</a>
+  <a routerLink="/heroes">Heroes</a>
+</nav>
+
+<mat-checkbox [value]="2"[checked]= "isChecked" (change)="onChange($event)">Subscribe</mat-checkbox>
+<app-ngx-editor [placeholder]="'Enter text here...'" [spellcheck]="true" [(ngModel)]="htmlContent"></app-ngx-editor>s
+<router-outlet></router-outlet>
+<app-messages></app-messages>

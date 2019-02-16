@@ -1,0 +1,194 @@
+<div class="pocetnaWrapper">
+
+<div class="slajder" style="display: block;">
+
+    <ngx-carousel class="slider divSlider"
+        [inputs]="carouselBanner"
+        [moveToSlide]="1"
+        (onMove)="onmoveFn($event)"
+        (afterCarouselViewed)="afterCarouselViewedFn($event)"
+        style="max-height: 300px; min-height:200px; max-width: 100%; margin-bottom: 18px;"
+    >
+
+        <ngx-item NgxCarouselItem class="bannerStyle divSlider">
+            <div class="divSlider" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/igre.jpg') center; ">
+                <div class="divSliderNaslov"><h1 style="text-align: center; background-color: #ffaa4b;">{{ 'igre' | translate }}</h1></div>
+
+                <div class="divSliderOpis" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina.png');">
+                    <h3 style="text-align: center;">
+                        {{ 'igreSlider' | translate }}
+                    </h3>
+                </div>
+
+                <div class="divSliderDugme"><button mat-raised-button style="text-align: center; background-color: #FFC107;" routerLink="/igre">{{ 'PrikaziIgre' | translate }}</button></div>
+                <div class="divSliderSlicica" style="background-image: url('http://147.91.204.116:11000/upload/slike/slajder/igre_slicica.png'); background-size: 100%;"></div>
+            </div>
+        </ngx-item>
+
+        <ngx-item NgxCarouselItem class="bannerStyle" *ngIf="!prijavljen">
+            <div class="divSlider" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/pocetna.jpg') center; " *ngIf="!prijavljen">
+                <div class="divSliderNaslov"><h1 style="text-align: center; background-color: #ff4d48;">Olimijada</h1></div>
+
+                <div class="divSliderOpis" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina.png');">
+                    <h3 style="text-align: center;">
+                        {{ 'olimijadaSlider' | translate }}
+                    </h3>
+                </div>
+
+                <div class="divSliderDugme"><button mat-raised-button style="text-align: center; background-color: #ff4d48;" routerLink="/prijava">{{ 'prijava' | translate }}</button></div>
+
+            </div>
+        </ngx-item>
+
+        <ngx-item NgxCarouselItem class="bannerStyle">
+            <div class="divSlider" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/korisnici.jpg') center; ">
+                <div class="divSliderNaslov"><h1 style="text-align: center; background-color: #ff4d48;">{{ 'korisnici' | translate }}</h1></div>
+
+                <div class="divSliderOpis" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina.png');">
+                    <h3 style="text-align: center;">
+                        {{ 'korisniciSlider' | translate }}
+                    </h3>
+                </div>
+
+                <div class="divSliderDugme"><button mat-raised-button style="text-align: center; background-color: #ff4d48;" routerLink="/korisnici">{{ 'PrikaziKorisnike' | translate }}</button></div>
+                <div class="divSliderSlicica" style="background-image: url('http://147.91.204.116:11000/upload/slike/slajder/korisnici_slicica.png'); background-size: 100%;"></div>
+            </div>
+        </ngx-item>
+
+        <ngx-item NgxCarouselItem class="bannerStyle">
+            <div class="divSlider" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/olimijadatv.jpg') center; ">
+                <div class="divSliderNaslov"><h1 style="text-align: center; background-color: #07f95f;">Olimijada TV</h1></div>
+
+                <div class="divSliderOpis" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina.png');">
+                    <h3 style="text-align: center;">
+                        {{ 'olimijadaTvSlider' | translate }}
+                    </h3>
+                </div>
+
+                <div class="divSliderDugme"><button mat-raised-button style="text-align: center; background-color: #07f95f;" routerLink="/prenos">{{ 'GledajTV' | translate }}</button></div>
+                <div class="divSliderSlicica" style="background-image: url('http://147.91.204.116:11000/upload/slike/slajder/olimijadatv_slicica.png'); background-size: 100%;"></div>
+            </div>
+        </ngx-item>
+
+        <ngx-item NgxCarouselItem class="bannerStyle">
+            <div class="divSlider" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/turniri.jpg') center; ">
+                <div class="divSliderNaslov"><h1 style="text-align: center; background-color: #f98549;">{{ 'turniri' | translate }}</h1></div>
+
+                <div class="divSliderOpis" style="background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina.png');">
+                    <h3 style="text-align: center;">
+                        {{ 'turniriSlider' | translate }}
+                    </h3>
+                </div>
+
+                <div class="divSliderDugme"><button mat-raised-button style="text-align: center; background-color: #f98549;" routerLink="/prikaz-turnira">{{ 'PrikazTurnira' | translate }}</button></div>
+                <div class="divSliderSlicica" style="background-image: url('http://147.91.204.116:11000/upload/slike/slajder/turniri_slicica.png'); background-size: 100%;"></div>
+            </div>
+        </ngx-item>
+
+        <button NgxCarouselPrev mat-icon-button class='leftRs'><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <button NgxCarouselNext mat-icon-button class='rightRs'><mat-icon>keyboard_arrow_right</mat-icon></button>
+    </ngx-carousel>
+</div>
+
+    <div class="ispodSlajderaCentriraj" style="display: table; margin: auto;">
+
+        <div class="celijaPocetna">
+            <div class="sadrzajCelijePocetna">
+                <mat-card routerLink="/korisnici" style="cursor: pointer">
+                    <mat-card-content>
+                        <h2>{{ 'Korisnika' | translate }}: {{brojKorisnika}}</h2>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="celijaPocetna">
+            <div class="sadrzajCelijePocetna">
+                <mat-card routerLink="/botovi" style="cursor: pointer">
+                    <mat-card-content>
+                        <h2>{{ 'Botova' | translate }}: {{brojBotova}}</h2>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="celijaPocetna">
+            <div class="sadrzajCelijePocetna">
+                <mat-card routerLink="/igre" style="cursor: pointer">
+                    <mat-card-content>
+                        <h2>{{ 'Igara' | translate }}: {{brojIgara}}</h2>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="ispodSlajderaCentriraj">
+
+        <mat-card class="kartica karticaOprojektu">
+            <mat-card-header>
+                <div mat-card-avatar class="kartica-header-slika"
+                     style="background-image: url('http://147.91.204.116:11000/upload/slike/slicice/info.png');"
+                ></div>
+                <mat-card-title>Olimijada</mat-card-title>
+                <mat-card-subtitle>{{ 'OProjektu' | translate }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image class="slikagif" src="http://147.91.204.116:11000/upload/slike/slicice/ljudiiroboti.jpg" alt="Opis slike piva.">
+            <mat-card-content>
+                <h2 style="text-align: center;">
+                    {{ 'OProjektuOlimijadaNaslov' | translate }}
+                </h2>
+                <p style="text-align: justify;">
+					{{ 'OProjektuOpis1deo' | translate }}<a routerLink="/">{{ 'turnira' | translate }}</a>{{ 'OProjektuOpis2deo' | translate }}<a routerLink="/">{{ 'prijateljskePartije' | translate }}</a>{{ 'OProjektuOpis3deo' | translate }}<a routerLink="/">{{ 'korisnicima' | translate }}</a>{{ 'sajta' | translate }}.{{ 'OProjektuOpis4deo' | translate }}<a routerLink="/">{{ 'takmicenja' | translate }}</a>{{ 'i' | translate }}<a routerLink="/igre">{{ 'informisite' | translate }}</a>{{ 'OProjektuOpis5deo' | translate }}
+                </p>
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="kartica karticaTurniri" routerLink="/prikaz-turnira" style="cursor: pointer;">
+            <mat-card-header>
+                <div mat-card-avatar class="kartica-header-slika"
+                     style="background-image: url('http://147.91.204.116:11000/upload/slike/slicice/trofej.png');"
+                ></div>
+                <mat-card-title>{{ 'Takmicenja' | translate }}</mat-card-title>
+                <mat-card-subtitle>{{ 'TurniriAktivni' | translate }}</mat-card-subtitle>
+            </mat-card-header>
+            <mat-card-content>
+
+                <mat-divider></mat-divider>
+                <div *ngIf="dvaTurnira[0] == undefined || dvaTurnira[0] == null">
+                    <h2>{{'Trenutno nema aktivnih turnira' | translate}}</h2>
+                </div>
+                <div style="padding-top: 18px;" *ngIf="dvaTurnira[0] != undefined && dvaTurnira[0] != null">
+                    <img src="{{ruta}}upload/slike/slicice/{{dvaTurnira[0].nazivTipaTurnira}}.png" style="float: left; height: 82px; padding: 0 18px 18px 0 ;">
+                    <h3>{{dvaTurnira[0].nazivTurnira}}</h3>
+                    <h4>{{ 'igra' | translate }}: {{dvaTurnira[0].nazivIgre}}</h4>
+                    <h5>{{ 'DatumPocetka' | translate }}: {{dvaTurnira[0].datumVremePocetka*1000 | date:'dd.MM.yyyy'}}<br>{{ 'DatumZavrsetka' | translate }}: {{dvaTurnira[0].datumVremeZavrsetka*1000 | date:'dd.MM.yyyy'}}</h5>
+                </div>
+                <mat-divider></mat-divider>
+
+                <div style="padding-top: 18px;" *ngIf="dvaTurnira[1] != undefined && dvaTurnira[1] != null">
+                    <img src="{{ruta}}upload/slike/slicice/{{dvaTurnira[1].nazivTipaTurnira}}.png" style="float: left; height: 82px; padding: 0 18px 18px 0 ;">
+                    <h3>{{dvaTurnira[1].nazivTurnira}}</h3>
+                    <h4>{{ 'igra' | translate }}: {{dvaTurnira[1].nazivIgre}}</h4>
+                    <h5>{{ 'DatumPocetka' | translate }}: {{dvaTurnira[1].datumVremePocetka*1000 | date:'dd.MM.yyyy'}}<br>{{ 'DatumZavrsetka' | translate }}: {{dvaTurnira[1].datumVremeZavrsetka*1000 | date:'dd.MM.yyyy'}}</h5>
+                </div>
+                <mat-divider></mat-divider>
+
+            </mat-card-content>
+        </mat-card>
+
+        <mat-card class="kartica karticaPrikazIgre" routerLink="/prenos" style="cursor: pointer;">
+            <mat-card-header>
+                <div mat-card-avatar class="kartica-header-slika"
+                     style="background-image: url('http://147.91.204.116:11000/upload/slike/slicice/tv.png');"
+                ></div>
+                <mat-card-title>Olimijada TV</mat-card-title>
+                <mat-card-subtitle>{{ 'PrenosUtakmica' | translate }}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image class="slikagif" src="{{ruta}}upload/slike/fudbalgif.gif" alt="Mrckaju se igraci.">
+        </mat-card>
+
+    </div>
+
+</div>

@@ -1,0 +1,29 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
+
+import { AppComponent } from './app.component';
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+	BrowserModule,
+	MatCheckboxModule,
+	MatFormFieldModule,
+	FormsModule,
+	MatInputModule,
+	ReactiveFormsModule,
+	MatToolbarModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }

@@ -1,0 +1,51 @@
+<div class="pocetnaWrapper">
+	<h1>{{ 'Izmena igre' | translate }} - {{ nazivIgre }}</h1>
+		
+	<form> 	<!-- FORMA -->
+		<mat-form-field> 					<!-- Naziv Igre --> <!--[(value)]="nazivIgre"-->
+          <input matInput [formControl]="naziv"  placeholder="{{ 'Naziv igre' | translate }}" required>
+        	<mat-error *ngIf="naziv.invalid">{{  greske() }}</mat-error>
+        </mat-form-field>
+
+		<app-ngx-editor [placeholder]="'Unesite tekst ovde...'" [spellcheck]="true" [(ngModel)]="htmlContent" [ngModelOptions]="{standalone: true}"></app-ngx-editor>
+
+               <!-- UPLOAD SLIKE IGRE -->
+        <input type="file" style="display: none" name="slikaUpload" id="slikaUpload" class="fajlUpload" #slikaUpload (change)="PostaviFajl($event,1)" accept="image/*" />
+		
+		<div style="display: inline-block">{{ 'Slika igre:' | translate }} </div>
+	
+			<button mat-icon-button (click)="slikaUpload.click()" id="fab-upload" style="background-color: purple; width: 48px; height: 48px">
+				<mat-icon id="icon-upload">file_upload</mat-icon>
+			</button>
+		<span style="width: auto; width: 100px;" *ngIf="slikaZaUpload != null">
+			{{ slikaZaUpload.name }}
+		</span>
+
+		<br>
+		<!--UPLOAD POZADINE -->
+		<input type="file" style="display: none" name="pozadinaUpload" id="pozadinaUpload" class="fajlUpload" #pozadinaUpload (change)="PostaviFajl($event,2)" accept="image/*" />
+		<div style="display: inline-block">{{ 'Pozadina igre' | translate }}: </div>
+		<button mat-mini-fab matTooltip="Slika za pozadinu igre" (click)="pozadinaUpload.click()" id="fab-upload2" style="background-color: purple; width: 48px; height: 48px">
+          <mat-icon id="icon-upload">file_upload</mat-icon>
+		</button>
+		<span style="width: auto; width: 100px;" *ngIf="pozadinaZaUpload != null">
+			{{ pozadinaZaUpload.name }}
+		</span>
+
+		<!-- UPLOAD POZADINE ZA TIMOVE (ZA PRIKAZ IZA TIMA)-->
+		<div *ngIf="odabranaIgra.timska">
+			<input type="file" style="display: none" name="pozadinaTimovaUpload" id="pozadinaTimovaUpload" class="fajlUpload" #pozadinaTimovaUpload (change)="PostaviFajl($event,3)" accept="image/*" />
+			<div style="display: inline-block">{{ 'Pozadina za prikaz timova' | translate }}: </div>
+			<button mat-mini-fab matTooltip="Slika za pozadinu igre" (click)="pozadinaTimovaUpload.click()" id="fab-upload3" style="background-color: purple; width: 48px; height: 48px">
+			<mat-icon id="icon-upload">file_upload</mat-icon>
+			</button>
+			<span style="width: auto; width: 100px;" *ngIf="pozadinaTimovaZaUpload != null">
+				{{ pozadinaTimovaZaUpload.name }}
+			</span>
+		</div>
+		
+        
+        <button mat-raised-button type="submit" color="primary" (click)="IzmeniIgru()">{{ 'Izmeni' | translate }}</button>
+	</form>
+		
+</div>

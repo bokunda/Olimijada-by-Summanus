@@ -1,0 +1,8 @@
+<div class="zaKarticu">
+    <mat-card>
+        <mat-card-header><mat-icon>group_add</mat-icon><h3>Napravi tim</h3></mat-card-header>
+        <mat-card-content>
+            <app-kreiranje-timova></app-kreiranje-timova>
+        </mat-card-content>
+    </mat-card>
+</div>

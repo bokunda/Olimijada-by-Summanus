@@ -1,0 +1,46 @@
+<div class="pocetnaWrapper">
+
+	<!--<mat-card class="kartica">-->
+    <!--<mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon aria-label="Profil" class="profilIkonicaBox">face</mat-icon>
+      </div>
+      <mat-card-title>Dodavanje administratora</mat-card-title>
+    </mat-card-header>-->
+
+   <!-- <mat-card-content> -->
+
+      <form (ngSubmit)="RegistracijaAdmina()">
+        <mat-form-field>
+          <input matInput placeholder="Email" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">
+            {{ GreskaMail() }}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput placeholder="{{ 'Korisničko ime' | translate }}" [formControl]="username" required>
+          <mat-error *ngIf="zauzeto">
+            {{ 'Korisnicko ime je zauzeto' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+            <input matInput  placeholder="{{ 'Lozinka' | translate }}" [formControl]="password" (keyup)="PoklapanjePassworda()" required>
+            <mat-hint align="start">
+              {{ 'Minimalno 8 karaktera' | translate }}
+            </mat-hint>
+        </mat-form-field>
+		
+		
+        <button mat-raised-button type="submit" color="primary">
+          {{ 'Dodaj administratora' | translate }}
+        </button>
+      </form>
+    <!--</mat-card-content>-->
+
+	<!--</mat-card>-->
+
+</div>

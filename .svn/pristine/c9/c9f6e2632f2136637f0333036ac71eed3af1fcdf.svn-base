@@ -1,0 +1,33 @@
+<div class="sadrzaj">
+<div *ngIf="!indikator">
+<div *ngIf="indikatorPrijave">
+	<form (ngSubmit)="PrijaviSe()">
+		<mat-form-field>
+			<mat-select placeholder="{{'Izaberite bota za turnir' | translate}}" [formControl]="botSelect">
+                <mat-option *ngIf="timskaIgra == false" style="padding: 0; margin: 0;" value="novododatibot">
+                    <button mat-button (click)="dialogDodajBota();" style="width: 100%; margin: 0;"><mat-icon>cloud_upload</mat-icon><span>{{'Dodaj bota' | translate}}</span></button>
+				</mat-option>
+				<mat-option *ngIf="timskaIgra == true" style="padding: 0; margin: 0;" value="novododatibot">
+                    <button mat-button style="width: 100%; margin: 0;" routerLink='/timovi' (click)="this.dialogRef.close()"><mat-icon>cloud_upload</mat-icon><span>{{'Kreiraj tim' | translate}}</span></button>
+                </mat-option>
+			  <mat-option *ngFor="let bot of botovi" [value]="bot.id">
+				{{ bot.nazivTima.substring(bot.nazivTima.indexOf('_')+1, krajStringa(bot.nazivTima)) }}
+			  </mat-option>
+			</mat-select>
+		  </mat-form-field>
+
+		<button mat-raised-button type="submit" color="primary">
+			{{'Prijavi se na turnir' | translate}}
+		</button>
+	</form>
+</div>
+<div *ngIf="!indikatorPrijave" >
+	{{porukaKadPrijavaNijeAktivna}}
+</div>
+</div>
+<div class="iks" style="margin-top: -4px!important;"><button mat-icon-button (click)="zatvori()">X</button></div>
+</div>
+<div *ngIf="indikator">
+	<p style="text-align: center;">{{'Vec ste prijavljeni na turnir' | translate}}!</p>
+	<button mat-raised-button color="primary" (click)="OtkaziPrijavu()" style="width: 100%;">{{'Otkazi prijavu' | translate}}</button>
+</div>

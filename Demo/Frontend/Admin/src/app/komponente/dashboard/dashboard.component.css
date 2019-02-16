@@ -1,0 +1,54 @@
+mat-card, mat-card-content
+{
+  margin: 0;
+  padding: 0;
+}
+
+.zaKarticeBr
+{
+  padding-bottom: 18px;
+}
+
+.karticaBr
+{
+  padding: 18px;
+}
+
+.karticaDashboard
+{
+  width: 326px;
+}
+
+.leviG, .sredinaG, .desnaG
+{
+  float: left;
+  margin-left: 18px;
+}
+
+.desnaG
+{
+  margin-right: 18px;
+}
+
+.centriraj
+{
+  display: table;
+  margin: 0 auto;
+}
+
+@media (max-width: 1326px)
+{
+  .karticaDashboard
+  {
+    width: 100%!important;
+  }
+
+  .leviG, .sredinaG, .desnaG
+  {
+    float: none;
+    display: table;
+    margin: 0 auto;
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+}

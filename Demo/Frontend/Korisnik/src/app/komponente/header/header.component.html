@@ -1,0 +1,152 @@
+<mat-card style="display: block; height: 100%; width: 100%; position: absolute; top: 0; left: 0; margin: 0; padding: 0;" [ngStyle]="{'background-color':darkMode ? '#282828' : 'white', 'background-image': 'url(' + slikaPozadina + ')'}">
+<div id="header">
+
+    <mat-toolbar color="primary" style="background-image: url('http://147.91.204.116:11000/upload/slike/pattern-pozadina-v2.jpg');">
+        <mat-toolbar-row class="mat-elevation-z6">
+
+            <button mat-mini-fab (click)="sidenav.toggle()">
+                <mat-icon aria-label="Dugme za leviSidebarMeni">menu</mat-icon>
+            </button>
+            <span><a href="/" id="logoText">Ol<span class="zezanje">IMI</span>jada</a></span>
+            <span class="razdelnik"></span>
+			<!--<button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>apps</mat-icon></button>-->
+
+            <mat-menu #jezikmeni="matMenu">
+                <button mat-menu-item (click)="changeLang('sr'); jezik='SRB'" value="SRB"><span class="jezikTekst">SRB</span></button>
+                <button mat-menu-item (click)="changeLang('en'); jezik='ENG'" value="ENG"><span class="jezikTekst">ENG</span></button>
+            </mat-menu>
+
+            <button mat-button [matMenuTriggerFor]="jezikmeni" style="width: 64px!important; background-color: none!important;">{{jezik}}</button>
+
+
+
+			<!--<div class="background">
+				<div class="transbox">
+					<mat-select-content>
+							<mat-select>
+									<mat-option (click)="changeLang('sr')"><span>SRB</span></mat-option>
+									<mat-option (click)="changeLang('en')"><span>ENG</span></mat-option>
+								</mat-select>
+					</mat-select-content>
+
+				</div>
+			  </div>-->
+
+
+
+            <!--<mat-menu class="faksMeni" #menu="matMenu" xPosition="after">
+                <a href="https://imi.pmf.kg.ac.rs" class="linkDugme"><button mat-menu-item class="faksDugme">Institut za Informatiku i Matematiku</button></a>
+                <a href="https://www.pmf.kg.ac.rs" class="linkDugme"><button mat-menu-item class="faksDugme">Prirodno-matematički fakultet</button></a>
+            </mat-menu>-->
+
+            <mat-menu class="faksMeni" #profil="matMenu" xPosition="after">
+                <div *ngIf="prijavljen">
+                    <app-sidebar-profil (nakonOdjave)="NakonOdjave($event);" [prijavljen]="prijavljen"></app-sidebar-profil>
+                </div>
+            </mat-menu>
+
+
+
+            <!-- <mat-icon class="ikonica" *ngIf="prijavljen">notifications</mat-icon> -->
+
+            <button mat-button  *ngIf="!prijavljen" routerLink="/prijava">
+                <span class="ikonica" style="padding-right: 10px;font-weight:bold;">{{'prijava' | translate}}</span>
+            </button>
+
+            <button mat-button *ngIf="prijavljen" [matMenuTriggerFor]="profil">
+				<span *ngIf="!prijavljen" class="ikonica">prijava</span>
+                <img *ngIf="prijavljen" style="border-radius: 50%" onchange="loadFile(event);" id="fajlUpload" class="slikaKorisnika" src="{{slikaAvatara}}" onerror="this.src='http://147.91.204.116:11000/upload/slike/podrazumevani_avatar.jpg'" height="32px" width="32px">
+            </button>
+
+            <!--<button mat-button *ngIf="prijavljen" (click)="desniSidenav.toggle()">
+				<span *ngIf="!prijavljen" class="ikonica">prijava</span>
+                <img *ngIf="prijavljen" style="border-radius: 50%" onchange="loadFile(event);" id="fajlUpload" class="slikaKorisnika" src="http://147.91.204.116:11000/upload/slike/{{korisnik.urlSlike}}" onerror="this.src='http://147.91.204.116:11000/upload/slike/podrazumevani_avatar.jpg'" height="32px" width="32px">
+            </button>-->
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>
+
+
+
+<div>
+    <mat-sidenav-container class="sidebaroviKontejner">
+        <mat-sidenav #sidenav mode="side" class="leviSidebar" class="mat-elevation-z6">
+            <nav>
+                <div class="sidebarSadrzaj">
+
+                    <button mat-button routerLink="/pocetna" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();"  routerLinkActive="kliknuo">
+                        <mat-icon>home</mat-icon>
+                        <span style="margin-left: 6px;">{{'pocetna' | translate}}</span>
+					</button>
+
+					<button mat-button routerLink="/prenos" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                        <mat-icon>play_circle_filled</mat-icon>
+                        <span style="margin-left: 6px;">Olimijada TV</span>
+					</button>
+
+					<button mat-button routerLink="/igre" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                        <mat-icon>videogame_asset</mat-icon>
+                        <span style="margin-left: 6px;">{{'igre' | translate}}</span>
+                    </button>
+
+                    <button mat-button class="buttonMeni" routerLink="/prikaz-turnira" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                        <mat-icon>developer_mode</mat-icon>
+                        <span style="margin-left: 6px;">{{'turniri' | translate}}</span>
+					</button>
+
+					<button mat-button class="buttonMeni" routerLink="mecevi" (click)="ZatvoriUslovnoSidebar();" *ngIf="prijavljen" routerLinkActive="kliknuo">
+                        <mat-icon>event</mat-icon>
+                        <span style="margin-left: 6px;">{{'mecevi' | translate}}</span>
+                    </button>
+
+                    <button mat-button routerLink="/korisnici" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                        <mat-icon>group_add</mat-icon>
+                        <span style="margin-left: 6px;">{{'korisnici' | translate}}</span>
+                    </button>
+
+                    <button mat-button routerLink="/faq" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                        <mat-icon>find_in_page</mat-icon>
+                        <span style="margin-left: 6px;">FAQ</span>
+                    </button>
+
+                    <button mat-button routerLink="/o-nama" class="buttonMeni" (click)="ZatvoriUslovnoSidebar();" routerLinkActive="kliknuo">
+                        <mat-icon>insert_emoticon</mat-icon>
+                        <span style="margin-left: 6px;">{{'o nama' | translate}}</span>
+                    </button>
+
+                    <div class="qrcode" matTooltip="Nastavi na telefonu! 📱">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ruta}}">
+                    </div>
+
+                </div>
+            </nav>
+        </mat-sidenav>
+
+
+        <!--<mat-sidenav #desniSidenav [mode]="mode.value" position="end">
+			 <div *ngIf="!prijavljen">
+				<mat-tab-group [dynamicHeight]="true">
+					<mat-tab label="Prijava">
+
+						<app-prijava (nakonPrijave)="NakonPrijave($event)"></app-prijava>
+
+					</mat-tab>
+					<mat-tab label="Registracija">
+
+						<app-registracija (nakonPrijave)="NakonPrijave($event); desniSidenav.toggle();"></app-registracija>
+
+					</mat-tab>
+				</mat-tab-group>
+			</div> --><!--
+			<div *ngIf="prijavljen">
+				<app-sidebar-profil (nakonOdjave)="desniSidenav.toggle(); NakonOdjave($event);" [prijavljen]="prijavljen"></app-sidebar-profil>
+			</div>
+		</mat-sidenav>-->
+
+        <mat-sidenav-content>
+            <router-outlet></router-outlet>
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+</div>
+</mat-card>

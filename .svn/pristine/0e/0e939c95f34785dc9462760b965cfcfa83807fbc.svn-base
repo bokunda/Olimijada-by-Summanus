@@ -1,0 +1,107 @@
+
+
+<div class="pocetnaWrapper">
+
+    <mat-card class="kartica">
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon aria-label="Profil" class="profilIkonicaBox">account_box</mat-icon>
+            </div>
+            <mat-card-title>{{'Profil korisnika' | translate}}</mat-card-title>
+        </mat-card-header>
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <!---- Ovaj deo sadrži sliku korisnika, username i titule ---->
+        <mat-card-content id="karticaHeaderKorisnik">
+            <div id="headerKorisnika">
+                <div class="pomocniDivHeaderKorisnika">
+                    <img (click)="fileInputSlika.click()" id="slikaKorisnika" class="slikaKorisnika" src="{{slikaAvatara}}" onerror="this.src='http://147.91.204.116:11000/upload/slike/podrazumevani_avatar.jpg'">
+                    <img (click)="fileInputSlika.click()" src="assets/slike/photo-icon.png" width="36px" style="margin-left:53%; margin-top: -26px;"   />
+                    <br>
+
+
+                    <mat-chip-list class="mat-chip-list-stacked">
+                        <mat-chip color="primary" selected="true">
+                            <span style="font-size: 18pt;">{{ korisnik.username }}</span>
+                        </mat-chip>
+                    </mat-chip-list>
+                    <br>
+                    <mat-chip-list>
+                        <mat-chip color="warn" selected="true">{{'pobeda' | translate}}: {{ korisnik.brojPobeda }}</mat-chip>
+                        <mat-chip color="accent" selected="true">{{'poraz' | translate}}: {{ korisnik.brojPoraza }}</mat-chip>
+                    </mat-chip-list>
+
+
+                </div>
+            </div>
+        </mat-card-content>
+
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <!---- Izmena podataka ---->
+        <mat-card-content>
+            <form (ngSubmit)="IzmenaKorisnika()">
+                <mat-form-field>
+                    <input matInput placeholder="{{'username' | translate}}" value="{{ korisnickoIme }}" [formControl]="username" readonly>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="{{'ime' | translate}}" value="{{ korisnik.ime }}" [formControl]="ime">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="{{'prezime' | translate}}" value="{{ korisnik.prezime }}" [formControl]="prezime">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput placeholder="Email" value="{{ korisnik.email }}" [formControl]="email" required>
+                    <mat-error *ngIf="email.invalid">
+                        {{ GreskaMail() }}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-divider></mat-divider> <!---- horizontalna linija ---->
+                <br>
+                <mat-form-field>
+                    <input matInput type="password" placeholder="{{'Password' | translate}}" [formControl]="password" (keyup)="PoklapanjePassworda()" required>
+                    <mat-hint align="start">
+                        {{'Minimalno 8 karaktera' | translate}}
+                    </mat-hint>
+                </mat-form-field>
+
+                <mat-divider></mat-divider> <!---- horizontalna linija ---->
+                <br>
+
+                <mat-form-field>
+                    <input matInput type="password" placeholder="{{'repassword' | translate}}" [formControl]="passwordPonovo" (keyup)="PoklapanjePassworda()" required>
+                </mat-form-field>
+
+                <span style="font-weight: bold;">{{'Napomena' | translate}}:</span><span> {{'Lozinku unosite samo ukoliko želite da je promenite!' | translate}}</span>
+                <span *ngIf="poklapanjeFlag" style="color:green;">{{ poklapanjeIspis }}</span>
+                <span *ngIf="!poklapanjeFlag" style="color:red;">{{ poklapanjeIspis }}</span>
+
+                <mat-divider></mat-divider> <!---- horizontalna linija ---->
+                <br><br> <input style="display: none;"  (change)="AzurirajSliku($event);" onchange="loadFile(event);" type="file" name="fajlUpload" id="fajlUpload" class="fajlUpload" accept="image/*" #fileInputSlika /> <!---- Sakriveno, tj. display: none; jer se klikom na sliku menja ista. ---->
+
+                <button mat-raised-button type="submit" color="primary">
+                    {{'Sačuvaj izmene' | translate}}
+                </button>
+
+                <mat-icon class="ikonica" *ngIf="uspesno">done</mat-icon>
+                <mat-icon class="ikonica" *ngIf="neuspesno">clear</mat-icon>
+
+            </form>
+        </mat-card-content>
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <mat-card-content>
+            <p class="redUBoksu">
+                {{'Profilna slika korisnika mora biti kvadratnog oblika, maksimalne velicine 1MB. Sve slike koje ne budu poštovale pomenuto pravilo biće automatski konvertovane, pa može doći do gubitka kvaliteta iste.' | translate}}
+            </p>
+        </mat-card-content>
+
+    </mat-card>
+
+</div>

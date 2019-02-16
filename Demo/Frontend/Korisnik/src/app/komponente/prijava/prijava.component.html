@@ -1,0 +1,39 @@
+<div>
+	<!--*ngIf="!prikaziInputZaKod"-->
+	<div>
+	<form>
+		<div *ngIf="nijeUnetUsername" class="nijeUneo">{{'Unesite korisničko ime' | translate}}</div>
+		<mat-form-field>
+			<input matInput placeholder="{{'username' | translate}}" [formControl]="username" required>
+		</mat-form-field>
+
+		<input class="sakriven" [formControl]="username2" required>
+
+		<mat-form-field>
+			<input matInput type="password" placeholder="{{'Password' | translate}}" [formControl]="password" required>
+		</mat-form-field>
+		
+
+		<button mat-raised-button type="submit" color="primary" (click)="PrijavaKorisnika()">
+			{{'Prijavite se' | translate}}
+		</button>
+
+
+		<div class="zaboraviliSteLozinku" >
+			<a href="#" (click)="GenerisiPolje()" matTooltip="{{'Morate uneti korisničko ime' | translate}}" matTooltipPosition="left" matTooltipShowDelay="400">{{'Zaboravili ste lozinku?' | translate}}</a>
+		</div>
+
+		<div *ngIf="indikator" class="sranjeDiv">
+			<input placeholder="{{'Unesite verifikacioni kod' | translate}}" [formControl]="verif"/>
+			<button mat-raised-button color="primary" class="dugmence" (click)="ZaboraviliSteLozinku()">{{'Resetuj lozinku' | translate}}</button>
+		</div>
+
+		<div *ngIf="pogresno" class="div-greska">
+			{{'Pogrešno korisničko ime i/ili lozinka' | translate}}
+		</div>
+	</form>
+</div>
+
+
+
+</div>

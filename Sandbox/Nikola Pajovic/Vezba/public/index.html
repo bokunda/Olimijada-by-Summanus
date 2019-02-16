@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <title>Vezbaje</title>
+        <link rel="stylesheet" href="stylesheets/style.css" >
+        <script type="text/javascript">
+            function ucitajStudente(){  //funkcija za ispis studenata na html strani
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        var nizStudenata = JSON.parse(this.responseText);
+
+						var html = "";
+						
+						// href ne sme da bude '' jer ce da reloaduje celu stranicu i nista nece da se desi 
+						//(ajax response nestane)
+						// # ga ostavlja na istoj strani bez reloada
+                        for(var i = 0; i < nizStudenata.length; i++){
+                            html += "<a href='#' onclick='obrisi("+nizStudenata[i].rowid+")'>" + nizStudenata[i].ime + " " + nizStudenata[i].prezime + ", " + nizStudenata[i].mesto + "</a><br>";
+                        }
+
+                        document.getElementById("students").innerHTML = html;
+
+                        html = "";
+
+                        for(var i = 0; i < nizStudenata.length; i++){
+                            html += "<a href='#' onclick='polozeni("+nizStudenata[i].rowid+")'>" + nizStudenata[i].ime + " " + nizStudenata[i].prezime + ", " + nizStudenata[i].mesto + "</a><br>";
+                        }
+
+						// posto svaki put kad se ucitava strana u innerHTML div-a "prikaz" stavljas studente
+						// samo studente (=), onda moras svaki put da dodas div "pred"
+						// inace ce pri prvom ucitavanju da se ponisti to i ostace samo studenti, pa nema gde da ubaci ispite posle
+						document.getElementById("prikaz").innerHTML = html;
+						document.getElementById("prikaz").innerHTML += "<div id='pred'></div>";
+                    }
+                };
+                xhttp.open("GET","sviStudenti",true);
+                xhttp.send();
+            }
+
+
+            function obrisi(id){        //funkcija koja salje id studenta koji ce biti obrisan iz baze
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        ucitajStudente();
+                    }
+                };
+                xhttp.open("POST","obrisi",true);
+                xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xhttp.send("IdBrisanja="+id);
+            }
+
+            function polozeni(id){      
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        var predmeti = JSON.parse(this.responseText);
+
+                        var html = "";
+
+                        for(var i = 0; i < predmeti.length; i++){
+                            html += predmeti[i].naziv + "<br>";
+                        }
+
+                        document.getElementById("pred").innerHTML = html;
+                        
+                    }
+                };
+                xhttp.open("POST","polozeni",true);
+                xhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xhttp.send("idStudenta="+id);
+            }
+
+        </script>
+    </head>
+    <body onload="ucitajStudente()">
+        <div id="heding">
+            <h1>PROBNA APLIKACIJA ZA SOFTVERSKI INZENJERING</h1>
+        </div>
+
+        <div id="students">
+
+        </div>
+
+        <div id="prikaz">
+            
+        </div>
+ 
+
+        
+        
+    </body>
+</html>

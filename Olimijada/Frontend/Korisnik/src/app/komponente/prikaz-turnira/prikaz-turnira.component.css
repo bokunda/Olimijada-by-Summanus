@@ -1,0 +1,135 @@
+.sakrij
+{
+	visibility: hidden!important;
+	background-color: red;
+	color: red;
+}
+
+.igra
+{
+	margin-top: -12px;
+	background-color: #03A9F4;
+	color: white;
+	padding: 4px;
+}
+
+.dugmeMargina
+{
+	margin-top: -8px;
+}
+
+.slikaTurnir
+{
+	height: 64px;
+	width: 64px;
+	border-radius: 50%;
+	border: 2px solid #03A9F4;
+}
+
+.datumi
+{
+	font-weight: bold;
+}
+
+.div-nema-turnira
+{
+	margin-top: 15px;
+	font-size: 110%;
+}
+.pocetnaWrapper
+{
+    display: table;
+	margin: 0 auto;
+	margin-top: 18px;
+	width: 100%;
+}
+
+
+.mat-card-title
+{
+	font-size: 160%;	
+}
+
+mat-form-field, button {
+    width: 100%;
+    font-size: 96%;
+    margin-top: 10px;
+
+}
+
+.mat-row:hover
+{
+    background-color: lightgray;
+    transition-duration: 0.6s;
+}
+
+/*
+.divKalendar, .divZaOpisTurnira, .kartica
+{
+	width: 60%!important;
+	max-width: 60%!important;
+	min-width: 60%!important;
+
+	display: block;
+	margin: 0 auto;
+
+	padding-left: 0;
+	padding-right: 0;
+
+	margin-top: 18px;
+	margin-bottom: 18px;
+}
+*/
+
+.levo
+{
+	width: 46%;
+	float: left;
+	margin-left: 18px;
+}
+
+.kartica
+{
+	padding: 3px;
+}
+
+.desno
+{
+	width: 46%;
+	float: right;
+	margin-right: 18px;
+}
+
+mat-tab, mat-tab-group
+{
+	margin: 18px!important;
+}
+
+@media(max-width: 670px) 
+{
+
+	.divKalendar, .divZaOpisTurnira, .levo, .desno, .kartica
+	{		
+		
+		margin-top: 18px;
+		margin-bottom: 18px;
+		padding-left: 0;
+		padding-right: 0;
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%!important;
+		max-width: 100%!important;
+		min-width: 100%!important;
+	}
+
+	.divKalendar, .divZaOpisTurnira, .kartica, .pocetnaWrapper
+	{
+		display: inline-block;
+	}
+
+	.levo
+	{
+		width: 100%;
+	}
+
+}

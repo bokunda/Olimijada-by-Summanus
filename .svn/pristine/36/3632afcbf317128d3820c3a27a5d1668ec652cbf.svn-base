@@ -1,0 +1,58 @@
+
+<div class="pocetnaWrapper">
+	<mat-card class="kartica">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon aria-label="Profil" class="profilIkonicaBox">explore</mat-icon>
+      </div>
+      <mat-card-title>{{ 'sviMeceviSaTrunira' | translate }}<span id="nazivTurnira"> {{ selektovanTurnir.nazivTurnira }}</span><span> {{ 'turnirSviMecevi' | translate }}</span></mat-card-title>
+    </mat-card-header>
+		<mat-card-content>
+			<mat-tab-group>
+				<mat-tab label="{{ 'turniri' | translate }}">
+
+					<mat-form-field>
+						<input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{ 'Pretraga' | translate }}">
+					</mat-form-field>
+
+					<mat-table #table [dataSource]="dataSource"  matSort>
+
+						<!-- Korisnik 1 Column -->
+						<ng-container matColumnDef="korisnik1" class="sirina">
+						  <mat-header-cell *matHeaderCellDef> {{ 'PrviKorisnik' | translate }} </mat-header-cell>
+						  <mat-cell *matCellDef="let mec">{{ mec.korisnik1 }}</mat-cell>
+						</ng-container>
+
+						<!-- Korisnik 2 Column -->
+						<ng-container matColumnDef="korisnik2" class="sirina">
+						  <mat-header-cell *matHeaderCellDef class="sirina"> {{ 'DrugiKorisnik' | translate }} </mat-header-cell>
+						  <mat-cell *matCellDef="let mec" class="sirina">{{ mec.korisnik2 }}</mat-cell>
+						</ng-container>
+
+						<!-- Početak meča Column -->
+						<ng-container matColumnDef="datumvremePocetka" class="sirina">
+							<mat-header-cell *matHeaderCellDef> {{ 'PocetakMeca' | translate }} </mat-header-cell>
+							<mat-cell *matCellDef="let mec">{{ mec.datumVremePocetka*1000 | date: 'dd.MM.yyyy' }} {{ mec.datumVremePocetka*1000 | date:' HH:mm' }}</mat-cell>
+						  </ng-container>
+
+						<!-- Rezultat Column -->
+						<ng-container matColumnDef="rezultat" class="sirina">
+							<mat-header-cell *matHeaderCellDef class="sirina"> {{ 'Rezultat' | translate }} </mat-header-cell>
+							<mat-cell class="sirina" *matCellDef="let mec">{{ mec.rezultat1 + ":" + mec.rezultat2 }}</mat-cell>
+						  </ng-container>
+
+						<!--  Neka podešavanja za tabelu  -->
+						<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+						<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+					  </mat-table>
+
+					  <mat-paginator #paginator
+                 		[pageSize]="5"
+                 		[pageSizeOptions]="[5, 10, 20]"
+                 		[showFirstLastButtons]="true">
+  					  </mat-paginator>
+				</mat-tab>
+			  </mat-tab-group>
+		</mat-card-content>
+	</mat-card>
+</div>

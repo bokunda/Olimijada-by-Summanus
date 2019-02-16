@@ -1,0 +1,4 @@
+<div class="iks" style="margin-top: -4px!important;"><button mat-icon-button (click)="zatvori()">X</button></div>
+<app-dodavanje-bota [izabranaIgra]="izabranaIgra" (nakonDodavanja)="dodatBot($event)">
+
+</app-dodavanje-bota>

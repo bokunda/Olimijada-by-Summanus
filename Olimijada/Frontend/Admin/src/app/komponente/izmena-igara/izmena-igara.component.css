@@ -1,0 +1,20 @@
+#editor
+{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+mat-form-field, button
+{
+width: 100%;
+}
+
+#editor p
+{
+	color: gray;
+}
+
+#h1
+{
+	color: blue;
+}

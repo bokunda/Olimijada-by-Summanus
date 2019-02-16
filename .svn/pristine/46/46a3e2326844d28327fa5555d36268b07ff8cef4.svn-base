@@ -1,0 +1,142 @@
+<div class="pocetnaWrapper">
+
+    <mat-card class="kartica">
+        <mat-card-header>
+            <div mat-card-avatar>
+                <mat-icon aria-label="Profil" class="profilIkonicaBox">account_box</mat-icon>
+            </div>
+            <mat-card-title>{{'Profil korisnika' | translate}}</mat-card-title>
+        </mat-card-header>
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <!---- Ovaj deo sadrži sliku korisnika, username i titule ---->
+
+        <mat-card-content id="karticaHeaderKorisnik" *ngIf="smeUpload == true">
+            <div id="headerKorisnika">
+                <div class="pomocniDivHeaderKorisnika">
+                    <img (click)="fileInputSlika.click()" id="slikaKorisnika" class="slikaKorisnika" src="{{slikaAvatara}}" onerror="this.src='http://147.91.204.116:11000/upload/slike/podrazumevani_avatar.jpg'">
+                    <img (click)="fileInputSlika.click()" src="assets/slike/photo-icon.png" width="36px" style="margin-left:53%; margin-top: -26px;"   />
+                    <br>
+
+
+                    <mat-chip-list class="mat-chip-list-stacked">
+                        <mat-chip color="primary" selected="true">
+                            <span style="font-size: 18pt;">{{ korisnik.username }}</span>
+                        </mat-chip>
+                    </mat-chip-list>
+                    <br>
+                    <mat-chip-list>
+                        <!-- <mat-chip color="grey" selected="true">Botova: 6</mat-chip> -->
+                        <mat-chip color="warn" selected="true">{{ 'pobeda' | translate }}: {{ brPobeda }}</mat-chip>
+                        <mat-chip color="accent" selected="true">{{ 'Poraza' | translate }}: {{ brPoraza }}</mat-chip>
+                    </mat-chip-list>
+
+
+                </div>
+            </div>
+            <br><br> <input style="display: none;"  (change)="AzurirajSliku($event);" onchange="loadFile(event);" type="file" name="fajlUpload" id="fajlUpload" class="fajlUpload" accept="image/*" #fileInputSlika /> <!---- Sakriveno, tj. display: none; jer se klikom na sliku menja ista. ---->
+        </mat-card-content>
+
+        <mat-card-content id="karticaHeaderKorisnik2" *ngIf="smeUpload == false">
+            <div id="headerKorisnika2">
+                <div class="pomocniDivHeaderKorisnika2">
+                    <img id="slikaKorisnika2" class="slikaKorisnika2" src="{{ruta}}/upload/slike/{{korisnik.urlSlike}}">
+                    <br>
+                    <mat-chip-list class="mat-chip-list-stacked">
+                        <mat-chip color="primary" selected="true">
+                            <span style="font-size: 18pt;">{{ korisnik.username }}</span>
+                        </mat-chip>
+                    </mat-chip-list>
+                    <br>
+                    <mat-chip-list>
+                        <!-- <mat-chip color="grey" selected="true">Botova: 6</mat-chip> -->
+                        <mat-chip color="warn" selected="true">{{ 'pobeda' | translate }}: {{ brPobeda }}</mat-chip>
+                        <mat-chip color="accent" selected="true">{{ 'Poraza' | translate }}: {{ brPoraza }}</mat-chip>
+                    </mat-chip-list>
+
+
+                </div>
+            </div>
+        </mat-card-content>
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <mat-card-content>
+            <p class="redUBoksu">
+                <span>{{ 'username' | translate }}: </span> <span>{{ korisnik.username }}</span>
+            </p>
+        </mat-card-content>
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <mat-card-content>
+            <p class="redUBoksu">
+                <span>{{ 'ime' | translate }}: </span> <span>{{ korisnik.ime }}</span>
+            </p>
+        </mat-card-content>
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <mat-card-content>
+            <p class="redUBoksu">
+                <span>{{ 'prezime' | translate }}: </span> <span>{{ korisnik.prezime }}</span>
+            </p>
+        </mat-card-content>
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <mat-card-content *ngIf="izmeni">
+            <p class="redUBoksu">
+                <span>E-mail: </span> <span>{{ korisnik.email }}</span>
+            </p>
+        </mat-card-content>
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <mat-card-content>
+            <div *ngIf="sakrij() == false">
+                <div style="display: table; margin: 0 auto; ">
+                    <app-pobede-porazi></app-pobede-porazi>
+                </div>
+            </div>
+        <!--
+            <h2 style="padding-top: 16px;">Statistika</h2><mat-divider></mat-divider>
+
+            <div class="divUspeh">
+                <div class="celija">
+                    <div class="sadrzajCelije">
+                        <h3>Uspeh</h3>
+                        <google-chart [data]="pieChartData"></google-chart>
+                    </div>
+                </div>
+                <div class="celija">
+                    <div class="sadrzajCelije">
+                        <h3>Najuspešniji igrač</h3>
+                        <h4>Super Mario</h4>
+                        <p>Pobeda: 7</p>
+                    </div>
+                </div>
+                <div class="celija">
+                    <div class="sadrzajCelije">
+                        <h3>Poslednji turnir</h3>
+                        <h4>wIMIbledon</h4>
+                        <p>Pozicija: 3</p>
+                    </div>
+                </div>
+            </div>
+        -->
+        </mat-card-content>
+
+        <mat-divider></mat-divider> <!---- horizontalna linija ---->
+
+        <mat-card-actions>
+            <!-- <button mat-button>PODELI</button> -->
+            <share-button button="facebook" text="Share" [showText]="true"></share-button>
+            <share-button button="twitter" text="Tweet" [showText]="true"></share-button>
+			<button mat-button routerLink="/izmena-profila" *ngIf="izmeni">{{ 'IZMENI' | translate }}</button>
+			<button mat-button (click)="ObrisiNalog()" *ngIf="izmeni">{{ 'DEAKTIVIRAJnALOG' | translate }}</button>
+        </mat-card-actions>
+    </mat-card>
+
+</div>

@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    color: white;
+    font-family: Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #555;
+}
+
+h1 {
+    text-align: center;
+    
+    color: rgb(0, 255, 157);
+}
+
+#content {
+    width: 600px;
+    margin: auto;
+    
+    background-color: #333;
+    height: 100%;
+    padding: 5px;
+}
+
+#spisakListi {
+    float: right;
+    
+}
+
+button {
+    background-color: white;
+    color: #333;
+    padding: 10px;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+select {
+    padding: 5px;
+    border: none;
+    margin-top: 10px;
+}
+
+#selectPesma {
+    margin-top: 10px;
+}
+
+#prikaz2, #prikaz2 table {
+    color: rgb(0, 255, 157);
+}
+
+#prikaz2 table td {
+    border: 1px solid rgb(0, 255, 157);
+    border-collapse: collapse;
+    padding: 5px;
+}

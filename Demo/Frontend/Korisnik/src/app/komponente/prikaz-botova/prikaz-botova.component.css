@@ -1,0 +1,64 @@
+.mobile-label
+{
+  display: none;
+}
+
+mat-form-field, button {
+    width: 100%;
+    font-size: 96%;
+    margin-top: 10px;
+}
+
+.responsiveDugmiciZaBotove
+{
+    display: none;
+}
+
+
+/* RESPONSIVE TABELA */
+@media (max-width: 396px)
+{
+    .responsiveDugmiciZaBotove
+    {
+        display: inline-block;
+    }
+
+    .mobile-label {
+        width: 80px;
+        display: inline-block;
+        font-weight: bold;
+        float: left;
+    }
+
+    .mat-header-row {
+        display: none;
+    }
+
+    .mat-row {
+        flex-direction: column;
+        align-items: start;
+        padding: 8px 24px;
+    }
+
+    .mat-row
+    {
+        padding: 8px;
+        margin: 0;
+        height: auto!important;
+        min-height: auto!important;
+        max-height: auto!important;
+    }
+
+    .responsiveDugmiciZaBotove > button
+    {
+        display: inline-block;
+        float: left;
+        width: 20px;
+    }
+
+    .sakrij
+    {
+        display: none;
+    }
+}
+

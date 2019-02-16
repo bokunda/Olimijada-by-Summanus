@@ -1,0 +1,320 @@
+.ispodSlajderaCentriraj
+{
+    margin: auto;
+}
+
+.kartica {
+    max-width: 300px;
+    float:left;
+    margin-right: 18px;
+    margin-top: 18px;
+}
+
+.kartica-header-slika {
+    background-image: url('https://static.independent.co.uk/s3fs-public/styles/story_large/public/thumbnails/image/2017/04/29/10/beer.jpg');
+    background-size: cover;
+}
+
+.pocetnaWrapper {
+    margin: 26px;
+}
+
+.bannerStyle h1 {
+    background-color: #ccc;
+    min-height: 300px;
+    text-align: center;
+    line-height: 300px;
+}
+.leftRs {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    height: 48px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+    border-radius: 999px;
+    left: 0;
+    color: white;
+    background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina_tamnosivo.png');
+}
+
+.rightRs {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 48px;
+    height: 48px;
+    box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+    border-radius: 999px;
+    right: 0;
+    color: white;
+    background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina_tamnosivo.png');
+}
+
+@media screen and (max-width: 540px)
+{
+
+    .leftRs {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        width: 48px;
+        height: 48px;
+        box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+        border-radius: 999px;
+        left: 0;
+        display: none;
+        opacity: 0.0;
+    }
+
+    .rightRs {
+        position: absolute;
+        margin: auto;
+        top: 0;
+        bottom: 0;
+        width: 48px;
+        height: 48px;
+        box-shadow: 1px 2px 10px -1px rgba(0, 0, 0, .3);
+        border-radius: 999px;
+        right: 0;
+        display: none;
+
+        opacity: 0.0;
+    }
+}
+
+.divSlider
+{
+    height: 300px;
+    width: 100%;
+}
+
+.divSliderNaslov
+{
+    z-index: 1;
+    min-width: 256px;
+    display: table;
+    margin: 0 auto;
+}
+
+.divSliderOpis
+{
+    z-index: 1;
+    min-width: 256px;
+    max-width: 700px;
+    display: table;
+    margin: 0 auto;
+}
+
+.divSliderSlicica
+{
+    z-index: -1;
+    float: left;
+    margin-left: 30px;
+    margin-top: -230px;
+    width:256px;
+    height: 256px;
+    background-size: 100%;
+}
+
+.divSliderDugme
+{
+    z-index: 1;
+    display: table;
+    margin: 20px auto;
+}
+
+@media screen and (max-width: 540px) and (min-width: 1px) {
+    .divSliderSlicica
+    {
+        width: 64px;
+        height: 64px;
+        margin-top: -260px;
+    }
+}
+
+@media screen and (max-width: 1500px) and (min-width: 540px) {
+    .divSliderSlicica
+    {
+        width: 128px;
+        height: 128px;
+        margin-top: -80px;
+    }
+}
+
+
+.celijaPocetna
+{
+    display: table-cell;
+}
+
+.celijaPocetna mat-card:hover
+{
+    background-color: lightgray;
+    transition-duration: 0.6s;
+}
+
+.sadrzajCelijePocetna
+{
+    display: table;
+    margin: 0 auto;
+    width: 312px;
+    text-align: center;
+}
+
+.sadrzajCelijePocetna > h4
+{
+    font-size: 300%;
+}
+
+@media (max-width: 1200px) { /*breakpoint*/
+
+    .celijaPocetna
+    {
+        display: block;
+    }
+
+    .sadrzajCelijePocetna
+    {
+        min-width: 624px;
+        max-width: 624px;
+        width: 624px;
+    }
+}
+
+@media (max-width: 678px) { /*breakpoint*/
+
+    .celijaPocetna
+    {
+        display: block;
+    }
+
+    .sadrzajCelijePocetna
+    {
+        min-width: 428px;
+        max-width: 428px;
+        width: 428px;
+    }
+}
+
+@media (max-width: 480px) { /*breakpoint*/
+
+    .celijaPocetna
+    {
+        display: block;
+    }
+
+    .sadrzajCelijePocetna
+    {
+        min-width: 312px;
+        max-width: 312px;
+        width: 312px;
+    }
+}
+
+.ispodSlajderaCentriraj
+{
+    display: table;
+    margin: auto;
+}
+
+.karticaOprojektu
+{
+    max-width: 326px;
+    min-width: 326px;
+}
+
+.karticaTurniri
+{
+    max-width: 300px;
+    min-width: 226px;
+}
+
+.karticaTurniri h5
+{
+    padding-top:10px;
+    text-align: center;
+}
+
+
+
+@media (max-width: 1300px) { /*breakpoint*/
+
+    .kartica, .karticaTurniri, .karticaOprojektu
+    {
+        display: inline-block;
+        width: 90%;
+        max-width: 90%;
+        min-width: 90%;
+    }
+
+    .karticaTurniri h5
+    {
+        text-align: left;
+    }
+}
+
+@media (min-width: 1401px)
+{
+    .ispodSlajderaCentriraj
+    {
+        display: table;
+        margin: auto;
+    }
+
+    .karticaOprojektu
+    {
+        max-width: 426px;
+        min-width: 426px;
+    }
+
+    .karticaPrikazIgre
+    {
+        min-width: 426px;
+        max-width: 426px;
+        width: 426px;
+    }
+
+}
+
+@media (max-width: 610px)
+{
+    /* Sve sirina 100%*/
+
+    .pocetnaWrapper, .divSlider, .celijaPocetna
+    {
+        width: 100%;
+        min-width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 376px)
+{
+    .divSliderSlicica
+    {
+        margin-left: 8px;
+        height: 48px;
+        width: 48px;
+    }
+}
+
+@media (max-width: 320px)
+{
+    .celijaPocetna, .sadrzajCelijePocetna
+    {
+        width: 260px;
+        min-width: 260px;
+        max-width: 260px;
+        display: table;
+        margin: 0 auto;
+        padding: 0;
+    }
+}

@@ -1,0 +1,68 @@
+<app-vatromet *ngIf="this.prikaziVatromet"></app-vatromet>
+
+<div style="padding: 8px;">
+    <mat-card class="kartica">
+
+       <div id="divZaKanaleIPrikaz">
+		   <!--
+            <div id="phaserKanali">
+
+                <mat-sidenav-container class="phaserKanaliZaSidenav">
+                    <mat-sidenav #sidenav mode="side" class="phaserKanaliSidenav" opened>
+                        <nav>
+                            <div class="sidebarSadrzaj">
+
+                                <mat-accordion>
+                                    <mat-expansion-panel *ngFor="let turnir of aktuelniTurniri">
+
+                                        <mat-expansion-panel-header>
+                                            <mat-panel-title>
+                                                {{ turnir.nazivTurnira }}
+                                            </mat-panel-title>
+                                        </mat-expansion-panel-header>
+
+                                        <button *ngFor="let mec of turnir.mecevi" class="dugmeUtakmica" mat-raised-button routerLink="/prenos/{{mec.id}}"> {{ mec.korisnik1.username }} ({{ mec.korisnik1.bot }}) : {{ mec.korisnik2.username }} ({{ mec.korisnik2.bot }}) </button>
+
+                                    </mat-expansion-panel>
+                                </mat-accordion>
+
+
+                            </div>
+                        </nav>
+                    </mat-sidenav>
+                </mat-sidenav-container>
+
+
+            </div> -->
+            <div id="divZaPhaser" class="mat-elevation-z2">
+                <div id="divDugmeKanali">
+                    <button mat-icon-button color="primary" style="margin-left: 280px; z-index: 7; position: absolute;"><mat-icon>chrome_reader_mode</mat-icon></button>
+                </div>
+                <div id="phaser-game">
+                    <div *ngIf="this.mec == null">
+                        <img src="http://147.91.204.116:11000/upload/slike/slicice/otv.jpg">
+					</div>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+
+</div>
+
+
+<div class="imiArhiv">
+<!-- <mat-accordion>
+    <mat-expansion-panel>
+
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Olimijada TV arhiv
+            </mat-panel-title>
+        </mat-expansion-panel-header> -->
+
+        <app-arhiva-utakmica></app-arhiva-utakmica>
+
+	<!-- </mat-expansion-panel>
+
+</mat-accordion> -->
+</div>

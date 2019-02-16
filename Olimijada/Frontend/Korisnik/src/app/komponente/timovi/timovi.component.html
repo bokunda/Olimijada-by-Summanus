@@ -1,0 +1,36 @@
+<style>
+    /deep/ mat-expansion-panel-body
+    {
+        background-color: red;
+    }
+</style>
+
+<div class="zaMatkard">
+
+    <mat-expansion-panel style="margin: 0; padding: 0;">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h3>Kreiraj tim</h3>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div>
+            <app-kreiranje-timova></app-kreiranje-timova>
+        </div>
+    </mat-expansion-panel>
+
+    <br><br>
+
+    <mat-expansion-panel (opened)="true" [expanded]="true">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h3>Moji timovi</h3>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div>
+            <app-prikaz-timova></app-prikaz-timova>
+        </div>
+    </mat-expansion-panel>
+
+</div>

@@ -1,0 +1,26 @@
+.karticaDashboard
+{
+  width: 326px;
+}
+
+.leviG, .sredinaG, .desnaG
+{
+  float: left;
+}
+
+@media (max-width: 1490px)
+{
+  .karticaDashboard
+  {
+    width: 100%!important;
+  }
+
+  .leviG, .sredinaG, .desnaG
+  {
+    float: none;
+    display: table;
+    margin: 0 auto;
+    margin-top: 18px;
+    margin-bottom: 18px;
+  }
+}

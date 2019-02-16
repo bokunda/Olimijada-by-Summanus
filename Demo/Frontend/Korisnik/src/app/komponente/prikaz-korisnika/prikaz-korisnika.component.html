@@ -1,0 +1,152 @@
+<div class="wrapper">
+<div class="glavniDiv" [ngStyle]="{ 'background-image': 'url(' + ruta + 'upload/slike/pozadina_spisak_korisnika.png)'}" *ngIf="this.korisnici != undefined && this.korisnici.length > 0">
+    <div class="pomocniDiv" style="diplay: table; margin: 0 auto;">
+        <div class="sadrzajDiva"></div>
+        <div class="divZaNajbolje">
+            <br>
+
+            <div *ngIf="authService.DaLiJePrijavljen()">
+                <a routerLink="/profil/{{prvi.username}}">
+                    <div id="prvi">
+                        <div>
+                            <img class="rotiraj" src="{{ruta + 'upload/slike/' + prvi.urlSlike}}">
+                        </div>
+                        <mat-chip-list>
+                            <mat-chip style="background-color: gold;"><h3>{{ prvi.username }}</h3></mat-chip>
+                        </mat-chip-list>
+                        <h4 class="h4-boja">{{'Pobeda' | translate}} {{ prvi.brojPobeda }}</h4>
+                    </div>
+                </a>
+                <br>
+                <a routerLink="/profil/{{drugi.username}}">
+                    <div id="drugi">
+                        <div>
+                            <img class="rotiraj" src="{{ruta + 'upload/slike/' + drugi.urlSlike}}">
+                        </div>
+                        <mat-chip-list>
+                            <mat-chip style="background-color: silver;"><h3>{{ drugi.username }}</h3></mat-chip>
+                        </mat-chip-list>
+                        <h4 class="h4-boja">{{'Pobeda' | translate}} {{ drugi.brojPobeda }}</h4>
+                    </div>
+                </a>
+
+                <br>
+                <a routerLink="/profil/{{treci.username}}">
+                    <div id="treci">
+                        <div>
+                            <img class="rotiraj" src="{{ruta + 'upload/slike/' + treci.urlSlike}}">
+                        </div>
+                        <mat-chip-list>
+                            <mat-chip style="background-color: sandybrown;"><h3>{{ treci.username }}</h3></mat-chip>
+                        </mat-chip-list>
+                        <h4 class="h4-boja">{{'Pobeda' | translate}} {{ treci.brojPobeda }}</h4>
+                    </div>
+                </a>
+            </div>
+
+
+            <div *ngIf="!authService.DaLiJePrijavljen()">
+                    <div id="prvi">
+                        <div>
+                            <img class="rotiraj" src="{{ruta + 'upload/slike/' + prvi.urlSlike}}">
+                        </div>
+                        <mat-chip-list>
+                            <mat-chip style="background-color: gold;"><h3>{{ prvi.username }}</h3></mat-chip>
+                        </mat-chip-list>
+                        <h4 class="h4-boja">{{'Pobeda' | translate}} {{ prvi.brojPobeda }}</h4>
+                    </div>
+                <br>
+                    <div id="drugi">
+                        <div>
+                            <img class="rotiraj" src="{{ruta + 'upload/slike/' + drugi.urlSlike}}">
+                        </div>
+                        <mat-chip-list>
+                            <mat-chip style="background-color: silver;"><h3>{{ drugi.username }}</h3></mat-chip>
+                        </mat-chip-list>
+                        <h4 class="h4-boja">{{'Pobeda' | translate}} {{ drugi.brojPobeda }}</h4>
+                    </div>
+
+                <br>
+
+                    <div id="treci">
+                        <div>
+                            <img class="rotiraj" src="{{ruta + 'upload/slike/' + treci.urlSlike}}">
+                        </div>
+                        <mat-chip-list>
+                            <mat-chip style="background-color: sandybrown;"><h3>{{ treci.username }}</h3></mat-chip>
+                        </mat-chip-list>
+                        <h4 class="h4-boja">{{'Pobeda' | translate}} {{ treci.brojPobeda }}</h4>
+                    </div>
+            </div>
+
+            <br>
+            <!--- u ngForu baciti 7+ takmicara -->
+
+        </div>
+
+    </div>
+</div>
+
+
+<div class="top10korisnika">
+
+    <mat-card style="margin: 0!important; padding: 0!important;">
+        <mat-table #table [dataSource]="dataSource">
+
+            <ng-container matColumnDef="pozicija" class="slika">
+                <mat-header-cell *matHeaderCellDef class="slika"> {{'Rang' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let korisnik; let i = index" class="slika"><img class="slikaTabelaAvatar" src="{{ruta + 'upload/slike/' + korisnik.urlSlike}}"><div class="h5zaNivoKodSlike"><h5 class="h5zaNivoKodSlike">{{i + 4}}</h5></div> </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="username" >
+                <mat-header-cell *matHeaderCellDef>{{'username' | translate}}</mat-header-cell>
+                <mat-cell *matCellDef="let korisnik" ><p>{{korisnik.username}}</p></mat-cell>
+            </ng-container>
+
+            <!--
+            <ng-container matColumnDef="imePrezime" class="imePrezime">
+                <mat-header-cell *matHeaderCellDef class="imePrezime"> Ime i prezime </mat-header-cell>
+                <mat-cell *matCellDef="let korisnik" class="imePrezime"><p>{{korisnik.ime}} {{korisnik.prezime}}</p></mat-cell>
+            </ng-container>
+            -->
+
+            <ng-container matColumnDef="pobedaPorazi" >
+                <mat-header-cell *matHeaderCellDef > {{'pobede / porazi' | translate}} </mat-header-cell>
+                <mat-cell *matCellDef="let korisnik" ><p>{{korisnik.brojPobeda}}/{{korisnik.brojPoraza}}</p></mat-cell>
+            </ng-container>
+
+            <!--
+            <ng-container matColumnDef="poslednjihPet" class="poslednjihPet">
+                <mat-header-cell *matHeaderCellDef class="poslednjihPet"> {{'Forma' | translate}} </mat-header-cell>
+                <mat-cell *matCellDef="let korisnik" class="poslednjihPet">
+					<div class="pobeda"></div>
+                    <!--<div class="pobeda" matTooltip="Jelena : Nikola, 29.05.1991, Kraljevo Open!">P</div>
+                    <!--<div class="poraz" matTooltip="Jelena : Nikola, 29.05.1991, Kraljevo Open!">I</div>
+                    <div class="pobeda" matTooltip="Jelena : Nikola, 29.05.1991, Kraljevo Open!">P</div>
+                    <div class="poraz" matTooltip="Jelena : Nikola, 29.05.1991, Kraljevo Open!">I</div>
+                    <div class="pobeda" matTooltip="Jelena : Nikola, 29.05.1991, Kraljevo Open!">P</div>-->
+            <!--    </mat-cell>
+            </ng-container> -->
+
+            <ng-container matColumnDef="kontrole" class="kontrole">
+                <mat-header-cell *matHeaderCellDef class="kontrole"> <!--{{'Opcije' | translate}}--> </mat-header-cell>
+                <mat-cell *matCellDef="let korisnik" class="kontrole" >
+
+                    <!-- <button mat-icon-button color="primary" class="dugmekontrole" matTooltip="Zakaži prijateljsku!"><mat-icon>videogame_asset</mat-icon></button> -->
+                    <button mat-icon-button color="accent"  *ngIf="authService.DaLiJePrijavljen()" class="dugmekontrole" matTooltip="{{'Prikaži profil!' | translate}}" routerLink="/profil/{{korisnik.username}}"><mat-icon>account_circle</mat-icon></button>
+                    <button mat-icon-button color="accent"  *ngIf="!authService.DaLiJePrijavljen()" class="dugmekontrole neceDaMoze" matTooltip="{{'Moras biti ulogovan da bi video profil' | translate}}!"><mat-icon>account_circle</mat-icon></button>
+
+                </mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+
+		<!-- <mat-paginator #paginator
+                       [pageSize]="10"
+                       [pageSizeOptions]="[5, 10, 20]"
+                       [showFirstLastButtons]="true">
+        </mat-paginator> -->
+    </mat-card>
+</div>

@@ -1,0 +1,136 @@
+<div *ngIf="botovi == undefined || botovi.length == 0" style="margin-top: 20px;font-size: 110%; font-weight: bold">
+                {{'Trenutno nemate nijednog bota' | translate}}
+            </div>
+			<!--
+
+			<mat-accordion *ngIf="botovi != undefined && botovi.length > 0">
+				<mat-expansion-panel *ngFor="let bot of botovi">
+				  	<mat-expansion-panel-header>
+						<mat-panel-title>
+						{{ bot.nazivFajla.substring(bot.nazivFajla.indexOf('_')+1,bot.nazivFajla.lastIndexOf('.')) }}
+						</mat-panel-title>
+					</mat-expansion-panel-header>
+
+
+					<div>
+						Igra: {{ bot.naziv }}
+					</div>
+					<div>
+						Datum upload-a: {{ bot.datumKreiranja*1000 | date:'dd.MM.yyyy HH:mm' }}
+					</div>
+					<div>
+						Datum poslednje izmene: {{ bot.datumIzmene*1000 | date:'dd.MM.yyyy HH:mm' }}
+					</div>
+					<div>
+						<input type="file" style="display: none" name="fajlUpload" id="fajlUpload" class="fajlUpload" #fajlUpload (change)="IzmeniBota($event, bot.id)" />
+						<button mat-raised-button (click)="fajlUpload.click()" color="primary">
+							<mat-icon>mode_edit</mat-icon>
+						</button>
+						<button mat-raised-button (click)="ObrisiBota(bot.id,bot.nazivFajla)" color="primary">
+							<mat-icon>delete</mat-icon>
+						</button>
+						<button mat-raised-button (click)="TestirajBota(bot.id)" style="width: 100%" color="primary">
+							Testiraj bota
+						</button>
+					</div>
+
+
+				</mat-expansion-panel>
+			  </mat-accordion>
+			-->
+		<div *ngIf="botovi != undefined && botovi.length > 0">
+			<mat-form-field class="pretraga">
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{'pretraga' | translate}}">
+			</mat-form-field>
+	
+			<div class="responsive_table">
+				<mat-table #table [dataSource]="dataSource"  matSort>
+					<!-- Naziv bota Column -->
+				<ng-container matColumnDef="naziv" class="sirina">
+					<mat-header-cell *matHeaderCellDef> {{'Naziv bota' | translate}} </mat-header-cell>
+					<mat-cell *matCellDef="let bot"><span class="mobile-label">{{'Naziv bota' | translate}}: </span> {{bot.nazivFajla.substring(bot.nazivFajla.indexOf('_')+1,bot.nazivFajla.lastIndexOf('.'))}} </mat-cell>
+				</ng-container>
+	
+				<!-- Naziv igre Column -->
+				<ng-container matColumnDef="igra" class="sirina">
+					<mat-header-cell *matHeaderCellDef class="sirina"> {{'igra' | translate}} </mat-header-cell>
+					<mat-cell *matCellDef="let bot" class="sirina"><span class="mobile-label">{{'igra' | translate}}: </span> {{bot.naziv}} </mat-cell>
+				</ng-container>
+	
+				<!--Datum kreiranja Column -->
+				<ng-container matColumnDef="datumKreiranja" class="sirina">
+					<mat-header-cell *matHeaderCellDef> {{'Kreiran' | translate}} </mat-header-cell>
+					<mat-cell *matCellDef="let bot"><span class="mobile-label">{{'Kreiran' | translate}}: </span> {{bot.datumKreiranja*1000 | date:'dd.MM.yyyy HH:mm'}}h </mat-cell>
+				</ng-container>
+	
+				<!-- Datum izmene Column -->
+				<ng-container matColumnDef="datumIzmene" class="sirina">
+					<mat-header-cell *matHeaderCellDef> {{'Izmenjen' | translate}} </mat-header-cell>
+					<mat-cell *matCellDef="let bot"><span class="mobile-label">{{'Izmenjen' | translate}}: </span> {{bot.datumIzmene*1000 | date:'dd.MM.yyyy HH:mm'}}h </mat-cell>
+				</ng-container>
+	
+					  <!-- Brisanje bota Column -->
+				<ng-container matColumnDef="brisanje" class="sirina smanji">
+					<mat-header-cell *matHeaderCellDef class="smanji"> {{'Obriši' | translate}} </mat-header-cell>
+					<mat-cell *matCellDef="let bot" class="smanji">
+						<button mat-icon-button="delete" (click)="ObrisiBota(bot.id, bot.nazivFajla)" class="sakrij">
+							<mat-icon class="smanji"> delete </mat-icon>
+						</button>
+					</mat-cell>
+				</ng-container>
+	
+					  <!-- Azuriranje turnira Column -->
+				<ng-container matColumnDef="azuriranje" class="sirina smanji">
+					<mat-header-cell *matHeaderCellDef class="smanji">{{'Ažuriraj' | translate}}</mat-header-cell>
+					<mat-cell *matCellDef="let bot" class="smanji">
+						<input type="file" accept=".zip" style="display: none" name="fajlUpload" id="fajlUpload" class="fajlUpload" #fajlUpload (change)="IzmeniBota($event, bot.id)" />
+						<button mat-icon-button="edit" (click)="fajlUpload.click()" class="sakrij">
+							<mat-icon class="smanji">edit</mat-icon>
+						</button>
+					</mat-cell>
+				</ng-container>
+	
+	
+	
+				<ng-container matColumnDef="testiranje" class="sirina smanji">
+					<mat-header-cell *matHeaderCellDef class="smanji">{{'Testiraj' | translate}}</mat-header-cell>
+					<mat-cell *matCellDef="let bot" class="smanji">
+	
+						<button mat-icon-button="assignment" (click)="TestirajBota(bot.id)" class="sakrij">
+							<mat-icon class="smanji">assignment</mat-icon>
+						</button>
+	
+						<div class="responsiveDugmiciZaBotove">
+	
+	
+							<button mat-button (click)="ObrisiBota(bot.id, bot.nazivFajla)">
+								<mat-icon> delete </mat-icon>
+							</button>
+	
+							<button mat-button (click)="fajlUpload.click()">
+								<mat-icon>edit</mat-icon>
+							</button>
+	
+							<button mat-button (click)="TestirajBota(bot.id)">
+								<mat-icon>assignment</mat-icon>
+							</button>
+	
+						</div>
+						</mat-cell>
+				</ng-container>
+	
+					<!--  Neka podesavanja za tabelu  -->
+					<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+					<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+				</mat-table>
+	
+	
+	
+				<!-- <mat-paginator #paginator
+					[pageSize]="5"
+					[pageSizeOptions]="[5, 10, 20]"
+					[showFirstLastButtons]="true">
+				</mat-paginator> -->
+			  </div>
+		</div>
+		

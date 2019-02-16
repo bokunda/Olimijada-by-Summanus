@@ -1,0 +1,20 @@
+<h1>Vezbamo material</h1>
+<mat-checkbox>Probni checkbox</mat-checkbox>
+<div>
+	<form>
+		<mat-form-field>
+			<input matInput placeholder="placeholder" [formControl]="proba" required>
+		</mat-form-field>
+	</form>	
+</div>
+<div>
+	<mat-toolbar>
+		<span>My Application</span>
+		<mat-toolbar-row>
+			prva
+		</mat-toolbar-row>
+		<mat-toolbar-row>
+			druga
+		</mat-toolbar-row>
+	</mat-toolbar>
+</div>

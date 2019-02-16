@@ -1,0 +1,126 @@
+.kliknuo {
+  color: red;
+  background-color: #e0e0e0;
+}
+
+.dugmejezik
+{
+  width: 60px!important;
+  min-width: 60px!important;
+  max-width: 60px!important;
+}
+
+.prijavaodjava
+{
+  padding-right: 6px!important;
+  padding-left: 6px!important;
+}
+
+.smor{
+	color: orange;
+	font-weight: bold;
+}
+
+@media(max-width: 500px)
+{
+  .sakrij
+  {
+    visibility: hidden;
+    display: none;
+  }
+}
+
+mat-toolbar, .mat-toolbar-multiple-rows
+{
+  height: 52px !important;
+  min-height: 52px !important;
+}
+
+.ikonica
+{
+  padding: 0 14px;
+}
+
+.razdelnik
+{
+  flex: 1 1 auto;
+}
+
+#logoText
+{
+  text-decoration: none;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  margin-left: 6px;
+}
+
+#adminOlimijada
+{
+  font-size: 12px;
+  background-color: yellow;
+  color: black;
+}
+
+#adminOlimijada:hover
+{
+  background-color: white;
+  font-size: 14px;
+  transition-duration: 0.6s;
+}
+
+ul, li
+{
+  border: 0;
+  margin-left: 0;
+  margin-right: 0;
+  list-style: none;
+}
+
+hr
+{
+  margin-left: -38px;
+  color: darkgrey;
+}
+
+.linkDugme
+{
+  text-decoration: none;
+  color: cadetblue;
+}
+
+.faksDugme
+{
+  font-size: 96%;
+}
+
+.sidebaroviKontejner
+{
+  top: 52px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background: none;
+}
+
+.buttonMeni {
+  width: 100%;
+  text-align: left;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+mat-sidenav
+{
+  width: 248px;
+}
+
+.odjava button
+{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  color: black;
+}

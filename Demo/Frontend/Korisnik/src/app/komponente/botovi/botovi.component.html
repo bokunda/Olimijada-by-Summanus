@@ -1,0 +1,22 @@
+<div class="responsiveBotovi">
+
+    <div class="LeviGrid">
+        <mat-card>
+            <div mat-card-avatar style="display: inline-block">
+                <mat-icon class="ikonica">adb</mat-icon>
+            </div>
+            <h3 style="display: inline-block">{{'kreirajBota' | translate}}</h3><mat-divider></mat-divider> <!-- horizontalna linija -->
+            <app-dodavanje-bota (nakonDodavanja)="NakonDodavanja($event)"></app-dodavanje-bota>
+        </mat-card>
+    </div>
+
+    <div class="DesniGrid">
+        <mat-card>
+            <div mat-card-avatar style="display: inline-block">
+                <mat-icon class="ikonica">assessment</mat-icon>
+            </div>
+            <h3 style="display: inline-block">{{'prikazBota' | translate}}</h3><mat-divider></mat-divider> <!-- horizontalna linija -->
+            <app-prikaz-botova [dodatiBot]="noviBot"></app-prikaz-botova>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,21 @@
+.kartica {
+    max-width: 400px;
+}
+
+.kartica-header-slika {
+    background-color: lightgrey;
+    background-size: cover;
+}
+
+.pocetnaWrapper {
+    margin-top: 7%;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#personIkonica
+{
+    display: table;
+    margin: 6px auto;
+}

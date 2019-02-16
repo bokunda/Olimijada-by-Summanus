@@ -1,0 +1,126 @@
+.kliknuo
+{
+    color: #1571ff;
+    background-color: #e0e0e0;
+}
+
+mat-select
+{
+}
+
+mat-option
+{
+    height: 2em!important;
+    min-height: 2em!important;
+    max-height: 2em!important;
+}
+
+
+mat-toolbar, .mat-toolbar-multiple-rows
+{
+    height: 52px !important;
+    min-height: 52px !important;
+}
+
+.razdelnik
+{
+    flex: 1 1 auto;
+}
+
+#logoText
+{
+    text-decoration: none;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin-left: 6px;
+}
+
+.ikonica
+{
+    padding-left: 12px;
+}
+
+.linkDugme
+{
+    text-decoration: none;
+    color: cadetblue;
+}
+
+.zezanje{
+    color: orange;
+    font-weight: bold;
+}
+
+div.background {
+    margin: 30px;
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.2;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+::ng-deep .mat-select-content{
+    color: red;
+}
+
+div.transbox{
+    margin: 5%;
+    color:white;
+}
+
+.beli{
+    color: white;
+}
+
+.buttonMeni {
+    width: 100%;
+    text-align: left;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.faksDugme
+{
+    width: 100%;
+    font-size: 96% !important;
+}
+
+.sidebaroviKontejner
+{
+    top: 52px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background: none;
+}
+
+
+
+mat-sidenav
+{
+    width: 248px;
+}
+
+.divZaKaneleIPrikaz
+{
+    display: table;
+    margin: 0 auto;
+}
+
+.qrcode
+{
+    display: table;
+    margin: 0 auto;
+    margin-top: 18px;
+    text-align: center;
+}
+
+@media (max-width: 480px)
+{
+    .qrcode
+    {
+        display: none;
+    }
+}
+

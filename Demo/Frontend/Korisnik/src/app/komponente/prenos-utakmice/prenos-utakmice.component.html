@@ -1,0 +1,35 @@
+<app-vatromet *ngIf="this.prikaziVatromet"></app-vatromet>
+<div id="destination">
+
+</div>
+
+<div class="main">
+    <mat-card class="kartica">
+        <div id="divZaPhaser" class="mat-elevation-z2">
+            <div id="phaser-game">
+                <div *ngIf="this.mec == null">
+                    <img class="slika" src="{{ruta}}upload/slike/otv.jpg">
+		    	</div>
+            </div>
+        </div>
+    </mat-card>
+</div>
+
+
+<div class="imiArhiv">
+<!-- <mat-accordion>
+    <mat-expansion-panel>
+
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Olimijada TV arhiv
+            </mat-panel-title>
+        </mat-expansion-panel-header> -->
+
+        <app-arhiva-utakmica></app-arhiva-utakmica>
+
+	<!-- </mat-expansion-panel>
+
+</mat-accordion> -->
+</div>
+<div>

@@ -1,0 +1,42 @@
+.kartica
+{
+    width: 80%;
+    display: table;
+    margin: 0 auto;
+}
+
+.pocetnaWrapper
+{
+    width: 100%;
+    margin-top: 18px;
+}
+
+
+mat-expansion-panel
+{
+    margin-bottom: 18px;
+}
+
+@media (max-width: 600px)
+{
+    .kartica
+    {
+        width: 90%;
+    }
+}
+
+@media (max-width: 310px)
+{
+    .kartica
+    {
+        width: 88%;
+    }
+}
+
+@media (max-width: 261px)
+{
+    .kartica
+    {
+        width: 84%;
+    }
+}

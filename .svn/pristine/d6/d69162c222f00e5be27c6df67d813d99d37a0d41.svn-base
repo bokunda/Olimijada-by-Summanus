@@ -1,0 +1,14 @@
+{
+	"pocetna":"Početna",
+	"turniri":"Turniri",
+	"igre":"Igre",
+	"korisnici":"Korisnici",
+	"admini":"Administratori",
+	"odjava":"Odjavi se",
+	"prijava":"Prijavi se",
+	"username":"Korisničko ime",
+	"password":"Lozinka",
+	"pogresno":"Pogrešno korisničko ime i/ili lozinka",
+	"kreirajTurnir":"Kreiraj turnir",
+	"spisakTurnira":"Spisak turnir"
+}

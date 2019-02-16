@@ -1,0 +1,24 @@
+
+.pocetnaWrapper
+{
+    margin-top: 26px;
+    width: 100%;
+}
+
+.kartica
+{
+	width: 79%;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-card-title
+{
+    font-size: 160%;
+}
+
+.mat-icon
+{
+    width: 100px;
+}

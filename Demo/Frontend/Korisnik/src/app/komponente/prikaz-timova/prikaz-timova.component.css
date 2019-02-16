@@ -1,0 +1,154 @@
+.nazivTima
+{
+    display: table;
+    margin: 0 auto;
+}
+
+.slikaPoredCipa
+{
+    height: 32px;
+    width: 32px;
+    margin-right: 8px;
+}
+
+.tim
+{
+    display: table;
+    margin: 0 auto;
+    margin-top: 8px;
+}
+
+.kontrole
+{
+    display: table;
+    margin: 0 auto;
+    color: white;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.kontrole div
+{
+    display: inline;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.kontrole > button
+{
+    margin-top: 12px;
+    mmbarin-bottom: 12px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.rbr, .rbrZ
+{
+    width: 32px;
+    display: inline-block;
+
+    margin-left: 6px;
+    margin-right: 6px;
+    martin-top: 4px;
+    margin-bottom: 4px;
+
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+
+}
+
+.naziv, .nazivZ
+{
+    width: 146px;
+    display: inline-block;
+
+    margin-left: 6px;
+    margin-right: 6px;
+    martin-top: 4px;
+    margin-bottom: 4px;
+
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.uloga, .ulogaZ
+{
+    width: 116px;
+    display: inline-block;
+
+    margin-left: 6px;
+    margin-right: 6px;
+    martin-top: 4px;
+    margin-bottom: 4px;
+
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+.rbr
+{
+    text-align: center;
+}
+
+.rbr, .naziv, .uloga
+{
+    border-radius: 7px;
+
+    border: 2px solid black;
+    background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina.png');
+}
+
+.rbr > span, .naziv > span, .uloga > span
+{
+    font-size: 18px;
+    text-align: center;
+}
+
+
+.rbrZ, .nazivZ, .ulogaZ
+{
+    border-radius: 7px;
+
+    border: 2px solid black;
+    background: url('http://147.91.204.116:11000/upload/slike/slajder/tekstpozadina.png');
+}
+
+.rbrZ > span, .nazivZ > span, .ulogaZ > span
+{
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.divZaVelikoNazivTima
+{
+    padding-top: 26px;
+}
+
+.divZaVelikoNazivTima > img
+{
+    height: 52px;
+    width: 52px;
+    display: table;
+    margin: 0 auto;
+    margin-bottom: 18px;
+}
+
+.velikoNazivTima
+{
+    text-align: center;
+    background-color: white;
+    width: 36%;
+    display: table;
+    margin: 0 auto;
+    border-radius: 7px;
+    border: 2px solid black;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}

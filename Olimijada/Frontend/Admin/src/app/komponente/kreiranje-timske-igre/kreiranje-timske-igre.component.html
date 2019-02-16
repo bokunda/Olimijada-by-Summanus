@@ -1,0 +1,86 @@
+<div style="background-color: white;">
+
+  <form (ngSubmit) = "DodajIgru()">			<!-- FORMA -->
+
+  <h2>Kreiranje timske igre</h2>
+   <!--- NAZIV IGRE --->
+  <mat-form-field class="nazivIgre">
+    <input matInput [formControl]="naziv" placeholder="Naziv Igre" [ngClass]="{ 'nazivIgreVecPostoji' : postojiUnetaIgra == true}" required>
+    <mat-error *ngIf="naziv.invalid">{{ greskaNazivIgre() }}</mat-error>
+  </mat-form-field>
+
+  <div class="radioButton">
+    <mat-radio-group [(ngModel)]="tipIgre" [ngModelOptions]="{standalone: true}" (change)="stampajtip()"> <!-- 0 ako je individualna, 1 ako je timska -->
+      <mat-radio-button value="0">Individualna</mat-radio-button>
+      <mat-radio-button value="1">Timska</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div class="akoJeTimska" *ngIf="tipIgre == '1'">
+    <div class="oIgri">
+
+      <!--- BROJ IGRAČA U TIMU --->
+      <mat-form-field class="brojIgraca">
+        <input type="number" min="2" matInput [formControl]="brojIgraca" placeholder="Broj igrača u timu" required>
+        <mat-error *ngIf="brojIgraca.invalid">{{ greskaBrojIgraca() }}</mat-error>
+      </mat-form-field>
+
+      <!--- BROJ ULOGA IGRAČA U TIMU --->
+      <mat-form-field class="ulogaIgraca">
+        <input type="number" min="1" matInput [formControl]="brojUloga" (change)="napraviNizZaFormu();" placeholder="Broj uloga igrača u timu" required>
+        <mat-error *ngIf="brojUloga.invalid">{{ greskaBrojUloga() }}</mat-error>
+      </mat-form-field>
+    </div>
+
+      <mat-divider></mat-divider><mat-divider></mat-divider><mat-divider></mat-divider>
+
+    <h3 *ngIf="brojUloga.value > 0">Uloge igrača</h3>
+    <!--- DINAMIČKA FORMA SA ULOGAMA --->
+
+      <!--- ULOGA --->
+    <div class="uloge">
+      <div class="zaNgFor" *ngFor="let uloga of nizUloga">
+
+        <li style="list-style-type: none;">{{uloga + 1}}:
+        <mat-form-field class="ulogeNaziv">
+          <input matInput [formControl]="nizKontrolaUlogaNaziv[uloga]" placeholder="Naziv uloge igrača" required>
+          <mat-error *ngIf="nazivUloge.invalid">{{ greskaNazivUloge() }}</mat-error>
+        </mat-form-field>
+
+        <!--- BROJ IGRAČA ZA DATU ULOGU --->
+        <mat-form-field class="ulogeBrojIgraca">
+          <input type="number" min="1"  matInput [formControl]="nizKontrolaUlogaBroj[uloga]" placeholder="Broj igrača za ulogu" required>
+          <mat-error *ngIf="brojIgracaUloge.invalid">{{ greskaBrojIgracaUloge() }}</mat-error>
+        </mat-form-field>
+
+          <mat-divider></mat-divider><mat-divider></mat-divider>
+        </li>
+      </div>
+    </div>
+
+    <!--- KRAJ DINAMICKE FORME ZA ULOGE --->
+
+    <mat-divider></mat-divider><br>
+  </div>
+  <!--- NAZIV IGRE --->
+  <app-ngx-editor [placeholder]="'Unesite tekst ovde...'" [spellcheck]="true" [(ngModel)]="htmlContent" [ngModelOptions]="{standalone: true}" height="300px" minHeight="200px"></app-ngx-editor>
+
+  <!-- upload fajla sa pravilima -->
+  <input type="file" style="display: none" name="fajlUpload" id="fajlUpload" class="fajlUpload" #fajlUpload (change)="PostaviFajl($event)" accept="image/*" />
+  <button mat-mini-fab (click)="fajlUpload.click()" id="fab-upload" style="background-color: purple;">
+    <mat-icon id="icon-upload">file_upload</mat-icon>
+  </button>
+  <span style="width: auto; width: 100px; color: red;" *ngIf="fajlZaUpload == null">
+		Niste odabrali fajl
+	</span>
+  <span style="width: auto; width: 100px;" *ngIf="fajlZaUpload != null">
+		{{ fajlZaUpload.name }}
+	</span>
+  <mat-icon class="ikonica" *ngIf="uspesno" style="color:green">done</mat-icon>
+  <mat-icon class="ikonica" *ngIf="neuspesno" style="color: red">clear</mat-icon>
+
+  <button mat-raised-button type="submit" color="primary">
+    Kreiraj igru
+  </button>
+</form>
+</div>

@@ -1,0 +1,64 @@
+.dugmeIgra
+{
+    background-color: #76d5ff;
+    min-width: 256px;
+    height: 78px;
+    margin-right: 16px;
+    margin-top: 16px;
+    padding: 0;
+}
+
+.dugmeIgra img
+{
+    border-radius: 50%;
+    width:64px;
+    height: 64px;
+    padding: 6px;
+    float: left;
+}
+
+
+span
+{
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.pocetnaWrapper {
+    margin: 26px;
+}
+
+.dugmici
+{
+    display: table;
+    margin: 0 auto;
+    margin-top: 18px;
+}
+
+.dugmeIndividualne
+{
+    background-image: url('http://147.91.204.116:11000/upload/slike/slicice/space.gif');
+    width: 128px;
+    height: 128px;
+}
+
+.dugmeTimske
+{
+    background-image: url('http://147.91.204.116:11000/upload/slike/slicice/elements.gif');
+    width: 128px;
+    height: 128px;
+}
+
+.dugmeIndividualne, .dugmeTimske
+{
+    transition: 2s;
+}
+
+.dugmeIndividualne:hover, .dugmeTimske:hover
+{
+    transition: 2s;
+
+    -ms-transform: scale(1.1, 1.1); /* IE 9 */
+    -webkit-transform: scale(1.1, 1.1); /* Safari */
+    transform: scale(1.1, 1.1);
+}

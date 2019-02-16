@@ -1,0 +1,87 @@
+.responsiveBotovi
+{
+    width: 96%;
+    display: table;
+    margin: 0 auto;
+    margin-top: 18px;
+}
+
+.LeviGrid, .DesniGrid
+{
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+@media(min-width: 1130px)
+{
+    .LeviGrid
+    {
+        width: 40%;
+        float: left;
+    }
+
+    .DesniGrid
+    {
+        width: 56%;
+        float: right;
+    }
+}
+
+@media(min-width: 901px) and (max-width: 1329px)
+{
+    .LeviGrid
+    {
+        width: 60%;
+        float: none;
+        display: table;
+        margin: 0 auto;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+    .DesniGrid
+    {
+        width: 60%;
+        float: none;
+        display: table;
+        margin: 0 auto;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+}
+
+@media(max-width: 900px)
+{
+    .responsiveBotovi, app-prikaz-botova, app-dodavanje-bota
+    {
+        width: 96%;
+    }
+
+    .LeviGrid
+    {
+        width: 100%;
+        float: none;
+        display: table;
+        margin: 0 auto;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+
+    .DesniGrid
+    {
+        width: 100%;
+        float: none;
+        display: table;
+        margin: 0 auto;
+        margin-top: 18px;
+        margin-bottom: 18px;
+    }
+}
+
+@media (max-width: 500px)
+{
+    .responsiveBotovi, .LeviGrid, .DesniGrid
+    {
+        width: 100%;
+    }
+}

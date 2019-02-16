@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Olimijada</title><base href="/"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.ico"><meta charset="ISO-8859-1"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet"><!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser --><script src="https://unpkg.com/promise-polyfill@7.1.0/dist/promise.min.js"></script><!--Start of Tawk.to Script--><script type="text/javascript">var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/5ad9ff285f7cdf4f05331673/default';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();</script><!--End of Tawk.to Script--><script>function disableit()
+        {
+            document.getElementsByClassName('slikaUgasi').disabled = true;
+        }</script><link href="styles.b3bc2b5124c419c6204f.bundle.css" rel="stylesheet"/></head><body><!---- U <script></script> tagu nalaze se javascript fajlovi koji se loaduju pri prikazu sajta ----><script>var loadFile = function(event)
+    {
+        var output = document.getElementById('slikaKorisnika');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };</script><app-root><div class="centriraj"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div><h2 style="color: #ff2e61; text-align: center; margin-top: -27%;">Učitavanje</h2></app-root><script type="text/javascript" src="inline.318b50c57b4eba3d437b.bundle.js"></script><script type="text/javascript" src="polyfills.1457c99db4b6dba06e8d.bundle.js"></script><script type="text/javascript" src="scripts.6db07c76a0cfa8af9ff2.bundle.js"></script><script type="text/javascript" src="main.d8d6409a4652e8517463.bundle.js"></script></body></html>

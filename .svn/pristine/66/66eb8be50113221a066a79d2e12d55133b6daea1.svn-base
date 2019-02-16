@@ -1,0 +1,59 @@
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+@import "~fullcalendar/dist/fullcalendar.min.css";
+
+body
+{
+    background-color: whitesmoke;
+    margin: 0;
+    border: 0;
+    font-family: 'Open Sans', sans-serif;
+    background-image: url("pozadina.png");
+    background-repeat: repeat;
+}
+
+.sadrzaj{
+	position: relative;
+}
+
+.iks{
+	position: absolute;
+    top: -60%;
+	right: -5%;
+	color: gray;
+	width: 10%;
+	height: 130%;
+	background-color: white;
+	border: none;
+	font-weight: bold;
+	
+	
+}
+
+.faksMeni
+{
+    margin-top: 32px;
+    width: 400px !important;
+}
+
+mat-sidenav
+{
+  width: 200px !important;
+  max-width: 200px !important;
+  min-width: 200px !important;
+}
+
+.leviSidebar
+{
+  width: 180px !important;
+  max-width: 180px !important;
+  min-width: 180px !important;
+}
+
+
+.mat-tab-label
+{
+  min-width: 50% !important;
+}
+
+

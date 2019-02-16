@@ -1,0 +1,43 @@
+			<!-- Izmena podataka -->
+
+			<form>
+				<mat-form-field>
+					<input matInput placeholder="{{'nazivBota' | translate}}" [formControl]="nazivBota">
+					<mat-error *ngIf="nazivBota.invalid">{{ greskaNazivBota() }}</mat-error>
+				</mat-form-field>
+
+				<mat-form-field>
+					<mat-select placeholder="{{'igra' | translate}}" [(ngModel)]="odabranaIgra" name="igra" [formControl]="kontrolaZaIgru">
+						<mat-option *ngFor="let igra of igre" [value]="igra.id">
+							{{ igra.naziv }}
+						</mat-option>
+					</mat-select>
+				</mat-form-field>
+
+
+				<mat-divider></mat-divider> <!-- horizontalna linija -->
+                <div style="padding-top: 6px; padding-bottom: 16px;">
+                    <input type="file" accept=".zip" style="display: none" name="fajlUpload" id="fajlUpload" class="fajlUpload" #fajlUpload (change)="PostaviFajl($event)" />
+
+
+                    <button mat-mini-fab (click)="fajlUpload.click()" id="fab-upload" style="background-color: purple;">
+                        <mat-icon id="icon-upload">file_upload</mat-icon>
+                    </button>
+                    <span style="width: auto; width: 100px;" *ngIf="fajlZaUpload == null">
+                        {{'nisteOdabralifajl' | translate}}
+					</span><br>
+					<span class="samoZip">{{'Samo .zip fajlovi su dozvoljeni' | translate}}</span>
+                    <span style="width: auto; width: 100px;" *ngIf="fajlZaUpload != null">
+                        {{ fajlZaUpload.name }}
+                    </span>
+
+                </div>
+				<mat-divider></mat-divider> <!-- horizontalna linija -->
+
+				<button mat-raised-button type="button" (click)="DodajBota()" color="primary">
+					{{'dodajBota' | translate}}
+				</button>
+
+				<!-- dodati modal za obavestenje da fajl mora biti odabran? -->
+
+			</form>

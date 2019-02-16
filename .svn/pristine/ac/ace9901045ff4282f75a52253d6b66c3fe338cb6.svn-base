@@ -1,0 +1,229 @@
+<!--<mat-form-field>				
+	<mat-select placeholder="Izaberite tip turnira" [formControl]="odabraniTipTurnira" [(value)]="selectedTipTurnira" name="tipTurnira"  required>
+		<mat-option *ngFor="let tipTurnira of tipoviTurnira" [value]="tipTurnira.id" >
+			{{tipTurnira.naziv}}
+		</mat-option>
+	</mat-select>
+</mat-form-field>-->
+<div *ngIf="proveraKrajTurnira">
+<form (ngSubmit)="AzurirajTurnir();NaAzur()" >
+
+<mat-form-field>				<!--Biranje tipa turnira-->
+	<mat-select placeholder="Izaberite tip turnira" [(value)]="selectedTipTurnira">
+		<mat-option value="1">Liga</mat-option>
+		<mat-option value="2">Kup</mat-option>
+	</mat-select>
+</mat-form-field>
+<!--<p>{{selected}}</p>-->
+
+<mat-form-field>				<!--Unosenje naziva turnira/////[formControl]="naziv"-->
+	<input matInput placeholder="Naziv turnira"   [(value)]="selectedNaziv" [formControl]="nazivTurnira">
+	<!--<mat-error *ngIf="naziv.invalid">{{ greskaNazivTurnira() }}</mat-error>-->
+</mat-form-field>
+
+
+<div *ngIf="proveraPocetakPrijava" class="inli">
+<mat-form-field class="unos">			<!--Datum pocekta prijave-->
+	<input matInput [min]="minDatum" [(value)]="selectedPocetakPrijava" [matDatepicker]="pickerPocetakPrijava" placeholder="Datum početka prijava" [formControl]="datumPocetkaPrijava" name="prijavePoc"  >
+	<mat-datepicker-toggle matSuffix [for]="pickerPocetakPrijava" ></mat-datepicker-toggle>
+	<mat-datepicker #pickerPocetakPrijava disabled="false"></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field class="unos">			<!--Sati pocetka prijava-->
+	<mat-select placeholder="Vreme početka prijava (sati)" [(value)]="selectedPocetakPrijavaSati">
+		<mat-option value="0">0 h</mat-option>	
+		<mat-option value="1">1 h</mat-option>
+		<mat-option value="2">2 h</mat-option>
+		<mat-option value="3">3 h</mat-option>
+		<mat-option value="4">4 h</mat-option>
+		<mat-option value="5">5 h</mat-option>
+		<mat-option value="6">6 h</mat-option>
+		<mat-option value="7">7 h</mat-option>
+		<mat-option value="8">8 h</mat-option>
+		<mat-option value="9">9 h</mat-option>
+		<mat-option value="10">10 h</mat-option>
+		<mat-option value="11">11 h</mat-option>
+		<mat-option value="12">12 h</mat-option>
+		<mat-option value="13">13 h</mat-option>
+		<mat-option value="14">14 h</mat-option>
+		<mat-option value="15">15 h</mat-option>
+		<mat-option value="16">16 h</mat-option>
+		<mat-option value="17">17 h</mat-option>
+		<mat-option value="18">18 h</mat-option>
+		<mat-option value="19">19 h</mat-option>
+		<mat-option value="20">20 h</mat-option>
+		<mat-option value="21">21 h</mat-option>
+		<mat-option value="22">22 h</mat-option>
+		<mat-option value="23">23 h</mat-option>
+	</mat-select>
+</mat-form-field>
+
+<mat-form-field class="unos" class="maxi">			<!--Minuti pocetka prijava-->
+	<mat-select placeholder="Vreme početka prijava (minuti)" [(value)]="selectedPocetakPrijavaMinuti">
+		<mat-option value="0">0 min</mat-option>	
+		<mat-option value="10">10 min</mat-option>
+		<mat-option value="20">20 min</mat-option>
+		<mat-option value="30">30 min</mat-option>
+		<mat-option value="40">40 min</mat-option>
+		<mat-option value="50">50 min</mat-option>
+	</mat-select>
+</mat-form-field>
+</div>
+
+<div *ngIf="proveraKrajPrijava" class="inli">
+<mat-form-field class="unos">			<!--Datum zavrsetka prijave-->
+	<input matInput [min]="minDatum" [(value)]="selectedKrajPrijava" [matDatepicker]="pickerKrajPrijava" placeholder="Datum završetka prijava" [formControl]="datumZavrsetkaPrijava" name="prijavePoc"  >
+	<mat-datepicker-toggle matSuffix [for]="pickerKrajPrijava" ></mat-datepicker-toggle>
+	<mat-datepicker #pickerKrajPrijava disabled="false"></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field class="unos">			<!--Sati pocetka prijava-->
+	<mat-select placeholder="Vreme završetka prijava (sati)" [(value)]="selectedKrajPrijavaSati">
+		<mat-option value="0">0 h</mat-option>	
+		<mat-option value="1">1 h</mat-option>
+		<mat-option value="2">2 h</mat-option>
+		<mat-option value="3">3 h</mat-option>
+		<mat-option value="4">4 h</mat-option>
+		<mat-option value="5">5 h</mat-option>
+		<mat-option value="6">6 h</mat-option>
+		<mat-option value="7">7 h</mat-option>
+		<mat-option value="8">8 h</mat-option>
+		<mat-option value="9">9 h</mat-option>
+		<mat-option value="10">10 h</mat-option>
+		<mat-option value="11">11 h</mat-option>
+		<mat-option value="12">12 h</mat-option>
+		<mat-option value="13">13 h</mat-option>
+		<mat-option value="14">14 h</mat-option>
+		<mat-option value="15">15 h</mat-option>
+		<mat-option value="16">16 h</mat-option>
+		<mat-option value="17">17 h</mat-option>
+		<mat-option value="18">18 h</mat-option>
+		<mat-option value="19">19 h</mat-option>
+		<mat-option value="20">20 h</mat-option>
+		<mat-option value="21">21 h</mat-option>
+		<mat-option value="22">22 h</mat-option>
+		<mat-option value="23">23 h</mat-option>
+	</mat-select>
+</mat-form-field>
+
+<mat-form-field class="unos" class="maxi">			<!--Minuti pocetka prijava-->
+	<mat-select placeholder="Vreme završetka prijava (minuti)" [(value)]="selectedKrajPrijavaMinuti">
+		<mat-option value="0">0 min</mat-option>	
+		<mat-option value="10">10 min</mat-option>
+		<mat-option value="20">20 min</mat-option>
+		<mat-option value="30">30 min</mat-option>
+		<mat-option value="40">40 min</mat-option>
+		<mat-option value="50">50 min</mat-option>
+	</mat-select>
+</mat-form-field>
+
+</div>
+
+<div *ngIf="proveraPocetakTurnira" class="inli">
+		<mat-form-field class="unos">			<!--Datum zavrsetka prijave-->
+			<input matInput [min]="minDatum" [(value)]="selectedPocetakTurnira" [matDatepicker]="pickerPocetakTurnira" placeholder="Datum početka turnira" [formControl]="datumPocetkaTurnira" name="prijavePoc"  >
+			<mat-datepicker-toggle matSuffix [for]="pickerPocetakTurnira" ></mat-datepicker-toggle>
+			<mat-datepicker #pickerPocetakTurnira disabled="false"></mat-datepicker>
+		</mat-form-field>
+		
+		<mat-form-field class="unos">			<!--Sati pocetka prijava-->
+			<mat-select placeholder="Vreme početka turnira (sati)" [(value)]="selectedPocetakTurniraSati">
+				<mat-option value="0">0 h</mat-option>	
+				<mat-option value="1">1 h</mat-option>
+				<mat-option value="2">2 h</mat-option>
+				<mat-option value="3">3 h</mat-option>
+				<mat-option value="4">4 h</mat-option>
+				<mat-option value="5">5 h</mat-option>
+				<mat-option value="6">6 h</mat-option>
+				<mat-option value="7">7 h</mat-option>
+				<mat-option value="8">8 h</mat-option>
+				<mat-option value="9">9 h</mat-option>
+				<mat-option value="10">10 h</mat-option>
+				<mat-option value="11">11 h</mat-option>
+				<mat-option value="12">12 h</mat-option>
+				<mat-option value="13">13 h</mat-option>
+				<mat-option value="14">14 h</mat-option>
+				<mat-option value="15">15 h</mat-option>
+				<mat-option value="16">16 h</mat-option>
+				<mat-option value="17">17 h</mat-option>
+				<mat-option value="18">18 h</mat-option>
+				<mat-option value="19">19 h</mat-option>
+				<mat-option value="20">20 h</mat-option>
+				<mat-option value="21">21 h</mat-option>
+				<mat-option value="22">22 h</mat-option>
+				<mat-option value="23">23 h</mat-option>
+			</mat-select>
+		</mat-form-field>
+		
+		<mat-form-field class="unos" class="maxi">			<!--Minuti pocetka prijava-->
+			<mat-select placeholder="Vreme početka turnira (minuti)" [(value)]="selectedPocetakTurniraMinuti">
+				<mat-option value="0">0 min</mat-option>	
+				<mat-option value="10">10 min</mat-option>
+				<mat-option value="20">20 min</mat-option>
+				<mat-option value="30">30 min</mat-option>
+				<mat-option value="40">40 min</mat-option>
+				<mat-option value="50">50 min</mat-option>
+			</mat-select>
+		</mat-form-field>
+		
+		</div>
+
+		<div class="inli">
+				<mat-form-field class="unos">			<!--Datum zavrsetka prijave-->
+					<input matInput [min]="minDatum" [(value)]="selectedKrajTurnira" [matDatepicker]="pickerKrajTurnira" placeholder="Datum završetka turnira" [formControl]="datumZavrsetkaTurnira" name="prijavePoc"  >
+					<mat-datepicker-toggle matSuffix [for]="pickerKrajTurnira" ></mat-datepicker-toggle>
+					<mat-datepicker #pickerKrajTurnira disabled="false"></mat-datepicker>
+				</mat-form-field>
+				
+				<mat-form-field class="unos">			<!--Sati pocetka prijava-->
+					<mat-select placeholder="Vreme završetka turnira (sati)" [(value)]="selectedKrajTurniraSati">
+						<mat-option value="0">0 h</mat-option>	
+						<mat-option value="1">1 h</mat-option>
+						<mat-option value="2">2 h</mat-option>
+						<mat-option value="3">3 h</mat-option>
+						<mat-option value="4">4 h</mat-option>
+						<mat-option value="5">5 h</mat-option>
+						<mat-option value="6">6 h</mat-option>
+						<mat-option value="7">7 h</mat-option>
+						<mat-option value="8">8 h</mat-option>
+						<mat-option value="9">9 h</mat-option>
+						<mat-option value="10">10 h</mat-option>
+						<mat-option value="11">11 h</mat-option>
+						<mat-option value="12">12 h</mat-option>
+						<mat-option value="13">13 h</mat-option>
+						<mat-option value="14">14 h</mat-option>
+						<mat-option value="15">15 h</mat-option>
+						<mat-option value="16">16 h</mat-option>
+						<mat-option value="17">17 h</mat-option>
+						<mat-option value="18">18 h</mat-option>
+						<mat-option value="19">19 h</mat-option>
+						<mat-option value="20">20 h</mat-option>
+						<mat-option value="21">21 h</mat-option>
+						<mat-option value="22">22 h</mat-option>
+						<mat-option value="23">23 h</mat-option>
+					</mat-select>
+				</mat-form-field>
+				
+				<mat-form-field class="unos" class="maxi">			<!--Minuti pocetka prijava-->
+					<mat-select placeholder="Vreme završetka turnira (minuti)" [(value)]="selectedKrajTurniraMinuti">
+						<mat-option value="0">0 min</mat-option>	
+						<mat-option value="10">10 min</mat-option>
+						<mat-option value="20">20 min</mat-option>
+						<mat-option value="30">30 min</mat-option>
+						<mat-option value="40">40 min</mat-option>
+						<mat-option value="50">50 min</mat-option>
+					</mat-select>
+				</mat-form-field>
+				
+				</div>
+
+				<button mat-raised-button type="submit" color="primary">
+						Ažuriraj turnir
+					</button>
+			
+				</form>
+
+</div>
+<div *ngIf="!proveraKrajTurnira" class="poceo">
+	Turnir se završio!
+</div>

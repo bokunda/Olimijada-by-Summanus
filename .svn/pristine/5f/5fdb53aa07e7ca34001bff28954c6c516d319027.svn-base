@@ -1,0 +1,70 @@
+<div class="pocetnaWrapper">
+	<mat-card class="kartica">
+
+		<mat-card-header>
+			<div mat-card-avatar>
+			  <mat-icon aria-label="Profil" class="profilIkonicaBox">supervisor_account</mat-icon>
+			</div>
+			<mat-card-title>Korisnici</mat-card-title>
+		  </mat-card-header>
+
+		  <mat-card-content>
+
+			<mat-form-field>
+				<input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraga">
+			</mat-form-field>
+
+			<mat-table #table [dataSource]="dataSource">
+
+				<!-- Username Column -->
+				<ng-container matColumnDef="korisnickoIme">
+					<mat-header-cell *matHeaderCellDef> Korisničko ime </mat-header-cell>
+					<mat-cell *matCellDef="let korisnik">{{korisnik.username}}</mat-cell>
+				</ng-container>
+
+				<!-- Email Column -->
+				<ng-container matColumnDef="email">
+					<mat-header-cell *matHeaderCellDef> E-mail adresa </mat-header-cell>
+					<mat-cell *matCellDef="let korisnik">{{korisnik.email}}</mat-cell>
+				</ng-container>
+
+				<!-- Ime Column -->
+				<ng-container matColumnDef="ime">
+					<mat-header-cell *matHeaderCellDef> Ime </mat-header-cell>
+					<mat-cell *matCellDef="let korisnik">{{korisnik.ime}}</mat-cell>
+				</ng-container>
+
+				<!-- Prezime Column -->
+				<ng-container matColumnDef="prezime">
+					<mat-header-cell *matHeaderCellDef> Prezime </mat-header-cell>
+					<mat-cell *matCellDef="let korisnik">{{korisnik.prezime}}</mat-cell>
+				</ng-container>
+
+				<!-- Datum registracije Column -->
+				<ng-container matColumnDef="datumRegistracije">
+					<mat-header-cell *matHeaderCellDef> Datum registracije </mat-header-cell>
+					<mat-cell *matCellDef="let korisnik">{{korisnik.datumRegistracije * 1000 | date:"dd.MM.yyyy"}}</mat-cell>
+				</ng-container>
+
+				<!-- Ban Column -->
+				<ng-container matColumnDef="ban">
+					<mat-header-cell *matHeaderCellDef></mat-header-cell>
+					<mat-cell *matCellDef="let korisnik"><div *ngIf="(korisnik.banovan*1000)<trenutno"><button mat-button (click)="OtvoriBanDialog(korisnik)">Zabrana igranja</button></div><div *ngIf="(korisnik.banovan*1000)>=trenutno"><button mat-button (click)="OtvoriBanDialog(korisnik)">Banovan</button></div></mat-cell>
+				</ng-container>
+
+				<!-- PODESAVANJE TABELE -->
+				<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+				<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+			</mat-table>
+
+			<mat-paginator #paginator
+                [pageSize]="5"
+                [pageSizeOptions]="[5, 10, 20]"
+                [showFirstLastButtons]="true">
+			</mat-paginator>
+			  
+		  </mat-card-content>
+
+	</mat-card>
+</div>

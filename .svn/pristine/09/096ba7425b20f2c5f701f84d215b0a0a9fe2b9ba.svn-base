@@ -1,0 +1,64 @@
+<div>
+	<!--*ngIf = "!prikaziInputZaKod"-->
+	<div>
+			<form>
+					
+					
+			
+					<mat-form-field>
+						<input matInput placeholder="Korisničko ime" [formControl]="username" required>
+						<mat-error *ngIf="username.invalid">{{ greskaUsername() }}</mat-error>
+						
+					</mat-form-field>
+
+					<mat-form-field>
+						<input matInput placeholder="Email" [formControl]="email" required>
+						<mat-error *ngIf="email.invalid">
+							{{ GreskaMail() }}
+						</mat-error>
+					</mat-form-field>
+					
+					<input class="sakriven" [formControl]="email2" required>
+			
+					<mat-form-field>
+							<input matInput type="password" placeholder="Lozinka" [formControl]="password" (keyup)="PoklapanjePassworda()" required>
+							<mat-hint align="start">
+								Minimalno 8 karaktera
+							</mat-hint>
+					</mat-form-field>
+			
+			
+					<mat-form-field>
+						<input matInput type="password" placeholder="Ponovite lozinku" [formControl]="passwordPonovo" (keyup)="PoklapanjePassworda()" required>
+					</mat-form-field>
+			
+					<span *ngIf="poklapanjeFlag" style="color:green; margin-left: 14px;">{{ poklapanjeIspis }}</span>
+					<span *ngIf="!poklapanjeFlag" style="color:red; margin-left: 14px;">{{ poklapanjeIspis }}</span>
+			
+					<button mat-raised-button type="submit" color="primary" (click)="RegistracijaKorisnika()">
+						Registrujte se
+					</button>
+				</form>
+
+
+				<div *ngIf="this.korisnickoZauzeto" class="div-greska">
+						Korisnicko ime je zauzeto
+				</div>
+				<div *ngIf="this.emailZauzet" class="div-greska">
+						Email je zauzet
+				</div>
+	</div>
+	<!--
+		<div *ngIf="prikaziInputZaKod">
+		<mat-form-field>
+			<input matInput placeholder="Verifikacioni kod" [formControl]="kod" required>
+		</mat-form-field>
+		<button mat-raised-button type="submit" color="primary" (click)="VerifikacijaKoda()">
+			Verifikujte kod
+		</button>
+	</div>
+	
+	-->
+	
+
+</div>

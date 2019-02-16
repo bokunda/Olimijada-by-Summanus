@@ -1,0 +1,11 @@
+<div id="potvrdaWrapper">
+		<p style="text-align: center">
+			{{ poruka }}
+		</p>
+		<button mat-button (click)="NaKlikDa()">
+			{{ 'da' | translate }}
+		</button>
+		<button mat-button (click)="NaKlikNe()">
+			{{ 'ne' | translate }}
+		</button>
+</div>

@@ -1,0 +1,190 @@
+<div class="prikazMecevaWrapper">
+
+    <div class="divZaWrapper">
+
+	<mat-card class="kartica">
+			<mat-card-header>
+					<div mat-card-avatar>
+						<mat-icon class="ikonica">event</mat-icon>
+					</div>
+					<mat-card-title>Vaši mečevi</mat-card-title>
+			</mat-card-header>
+		<mat-card-content>
+			<!--
+			<div *ngIf="(zakazaniMecevi == undefined || zakazaniMecevi.length == 0) && (prosliMecevi == undefined || )" >
+				Niste se takmičili do sada i nemate zakazanih mečeva
+			</div>
+		-->
+			<mat-tab-group>
+				<mat-tab label="Zakazani">
+					<div class="div-nema-meceva" *ngIf="zakazaniMecevi == undefined || zakazaniMecevi.length == 0" >
+                        <h2 style="text-align: center;">Nemate zakazanih mečeva</h2>
+
+                        <div class="centriraj" style="margin-top: 18px; margin-bottom: 18px; opacity: 0.3;">
+                            <img style=" width: 100%;" src="{{ruta}}upload/slike/kalendar.jpg">
+                        </div>
+
+					</div>
+					<mat-table #table *ngIf="zakazaniMecevi != undefined && zakazaniMecevi.length != 0" [dataSource]="zakazaniMecevi">
+
+                        <ng-container matColumnDef="turniri" style="width: 140px!important; min-width: 140px!important; max-width: 140px!important;" class="sakrij">
+                            <mat-header-cell *matHeaderCellDef style="width: 140px!important; min-width: 140px!important; max-width: 140px!important;" class="sakrij"> Turnir </mat-header-cell>
+                            <mat-cell *matCellDef="let mec" style="width: 140px!important; min-width: 140px!important; max-width: 140px!important; float: left!important;" class="sakrij">
+                                <mat-chip-list style="float: left!important;"><mat-chip style="background-color: indianred; color: white; float: left;" class="sakrij">{{mec.turnir}}</mat-chip></mat-chip-list>
+                            </mat-cell>
+                        </ng-container>
+
+							<ng-container matColumnDef="korisnici" class="prikazi">
+							  <mat-header-cell *matHeaderCellDef class="prikazi"> Takmičari </mat-header-cell>
+							  <mat-cell *matCellDef="let mec" class="prikazi">
+
+                                  <div class="sakrij">
+                                      <div class="igrac1" routerLink="/profil/{{mec.korisnik1}}">
+                                          <img src="{{ruta}}upload/slike/{{mec.avatar1}}" class="slikaAvatar">
+                                          <span class="igrac"> {{mec.korisnik1}} </span>
+                                      </div>
+                                      -
+                                      <div class="igrac1" routerLink="/profil/{{mec.korisnik2}}">
+                                          <img src="{{ruta}}upload/slike/{{mec.avatar2}}" class="slikaAvatar">
+                                          <span class="igrac">{{mec.korisnik2}}</span>
+                                      </div>
+                                  </div>
+
+                                  <div class="zaPrikazatiNaTelefonu">
+                                      <div class="centriraj">
+
+                                          <div class="centriraj">
+                                              <mat-chip-list><mat-chip style="background-color: indianred; color: white;"><h2>{{mec.turnir}}</h2> </mat-chip></mat-chip-list>
+                                          </div>
+
+                                          <br>
+
+                                          <div class="igraci">
+                                              <div class="igrac1" routerLink="/korisnici/{{mec.korisnik1}}">
+                                                  <img src="{{ruta}}upload/slike/{{mec.avatar1}}" class="slikaAvatar">
+                                                  <span class="igrac"> {{mec.korisnik1}} </span>
+                                              </div>
+                                              -
+                                              <div class="igrac1" routerLink="/korisnici/{{mec.korisnik2}}">
+                                                  <img src="{{ruta}}upload/slike/{{mec.avatar2}}" class="slikaAvatar">
+                                                  <span class="igrac">{{mec.korisnik2}}</span>
+                                              </div>
+                                          </div>
+
+                                          <div class="info centriraj">
+                                              <span matTooltip="{{mec.datumVremePocetka*1000 | date:'dd.MM.yyyy HH:mm'}}" class="datumVreme">i</span>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </mat-cell>
+							</ng-container>
+
+
+							<ng-container matColumnDef="datumVremePocetka" class="sakrij">
+							  <mat-header-cell *matHeaderCellDef class="sakrij"> Datum pocetka </mat-header-cell>
+							  <mat-cell *matCellDef="let mec"> {{mec.datumVremePocetka*1000 | date:'dd.MM.yyyy HH:mm'}} </mat-cell>
+							</ng-container>
+
+
+							<mat-header-row *matHeaderRowDef="displayColumnsZakazani"></mat-header-row>
+							<mat-row *matRowDef="let row; columns: displayColumnsZakazani;"></mat-row>
+						  </mat-table>
+				</mat-tab>
+				<mat-tab label="Prošli">
+					<div class="div-nema-meceva" *ngIf="prosliMecevi == undefined || prosliMecevi.length == 0" >
+						Nemate mečeva koji su se završili
+					</div>
+					<mat-table #table *ngIf="prosliMecevi != undefined && prosliMecevi.length != 0" [dataSource]="prosliMecevi" cl>
+                        <ng-container matColumnDef="turniri" style="width: 140px!important; min-width: 140px!important; max-width: 140px!important;" class="sakrij">
+                            <mat-header-cell *matHeaderCellDef style="width: 140px!important; min-width: 140px!important; max-width: 140px!important;" class="sakrij"> Turnir </mat-header-cell>
+                            <mat-cell *matCellDef="let mec" style="width: 140px!important; min-width: 140px!important; max-width: 140px!important; float: left!important;" class="sakrij">
+                                <mat-chip-list style="float: left!important;"><mat-chip style="background-color: indianred; color: white; float: left;">{{mec.turnir}} </mat-chip></mat-chip-list>
+                            </mat-cell>
+                        </ng-container>
+							<ng-container matColumnDef="korisnici">
+
+							  <mat-header-cell *matHeaderCellDef style="min-width: 240px!important;"> Takmičari </mat-header-cell>
+
+							  <mat-cell *matCellDef="let mec" style="min-width: 240px!important;">
+
+                                  <div class="sakrij">
+                                      <div class="igrac1" routerLink="/profil/{{mec.korisnik1}}">
+                                          <img src="{{ruta}}upload/slike/{{mec.avatar1}}" class="slikaAvatar">
+                                          <span class="igrac"> {{mec.korisnik1}} </span>
+                                      </div>
+                                      -
+                                      <div class="igrac1" routerLink="/profil/{{mec.korisnik2}}">
+                                          <img src="{{ruta}}upload/slike/{{mec.avatar2}}" class="slikaAvatar">
+                                          <span class="igrac">{{mec.korisnik2}}</span>
+                                      </div>
+                                  </div>
+
+
+                                  <div class="zaPrikazatiNaTelefonu">
+                                      <div class="centriraj">
+
+                                          <div class="centriraj">
+                                            <mat-chip-list><mat-chip style="background-color: indianred; color: white;"><h2>{{mec.turnir}}</h2> </mat-chip></mat-chip-list>
+                                          </div>
+
+                                            <br>
+
+                                            <div class="igraci">
+                                                <div class="igrac1" routerLink="/korisnici/{{mec.korisnik1}}">
+                                                    <img src="{{ruta}}upload/slike/{{mec.avatar1}}" class="slikaAvatar">
+                                                    <span class="igrac"> {{mec.korisnik1}} </span>
+                                                </div>
+                                                -
+                                                <div class="igrac1" routerLink="/korisnici/{{mec.korisnik2}}">
+                                                    <img src="{{ruta}}upload/slike/{{mec.avatar2}}" class="slikaAvatar">
+                                                    <span class="igrac">{{mec.korisnik2}}</span>
+                                                </div>
+                                            </div>
+
+                                            <h3 style="text-align: center; margin: 2px;">{{mec.rezultat1 || 0 }} : {{mec.rezultat2 || 0}}</h3>
+
+                                            <div class="info centriraj">
+                                                <span *ngIf="mec.rezultat1 > mec.rezultat2" class="pobedioRez" matTooltip="Pobedio si! 💪">P</span>
+                                                <span *ngIf="mec.rezultat1 <= mec.rezultat2" class="izgubioRez" matTooltip="Izgubio si! 👎">I</span>
+                                                <span matTooltip="{{mec.datumVremePocetka*1000 | date:'dd.MM.yyyy HH:mm'}}" class="datumVreme">i</span>
+                                                <button mat-icon-button routerLink="/prenos/{{mec.id}}"><mat-icon>play_circle_outline</mat-icon></button>
+                                            </div>
+
+                                        </div>
+                                  </div>
+                              </mat-cell>
+
+							</ng-container>
+
+							<ng-container matColumnDef="rezultat" style="width: 58px!important; min-width: 58px!important; max-width: 58px!important;" class="sakrij">
+							  <mat-header-cell *matHeaderCellDef style="width: 58px!important; min-width: 58px!important; max-width: 58px!important;" class="sakrij"> Rezultat </mat-header-cell>
+							  <mat-cell *matCellDef="let mec" style="width: 58px!important; min-width: 58px!important; max-width: 58px!important;" class="sakrij">
+                                  {{mec.rezultat1 || 0 }} : {{mec.rezultat2 || 0}}
+                              </mat-cell>
+							</ng-container>
+
+                        <ng-container matColumnDef="gledaj" style="width: 100px!important; min-width: 100px!important; max-width: 100px!important;" class="sakrij">
+                            <mat-header-cell *matHeaderCellDef style="width: 100px!important; min-width: 100px!important; max-width: 100px!important;" class="sakrij"> Info </mat-header-cell>
+                            <mat-cell *matCellDef="let mec" style="width: 100px!important; min-width: 100px!important; max-width: 100px!important;" class="sakrij">
+                                <span *ngIf="mec.rezultat1 > mec.rezultat2" class="pobedioRez" matTooltip="Pobedio si! 💪">P</span>
+                                <span *ngIf="mec.rezultat1 <= mec.rezultat2" class="izgubioRez" matTooltip="Izgubio si! 👎">I</span>
+                                <span matTooltip="{{mec.datumVremePocetka*1000 | date:'dd.MM.yyyy HH:mm'}}" class="datumVreme">i</span>
+                                <button mat-icon-button routerLink="/prenos/{{mec.id}}"><mat-icon>play_circle_outline</mat-icon></button>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="datumVremePocetka" style="display: none;">
+                            <mat-header-cell *matHeaderCellDef  style="display: none;"> Datum početka </mat-header-cell>
+                            <mat-cell *matCellDef="let mec"  style="display: none;"> <span matTooltip="{{mec.datumVremePocetka*1000 | date:'dd.MM.yyyy HH:mm'}}" class="datumVreme">i</span> </mat-cell>
+                        </ng-container>
+
+							<mat-header-row *matHeaderRowDef="displayColumnsProsli"></mat-header-row>
+							<mat-row *matRowDef="let row; columns: displayColumnsProsli;"></mat-row>
+						  </mat-table>
+				</mat-tab>
+			</mat-tab-group>
+		</mat-card-content>
+
+	</mat-card>
+    </div>
+</div>

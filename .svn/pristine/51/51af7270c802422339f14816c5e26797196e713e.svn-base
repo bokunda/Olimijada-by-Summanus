@@ -1,0 +1,90 @@
+<div class="pocetnaWrapper">
+	<mat-accordion>
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3>Dodavanje pitanja i odgovora</h3>
+        </mat-panel-title>
+        <mat-panel-description>
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <form (ngSubmit)="DodajFAQ()">
+        <mat-form-field style="width: 100%;">
+          <input matInput [formControl]="pitanje" placeholder="Upišite pitanje" required>
+          <mat-error *ngIf="pitanje.invalid">{{ greskaPitanje() }}</mat-error>
+        </mat-form-field>
+        <div id="editor">
+          <p>Upišite odgovor*</p>
+          <app-ngx-editor [placeholder]="'Unesite tekst ovde...'" [spellcheck]="true" [(ngModel)]="htmlContent" [ngModelOptions]="{standalone: true}" height="300px" minHeight="200px"></app-ngx-editor>
+        </div>
+        <button mat-raised-button type="submit" color="primary">
+          Dodaj
+        </button>
+      </form>
+
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel [expanded]="true">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h3>FAQ</h3>
+        </mat-panel-title>
+        <mat-panel-description>
+
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <mat-form-field style="width: 100%;">
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Pretraga">
+      </mat-form-field>
+      <mat-table #table [dataSource]="dataSource" class="mat-table"  matSort>
+
+        <!-- Pitanje Column -->
+        <ng-container matColumnDef="pitanje" class="sirina">
+          <mat-header-cell *matHeaderCellDef> Pitanje </mat-header-cell>
+          <mat-cell *matCellDef="let po">{{ po.pitanje }}</mat-cell>
+        </ng-container>
+
+        <!-- Odgovor Column -->
+        <ng-container matColumnDef="odgovor" class="sirina">
+          <mat-header-cell *matHeaderCellDef class="sirina"> Odgovor </mat-header-cell>
+          <mat-cell *matCellDef="let po" class="sirina">{{ po.odgovor }}</mat-cell>
+        </ng-container>
+
+        <!-- Obriši pitanje Column -->
+        <ng-container matColumnDef="obrisi" class="sirina smanji">
+          <mat-header-cell *matHeaderCellDef class="skupi"> Obriši </mat-header-cell>
+          <mat-cell *matCellDef="let po" class="skupi">
+            <button mat-icon-button="cancel" (click)="ObrisiPitanje(po)" class="skupi"><mat-icon class="skupi"> cancel </mat-icon></button>
+          </mat-cell>
+        </ng-container>
+
+        <!-- Izmeni pitanje Column -->
+        <ng-container matColumnDef="izmeni" class="sirina smanji">
+          <mat-header-cell *matHeaderCellDef class="skupi"> Izmeni </mat-header-cell>
+          <mat-cell *matCellDef="let po" class="skupi">
+            <button mat-icon-button="edit" (click)="IzmeniFAQ(po)" class="skupi"><mat-icon class="skupi">edit</mat-icon></button>
+          </mat-cell>
+        </ng-container>
+
+        <!--  Neka podešavanja za tabelu  -->
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      </mat-table>
+
+      <mat-paginator #paginator
+                     [pageSize]="5"
+                     [pageSizeOptions]="[5, 10, 20]"
+                     [showFirstLastButtons]="true">
+      </mat-paginator>
+
+    </mat-expansion-panel>
+
+
+
+  </mat-accordion>
+</div>

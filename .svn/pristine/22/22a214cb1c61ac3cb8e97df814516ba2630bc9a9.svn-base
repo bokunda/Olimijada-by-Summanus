@@ -1,0 +1,94 @@
+<div *ngIf="this.mecevi != undefined && this.mecevi != null && this.mecevi.length > 0" style="max-height: 500px; overflow: auto">
+	<div>
+		<h3>{{'Mečevi' | translate}}: {{nazivTurnira}}({{ igra}})</h3>
+
+
+		<mat-form-field class="pretraga" style="width: 100%">
+			<input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{'pretraga' | translate}}">
+		</mat-form-field>
+
+
+		<mat-table #table [dataSource]="dataSource" matSort>
+
+
+			<ng-container matColumnDef="korisnici">
+				<mat-header-cell *matHeaderCellDef> {{'Korisnici' | translate}} </mat-header-cell>
+				<mat-cell *matCellDef="let mec">
+					{{mec.korisnik1}}-{{mec.korisnik2}}
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="rezultat">
+				<mat-header-cell *matHeaderCellDef> {{'Pobede/porazi' | translate}} </mat-header-cell>
+				<mat-cell *matCellDef="let mec">
+					{{mec.rezultat1 }} : {{mec.rezultat2}}
+				</mat-cell>
+			</ng-container>
+
+			<ng-container matColumnDef="datumVremePocetka">
+				<mat-header-cell *matHeaderCellDef> {{'Održan' | translate}} </mat-header-cell>
+				<mat-cell *matCellDef="let mec">
+					{{mec.datumVremePocetka*1000 |  date:'dd.MM.yyyy HH:mm'}}
+				</mat-cell>
+			</ng-container>
+
+			<!-- Ne znam sta se desava, prikazuju se samo prazni redovi
+
+			<ng-container matColumnDef="korisnik">
+
+			<mat-header-cell *matHeaderCellDef style="min-width: 240px!important;"> Takmičari </mat-header-cell>
+
+			<mat-cell *matCellDef="let mec" style="min-width: 240px!important;">
+
+				<div class="sakrij">
+					<div class="igrac" routerLink="/profil/{{mec.username}}">
+						<img src="{{ruta}}upload/slike/{{mec.avatar}}" class="slikaAvatar">
+						<span class="igrac"> {{mec.username}} </span>
+					</div>
+				</div>
+
+
+				<div class="zaPrikazatiNaTelefonu">
+					<div class="centriraj">
+
+						<div class="igraci">
+								<div class="igrac" routerLink="/profil/{{mec.username}}">
+									<img src="{{ruta}}upload/slike/{{mec.avatar}}" class="slikaAvatar">
+									<span class="igrac"> {{mec.username}} </span>
+								</div>
+						</div>
+
+						<h3 style="text-align: center; margin: 2px;">{{mec.brojPobeda || 0 }} / {{mec.brojPoraza || 0}}</h3>
+
+					</div>
+				</div>
+			</mat-cell>
+
+		</ng-container>
+
+		<ng-container matColumnDef="pobedePorazi" style="width: 58px!important; min-width: 58px!important; max-width: 58px!important;"
+		 class="sakrij">
+			<mat-header-cell *matHeaderCellDef style="width: 58px!important; min-width: 58px!important; max-width: 58px!important;" class="sakrij">
+			mec </mat-header-cell>
+			<mat-cell *matCellDef="let mec" style="width: 58px!important; min-width: 58px!important; max-width: 58px!important;" class="sakrij">
+					{{mec.brojPobeda || 0 }} / {{mec.brojPoraza || 0}}
+			</mat-cell>
+		</ng-container>
+		-->
+
+
+
+
+			<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+			<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+		</mat-table>
+
+		<!-- <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5,10, 20]" [showFirstLastButtons]="true">
+		</mat-paginator> -->
+
+	</div>
+
+</div>
+<div *ngIf="this.mecevi == undefined || this.mecevi == null || this.mecevi.length == 0">
+	<h3>{{'Nema meceva' | translate}}</h3>
+</div>

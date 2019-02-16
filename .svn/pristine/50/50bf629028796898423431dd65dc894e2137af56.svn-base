@@ -1,0 +1,380 @@
+.wrapper
+{
+    width: 80%;
+    display: table;
+    margin: 0 auto;
+    margin-top: 18px;
+}
+
+.pobeda, .poraz
+{
+    text-align: center;
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 10px;
+    padding: 3px;
+    background-color: red;
+    display: inline-block;
+}
+
+.pobeda
+{
+    background-color: limegreen;
+}
+
+.poraz
+{
+    background-color: red;
+}
+
+.dugmekontrole
+{
+
+}
+
+mat-icon
+{
+}
+
+mat-card
+{
+    margin-top: 18px;
+}
+
+h3, h4
+{
+    padding: 0;
+    margin: 0;
+}
+
+.h4-boja
+{
+    color: white;
+}
+
+.glavniDiv
+{
+    display: table;
+    margin: 0 auto;
+    width: 96%;
+    background-color: #0d61aa;
+    /*background-image: url('http://cdn.wonderfulengineering.com/wp-content/uploads/2014/04/code-wallpaper-2.jpg');*/
+}
+
+.pomocniDiv
+{
+    width: 456px;
+    z-index: 1991;
+}
+
+
+#prvi > div
+{
+    display: table;
+    margin: 0 auto;
+    padding-bottom: 18px;
+    width: 168px;
+    background-image: url('http://147.91.204.116:11000/upload/slike/slicice/medalje/fp-zlato.png');
+    background-size: 168px 168px;
+}
+
+#prvi > h1, #prvi > h2, #prvi > h3, #prvi > h4, mat-chip-list, mat-chip
+{
+    display: table;
+    margin: 0 auto;
+    margin-top: 0px;
+    text-align: center;
+}
+
+#prvi img
+{
+    width: 128px;
+    height: 128px;
+    display: table;
+    margin: 0 auto;
+    padding-top: 18px;
+    border-radius: 50%;
+}
+
+#drugi
+{
+    float: left;
+    margin-top: -148px;
+}
+
+#drugi > div
+{
+    display: table;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    width: 106px;
+    background-image: url('http://147.91.204.116:11000/upload/slike/slicice/medalje/fp-srebro.png');
+    background-size: 106px 106px;
+}
+
+#drugi > h1, #drugi > h2, #drugi > h3, #drugi > h4
+{
+    text-align: center;
+}
+
+#drugi img
+{
+    width: 86px;
+    height: 86px;
+    display: table;
+    margin: 0 auto;
+    padding-top: 8px;
+    border-radius: 50%;
+}
+
+#treci
+{
+    float: right;
+    margin-top: -136px;
+}
+
+#treci > div
+{
+    display: table;
+    margin: 0 auto;
+    padding-bottom: 13px;
+    width: 84px;
+    background-image: url('http://147.91.204.116:11000/upload/slike/slicice/medalje/fp-bronze.png');
+    background-size: 84px 84px;
+
+}
+
+#prvi img, #drugi img, #treci img
+{
+    background-color: transparent;
+}
+
+#treci > h1, #treci > h2, #treci > h3, #treci > h4
+{
+    text-align: center;
+}
+
+#treci img
+{
+    width: 64px;
+    height: 64px;
+    display: table;
+    margin: 0 auto;
+    padding-top: 8px;
+    border-radius: 50%;
+}
+
+.divZaNajbolje
+{
+    width: 456px;
+    display: table;
+    margin: 0 auto;
+}
+
+@media (max-width: 486px) { /*breakpoint*/
+
+    .divZaNajbolje
+    {
+        width: 300px;
+        display: table;
+        margin: 0 auto;
+    }
+
+    #prvi h4, #drugi h4, #treci h4
+    {
+        width: 100px;
+    }
+
+    .pomocniDiv
+    {
+        width: 300px;
+        z-index: 1991;
+    }
+
+    .nivo
+    {
+        display: none;
+    }
+}
+
+.top10korisnika a
+{
+    text-decoration: none;
+}
+
+.igraci:hover
+{
+    transition-duration: 6s;
+    background-color: #03A9F4;
+    color: white;
+}
+
+mat-table, mat-paginator, .example-container, .mat-elevation-z4
+{
+    display: table;
+    margin: 0 auto;
+    width: 96%;
+    background-color: white;
+}
+
+
+.mat-header-cell, .mat-header-row, .mat-cell
+{
+    text-align: center;
+}
+
+mat-table
+{
+    width: 512px;
+    min-width: 326px;
+}
+
+img
+{
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #2196F3;
+}
+
+@media (max-width: 432px) { /*breakpoint*/
+
+    .mat-table
+    {
+        width: 98%;
+    }
+
+    .mat-row, .mat-header-row, .mat-header-cell, .mat-cell
+    {
+        paddin: 0;
+        margin: 0;
+    }
+
+    .nivo
+    {
+        display: none;
+    }
+
+}
+
+.nivo
+{
+    display: none;
+}
+
+.mat-row:hover
+{
+    background-color: lightgray;
+}
+
+img
+{
+    margin-top: 16px;
+}
+
+.h5zaNivoKodSlike
+{
+    display: inline-block;
+    background-color: green;
+    color: white;
+    z-index: 2;
+    top: -10px;
+    width: 20px;
+    height: 10px;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+.slika
+{
+    min-width: 48px;
+    max-width: 48px;
+    width: 48px;
+}
+
+.pozicija
+{
+    min-width: 42px;
+    max-width: 42px;
+    width: 42px;
+}
+
+.username
+{
+    min-width: 90px;
+    max-width: 90px;
+    width: 90px;
+}
+
+.imePrezime
+{
+    min-width: 60px;
+    max-width: 130px;
+    width: 60px;
+}
+
+.pobedaPorazi
+{
+    min-width: 56px;
+    max-width: 56px;
+    width: 56px;
+}
+
+@media (min-width: 1000px)
+{
+    mat-table, mat-paginator
+    {
+        width: 512px;
+        display: table;
+        margin: 0 auto;
+    }
+    .slika
+    {
+        min-width: 48px;
+        max-width: 48px;
+        width: 48px;
+    }
+
+    .slika > img
+    {
+        min-width: 48px;
+        max-width: 48px;
+        width: 48px;
+        height: 48px;
+    }
+
+
+    .pozicija
+    {
+        min-width: 62px;
+        max-width: 62px;
+        width: 62px;
+    }
+
+    .username
+    {
+        min-width: 110px;
+        max-width: 110px;
+        width: 110px;
+    }
+
+    .imePrezime
+    {
+        min-width: 80px;
+        max-width: 150px;
+        width: 80px;
+    }
+
+    .pobedaPorazi
+    {
+        min-width: 76px;
+        max-width: 76px;
+        width: 76px;
+    }
+
+}
+

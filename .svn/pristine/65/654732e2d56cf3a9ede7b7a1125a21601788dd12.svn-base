@@ -1,0 +1,23 @@
+<div class="pocetnaWrapper">
+	<mat-card class="kartica">
+		<mat-card-header>
+			<mat-card-title><h1>FAQ</h1></mat-card-title>
+		</mat-card-header>
+	
+		<mat-card-content>
+			<!-- <p>Ovde možete naći odgovore na najčešće postavljena pitanja sajta Olilmijada.</p> -->
+						<mat-accordion>
+							<mat-expansion-panel *ngFor="let po of pitanjaIOdgovori">
+									<mat-expansion-panel-header>
+										<mat-panel-title>
+											<h3 class="pitanje">{{ po.pitanje }}</h3>
+										</mat-panel-title>
+									</mat-expansion-panel-header>
+									<div [innerHTML]="po.odgovor">
+
+									</div>
+							</mat-expansion-panel>
+						</mat-accordion>
+		</mat-card-content>
+	</mat-card>
+</div>

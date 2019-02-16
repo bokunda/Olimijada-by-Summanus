@@ -1,0 +1,18 @@
+.uloge, .oIgri, .radioButton
+{
+    display: block;
+}
+
+.radioButton
+{
+  margin-bottom: 18px;
+}
+
+@media (max-width: 375px)
+{
+  mat-form-field
+  {
+      display: block;
+      width: 100%;
+  }
+}

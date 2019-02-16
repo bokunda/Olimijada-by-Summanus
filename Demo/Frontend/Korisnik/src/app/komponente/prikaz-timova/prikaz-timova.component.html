@@ -1,0 +1,46 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let tim of timovi">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <img class="slikaPoredCipa" src="{{ruta}}upload/slike/igre/{{tim.nazivSlike}}"><mat-chip-list><mat-chip style="background-color: dodgerblue">{{tim.naziv}}</mat-chip></mat-chip-list>  <h3 class="nazivTima">{{srediNaziv(tim.nazivTima)}}</h3>
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div [ngStyle]="{ 'background-image': 'url(' + ruta + (tim.pozadinaTimovi == null ? 'upload/slike/fudbalteren.jpg)' : ('upload/slike/igre/pozadineTimovi/' + tim.pozadinaTimovi))}"  >
+            <div class="divZaVelikoNazivTima"><img class="rotiraj" src="{{ruta}}upload/slike/igre/{{tim.nazivSlike}}"><h2 class="velikoNazivTima" style="color: black;">{{srediNaziv(tim.nazivTima)}}</h2></div>
+
+            <div class="kontrole">
+
+                <div matTooltip="{{ 'TestirajTim' | translate }}"><button mat-mini-fab color="warn" (click)="TestirajTim(tim.id)"><mat-icon>assignment</mat-icon></button></div>
+                <!--<div matTooltip="Izmeni tim"><button mat-mini-fab color="warn"><mat-icon>edit</mat-icon></button></div>-->
+                <div matTooltip="{{ 'ObrisiTim' | translate }}"><button mat-mini-fab color="warn" (click)="ObrisiTim(tim.id)"><mat-icon>delete</mat-icon></button></div>
+
+            </div>
+
+        <div class="tim">
+
+            <div class="rbrZ"><span>{{ 'Broj' | translate }}</span></div>
+            <div class="nazivZ"><span>{{ 'Igrac' | translate }}</span></div>
+            <div class="ulogaZ"><span>{{ 'Uloga' | translate }}</span></div>
+
+        </div>
+
+        <div *ngFor="let igrac of tim.opisTima.igracUloga ; let i = index">
+            <div class="tim">
+
+                <div class="rbr"><span>{{i + 1}}.</span></div>
+                <div class="naziv"><span>{{igrac.nazivIgraca}}</span></div>
+                <div class="uloga"><span>{{igrac.nazivUloge}}</span></div>
+
+            </div>
+        </div>
+
+            <br><br>
+
+        </div>
+
+
+
+    </mat-expansion-panel>
+</mat-accordion>
+

@@ -1,0 +1,26 @@
+<div class="divZaIgre">
+<mat-accordion>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h3>{{ 'Kreiraj novu igru' | translate }}</h3>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-kreiranje-igara></app-kreiranje-igara>
+  </mat-expansion-panel>
+
+
+
+  <mat-expansion-panel (opened)="true" [expanded]="true">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h3>{{ 'Spisak igara' | translate }}</h3>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-prikaz-igara></app-prikaz-igara>
+  </mat-expansion-panel>
+
+</mat-accordion>
+</div>

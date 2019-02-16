@@ -1,0 +1,42 @@
+.main
+{
+    width: 100%;
+    padding-top: 18px;
+}
+
+.kartica
+{
+    display: table;
+    margin: 0 auto;
+}
+
+.slika
+{
+    width: 100%;
+    height: 100%;
+}
+
+.imiArhiv
+{
+    padding-top: 18px;
+}
+
+@media (min-width: 1079px)
+{
+    .imiArhiv
+    {
+        display: table;
+        margin: 0 auto;
+        width: 850px;
+    }
+}
+
+@media (max-width: 500px)
+{
+    #divZaPhaser
+    {
+        width: 300px!important;
+        min-width: 260px!important;
+        max-width: 500px!important;
+    }
+}

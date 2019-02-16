@@ -1,0 +1,30 @@
+<div class="sadrzaj">
+<div *ngIf="!indikator">
+<div *ngIf="indikatorPrijave">
+	<form (ngSubmit)="PrijaviSe()">
+		<mat-form-field>
+			<mat-select placeholder="Izaberite bota za turnir" [formControl]="botSelect">
+                <mat-option style="padding: 0; margin: 0;" value="novododatibot">
+                    <button mat-button style="width: 100%; margin: 0;"><mat-icon>cloud_upload</mat-icon><span>Dodaj bota</span></button>
+                </mat-option>
+			  <mat-option *ngFor="let bot of botovi" [value]="bot.id">
+				{{ bot.nazivTima.substring(bot.nazivTima.indexOf('_')+1,bot.nazivTima.lastIndexOf('.')) }}
+			  </mat-option>
+			</mat-select>
+		  </mat-form-field>
+
+		<button mat-raised-button type="submit" color="primary">
+			Prijavi se na turnir
+		</button>
+	</form>
+</div>
+<div *ngIf="!indikatorPrijave" >
+	{{porukaKadPrijavaNijeAktivna}}
+</div>
+</div>
+<div class="iks"><button mat-icon-button (click)="zatvori()">X</button></div>
+</div>
+<div *ngIf="indikator">
+	<p style="text-align: center;">Vec ste prijavljeni na turnir!</p>
+	<button mat-raised-button color="primary" (click)="OtkaziPrijavu()" style="width: 100%;">Otkazi prijavu</button>
+</div>

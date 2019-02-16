@@ -1,0 +1,21 @@
+<h1>Pesme</h1>
+<ul class="lista-pesama">
+	<li *ngFor='let pesma of pesme' (click)="NaKlik(pesma)" [class.selected] = "pesma === odabranaPesma">
+		{{ pesma.naziv }}
+	</li>
+</ul>
+
+<div *ngIf="odabranaPesma">
+		<h2>"{{ odabranaPesma.naziv }}" - detalji</h2>
+		<div>
+			<label>naslov:
+				<input [(ngModel)]="odabranaPesma.naziv" placeholder="naziv">
+			</label>
+			<label>
+				autor:
+				<input [(ngModel)]="odabranaPesma.autor" placeholder="autor">
+			</label>
+		</div>
+		<button (click)="Izmeni()">Sacuvaj</button>
+		<button (click)="Obrisi()">Obrisi</button>
+</div>

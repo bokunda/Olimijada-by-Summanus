@@ -1,0 +1,36 @@
+<!--
+<div class="inp-p-container">
+    <div>
+        <form [formGroup]="inputPlayers" (submit)="AddPlayer(inputPlayers.value)">
+            <input formControlName="p1" class="inp-p" id="inp-p" type="text" placeholder="Player 1 Name" name="player">
+            <input formControlName="p2" class="inp-p" id="inp-p" type="text" placeholder="Player 2 Name" name="player">
+
+            <button type="submit" class="btn-add-p">Add Player</button>
+        </form>
+    </div>
+
+    <div>
+        <button (click)="newTournment()" class="btn-new-t">New Tournment</button>
+    </div>
+
+</div>
+
+
+<app-player-list *ngIf="PLAYER_LIST.length > 0" [list]="PLAYER_LIST" ></app-player-list>
+
+-->
+
+<div class="bracket-container" *ngIf="FIXTURE.length > 0">
+
+    <div *ngFor="let round of FIXTURE let i = index" class="fixture-group" >
+
+        <app-fixture  *ngFor="let match of round">
+
+            <app-fixture-tab *ngFor="let ply of match" [player]="ply"></app-fixture-tab>
+
+        </app-fixture>
+
+    </div>
+
+</div>
+

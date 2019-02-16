@@ -1,0 +1,31 @@
+@import '~@angular/material/theming';
+
+@import '~@ngx-share/button/styles/share-buttons';
+@import '~@ngx-share/button/styles/themes/default/default-theme';
+
+@include mat-core();
+
+$candy-app-primary: mat-palette($mat-blue, 600);
+$candy-app-accent:  mat-palette($mat-blue-grey);
+$candy-app-warn:    mat-palette($mat-deep-orange);
+
+$candy-app-theme: mat-light-theme($candy-app-primary, $candy-app-accent, $candy-app-warn);
+
+@include angular-material-theme($candy-app-theme);
+
+$custom-primary: mat-palette($mat-blue, 600);
+$custom-accent:  mat-palette($mat-blue-grey);
+$custom-warn:    mat-palette($mat-deep-orange);
+
+$custom-theme: mat-dark-theme(
+        $custom-primary,
+        $custom-accent,
+        $custom-warn
+);
+
+.alternative
+{
+    @include angular-material-theme($custom-theme);
+}
+
+

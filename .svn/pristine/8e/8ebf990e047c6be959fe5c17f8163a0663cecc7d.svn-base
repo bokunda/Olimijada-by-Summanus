@@ -1,0 +1,58 @@
+<div class="centriraj zaKarticeBr">
+
+  <mat-card class="leviG karticaBr">
+    <h3>{{ 'Registrovano korisnika' | translate }}: {{brojKorisnika}}</h3>
+  </mat-card>
+
+  <mat-card class="sredinaG karticaBr">
+    <h3>{{ 'Ukupno igara' | translate }}: {{brojIgara}}</h3>
+  </mat-card>
+
+  <mat-card class="desnaG karticaBr">
+    <h3>{{ 'Ukupno botova' | translate }}: {{brojBotova}}</h3>
+  </mat-card>
+
+</div>
+
+<div class="centriraj">
+<div style="display: inline-block;">
+
+  <div class="leviG">
+    <mat-card class="karticaDashboard">
+      <mat-card-header style="text-align: center; display: table; margin: 0 auto;"><h3>{{ 'Registrovano korisnika po mesecima' | translate }}</h3></mat-card-header>
+
+      <mat-card-content>
+        <div style="display: table; display: table; margin: 0 auto;">
+          <app-korisnici-po-mesecima></app-korisnici-po-mesecima>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+
+<div class="sredinaG">
+<mat-card class="karticaDashboard">
+  <mat-card-header style="text-align: center; display: table; margin: 0 auto;"><h3>{{ 'Ukupno mečeva po mesecima' | translate }}</h3></mat-card-header>
+
+  <mat-card-content>
+    <div style="display: table;display: table; margin: 0 auto;">
+      <app-mecevi-po-mesecima></app-mecevi-po-mesecima>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+</div>
+
+<div class="desnaG">
+<mat-card class="karticaDashboard">
+  <mat-card-header style="text-align: center; display: table; margin: 0 auto;"><h3>{{ 'Ukupno botova po mesecima' | translate }}</h3></mat-card-header>
+
+  <mat-card-content>
+    <div style="display: table; margin: 0 auto;">
+      <app-botovi-po-mesecima></app-botovi-po-mesecima>
+    </div>
+  </mat-card-content>
+
+</mat-card>
+</div>
+</div>

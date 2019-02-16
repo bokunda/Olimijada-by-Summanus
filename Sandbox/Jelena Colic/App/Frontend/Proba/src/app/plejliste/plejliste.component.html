@@ -1,0 +1,22 @@
+<h1>Plejliste</h1>
+<ul class="lista-plejlisti">
+	<li *ngFor='let plejlista of plejliste' (click)="NaKlik(plejlista)" [class.selected] = "plejlista === odabranaPlejlista">
+		{{ plejlista.naziv }}
+	</li>
+</ul>
+
+<div *ngIf="odabranaPlejlista">
+	<h2>"{{ odabranaPlejlista.naziv }}" - detalji</h2>
+	<div>
+		<label>naziv:
+			<input [(ngModel)]="odabranaPlejlista.naziv" placeholder="naziv">
+		</label>
+		<ul class="lista-pesama">
+			<li *ngFor='let pesma of odabranaPlejlista.pesme'>
+				{{pesma}}
+			</li>
+		</ul>
+	</div>
+	<button (click)="Izmeni()">Sacuvaj</button>
+	<button (click)="Obrisi()">Obrisi</button>
+</div>

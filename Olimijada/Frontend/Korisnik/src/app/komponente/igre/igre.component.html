@@ -1,0 +1,90 @@
+<div class="pocetnaWrapper">
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="true" [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="width: 100%">
+                    <h2 style="text-align: center;">Spisak igara</h2>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <!-- OVDE DA IDU IGRE -->
+            <div style="display: table; margin: 0 auto; text-align: center;">
+
+                <!-- ISPROGRAMIRAN DEO POTREBNO SREDITI U BAZI -->
+                    <button *ngFor="let igra of nizIgri; let i = index" class="dugmeIgra" mat-raised-button (click)="prikaziOpis(i); daLiJeIgraTimska(i);">
+                        <img src="{{ruta + 'upload/slike/igre/' + igra.nazivSlike}}"><span style="float: left; padding-top: 16px; padding-left: 6px;">{{igra.naziv}}</span>
+                    </button>
+            </div>
+
+        </mat-expansion-panel>
+    </mat-accordion>
+
+</div>
+
+<div class="pocetnaWrapper" style="margin-top:26px;">
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="true" [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title style="width: 100%; text-align: center; display: block; margin: 0 auto;">
+                    <h2 style="text-align: center;">{{igraNaziv}}</h2>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <!-- OVDE IDE OPIS ZA IGRE -->
+            <div style="display: table; margin: 0 auto; text-align: center;" >
+
+                    <div [innerHTML]="igraPravila">
+
+                    </div>
+
+            </div>
+
+            <div class="dugmici">
+            <!-- UKOLIKO JE IGRA INDIVIDUALNA I KORISNIK JE PRIJAVLJEN OTVARA SE KOMPONENTA ZA DODAVANJE JEDNOG BOTA U SUPROTNOM, VODI GA NA PRIJAVU -->
+
+            <div class="dugmeIndividualna" *ngIf="authService.DaLiJePrijavljen() == true">
+                <button mat-fab *ngIf="timskaIgra == false" (click)="dialogDodajBota();" class="dugmeIndividualne btn-container btn">
+                    <span style="
+                                                    background-color: crimson;
+                                                    padding-top: 1px;
+                                                    padding-bottom: 1px;
+                                                    font-size: 12pt;">
+                        Dodaj bota</span><br>
+                    <mat-icon aria-label="Dodaj bota">cloud_upload</mat-icon>
+                </button>
+            </div>
+
+                <div class="dugmeIndividualna" *ngIf="authService.DaLiJePrijavljen() == false">
+                    <button mat-fab *ngIf="timskaIgra == false" routerLink="/prijava" class="dugmeIndividualne btn-container btn">
+                    <span style="
+                                                    background-color: crimson;
+                                                    padding-top: 1px;
+                                                    padding-bottom: 1px;
+                                                    font-size: 12pt;">
+                        Dodaj bota</span><br>
+                        <mat-icon aria-label="Dodaj bota">cloud_upload</mat-icon>
+                    </button>
+                </div>
+
+
+                <!-- UKOLIKO JE IGRA TIMSKA, OTVARA SE KOMPONENTA ZA DODAVANJE ODGOVARAJUCEG BROJA BOTOVA ZA NJIHOVE ULOGE -->
+            <div *ngIf="timskaIgra == true" class="dugmeTimska">
+                <button mat-fab color="warn" routerLink="/timovi" class="dugmeTimske">
+                    <span style="
+                                                    background-color: crimson;
+                                                    padding-top: 1px;
+                                                    padding-bottom: 1px;
+                                                    font-size: 12pt;">
+                        Napravi tim</span><br>
+                    <mat-icon aria-label="Dodaj bota">group_add</mat-icon>
+                </button>
+            </div>
+            </div>
+        </mat-expansion-panel>
+
+
+    </mat-accordion>
+
+</div>

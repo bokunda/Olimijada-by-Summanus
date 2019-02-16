@@ -1,0 +1,18 @@
+mat-form-field
+{
+    margin-top: 6px;
+}
+
+@media(max-width: 615px)
+{
+    mat-form-field
+    {
+        width: 100%;
+    }
+}
+
+.dugmeNapraviTim
+{
+    display: block;
+    width: 100%;
+}

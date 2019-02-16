@@ -1,0 +1,33 @@
+<div class="pocetnaWrapper">
+
+    <mat-card class="kartica">
+
+        
+		<h1 style="text-align: center;">{{ 'Dobrodosli' | translate }}</h1>
+		<!--
+        <h2 *ngIf="!this.authService.DaLiJePrijavljen()" style="text-align: center; color:gray;">Izaberite jednu od opcija!</h2>
+
+		<h2 *ngIf="this.authService.DaLiJePrijavljen()" style="text-align: center; color:gray;">Uspešno ste se prijavili na sajt!</h2>
+        <mat-spinner *ngIf="this.authService.DaLiJePrijavljen()" style="display: table; margin: 16px auto;"></mat-spinner>
+        -->
+
+        <div *ngIf="!this.authService.DaLiJePrijavljen()">
+            <mat-tab-group [dynamicHeight]="true">
+                <mat-tab label="{{ 'prijava' | translate }}">
+                    <app-prijava (nakonPrijave)="NakonPrijave($event)"></app-prijava>
+                </mat-tab>
+                <mat-tab label="{{ 'registracija' | translate }}">
+                    <app-registracija (nakonPrijave)="NakonPrijave($event);"></app-registracija>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+    </mat-card>
+
+</div>
+<mat-card-content>
+
+
+
+
+</mat-card-content>

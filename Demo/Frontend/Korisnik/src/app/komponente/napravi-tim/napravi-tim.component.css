@@ -1,0 +1,12 @@
+.zaKarticu
+{
+    display: table;
+    margin: 0 auto;
+    width: 80%;
+}
+
+mat-card
+{
+    margin-top: 18px;
+    width: 100%;
+}

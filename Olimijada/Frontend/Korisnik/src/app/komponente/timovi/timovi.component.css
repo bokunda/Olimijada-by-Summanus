@@ -1,0 +1,20 @@
+.zaMatkard
+{
+    width: 66%;
+    display: table;
+    margin: 0 auto;
+
+    margin-top: 18px;
+}
+
+@media (max-width: 780px)
+{
+    .zaMatkard
+    {
+        width: 98%;
+        display: table;
+        margin: 0 auto;
+
+        margin-top: 18px;
+    }
+}

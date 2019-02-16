@@ -1,0 +1,55 @@
+<form>
+    <h3>{{ 'OsnovneInformacije' | translate }}</h3>
+
+    <!--
+    <div style="margin-bottom: 18px">
+        <img src="assets/slike/upload.png" style="border-radius: 50%; width: 96px; height: 96px;">
+    </div>
+    -->
+
+    <mat-form-field>
+        <input matInput [formControl]="FC_nazivTima" placeholder="{{ 'NazivTima' | translate }}" required>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder="{{ 'igra' | translate }}" [formControl]="FC_igra" (change)="brojIgracaZaTimskuIgru(nadjiTimskuIgru(FC_igra.value))" required>
+            <mat-option *ngFor="let igra of nizTimske" [value]="igra.id">{{ igra.naziv }}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <h3>{{ 'Igraci' | translate }}</h3>
+    <!-- primer pristupa odabranoj igri,
+         -1 iz razloga sto sqlite3 razlicito indeksira u odnosu na nizove
+
+        {{nizIgri[izabranaIgra - 1].naziv}}
+    -->
+    <div *ngIf="FC_igra.value != ''">
+
+        <div *ngFor="let i of nizIndeksaZaTimskuIgru">
+            <mat-form-field>
+                <input matInput [formControl]="FC_NizNazivaIgraca[i]" placeholder="{{ 'NazivIgraca' | translate }} {{i + 1}}" required>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-select [formControl]="FC_NizBotova[i]" placeholder="{{ 'Bot' | translate }}" required>
+                    <mat-option style="padding: 0; margin: 0;" value="novododatibot">
+                        <button mat-button (click)="dialogDodajBota(i);" style="width: 100%; margin: 0;"><mat-icon>cloud_upload</mat-icon><span>{{ 'dodajBota' | translate }}</span></button>
+					</mat-option>
+					 <!-- [value]="srediNazivBota(nizBotova[j].nazivFajla)" -->
+                    <mat-option *ngFor="let j of nizIndeksaBotova" [value]="nizBotova[j].id">
+                        {{srediNazivBota(nizBotova[j].nazivFajla)}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput value="{{nizIndeksUloga[i]}}" disabled>
+            </mat-form-field>
+
+            <!-- <mat-divider></mat-divider><mat-divider></mat-divider><mat-divider></mat-divider> -->
+        </div>
+    </div>
+
+    <button mat-raised-button (click)="napraviJSON()" style="display: block;" color="primary">{{ 'napraviTim' | translate }}</button>
+
+</form>

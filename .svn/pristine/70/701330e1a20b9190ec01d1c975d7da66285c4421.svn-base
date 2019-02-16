@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div id="content">
+	
+	<ul class="meni">
+		<li>
+			<a routerLink = "/pesme">Pesme</a>
+			
+		</li>
+		<li>
+			<a routerLink = "/plejliste">Plejliste</a>
+			
+		</li>
+	</ul>
+	<router-outlet></router-outlet>
+</div>
+

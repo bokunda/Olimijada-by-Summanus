@@ -1,0 +1,29 @@
+<div class="sadrzaj">
+<div *ngIf="!indikatorBana">
+<form (ngSubmit)="BanujKorisnika()">
+	<mat-form-field>
+		<mat-select placeholder="Izaberite vreme" [formControl]="duzinaBana" required>
+		  <mat-option value="86400">1 dan</mat-option>
+		  <mat-option value="604800">7 dana</mat-option>
+		  <mat-option value="2592000">30 dana</mat-option>
+		  <mat-option value="33333333333">Trajno</mat-option>
+		</mat-select>
+	  </mat-form-field>
+
+	<button mat-raised-button type="submit" color="primary">
+		Banuj korisnika
+	</button>
+</form>
+</div>
+<div *ngIf="indikatorBana">
+	<div *ngIf="(korisnik.banovan)<permBan">
+	<p>Korisnik je banovan do {{korisnik.banovan * 1000 | date:"dd.MM.yyyy"}}</p>
+	<button mat-button (click)="UkloniBan()">Ukloni ban</button>
+	</div>
+	<div *ngIf="(korisnik.banovan)>=permBan">
+		<p>Korisnik je trajno banovan</p>
+		<button mat-button (click)="UkloniBan()">Ukloni ban</button>
+	</div>
+</div>
+<div><button class="iks" (click)="NaAzur()">X</button></div>
+</div>

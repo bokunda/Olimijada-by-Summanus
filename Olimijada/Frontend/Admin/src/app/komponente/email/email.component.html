@@ -1,0 +1,29 @@
+<div class="pocetnaWrapper">
+	<mat-card class="kartica">
+    <mat-card-header>
+      <div mat-card-avatar>
+        <mat-icon aria-label="Profil" class="profilIkonicaBox">face</mat-icon>
+      </div>
+      <mat-card-title>Slanje emaila</mat-card-title>
+    </mat-card-header>
+		<mat-card-content>
+		<form (ngSubmit)="PosaljiMail()">
+			<mat-form-field>
+				<input matInput placeholder="e-mail adresa" [formControl]="mail" required>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput placeholder="subject" [formControl]="subject" required>
+			</mat-form-field>
+
+			<mat-form-field>
+				<input matInput placeholder="poruka" [formControl]="poruka" required>
+			</mat-form-field>
+
+			<button mat-raised-button type="submit" color="primary">
+					Posalji mail
+			</button>
+		</form>
+		</mat-card-content>
+	</mat-card>
+</div>

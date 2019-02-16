@@ -1,0 +1,31 @@
+<script>
+    var minimalData = {
+        teams : [
+            ["Team 1", "Team 2"],
+            ["Team 3", "Team 4"]
+        ],
+        results : [
+            [[1,2], [3,4]],
+            [[4,6], [2,1]]
+        ]
+    }
+
+    $(function() {
+        $('#minimal .demo').bracket({
+            init: minimalData})
+    })
+</script>
+
+
+<div class="demo" id="minimal">
+
+</div>
+
+<!--
+<div style="display: table; margin: 0 auto; margin-top: 18px;">
+<mat-card>
+    <mat-card-header><h2 style="text-align: center;">Naziv kupa</h2></mat-card-header>
+    <app-crtanje-kupa></app-crtanje-kupa>
+</mat-card>
+</div>
+-->

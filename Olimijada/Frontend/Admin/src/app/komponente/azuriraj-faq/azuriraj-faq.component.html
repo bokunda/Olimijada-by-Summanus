@@ -1,0 +1,22 @@
+<div class="pocetnaWrapper">
+	<mat-card class="kartica">
+		<mat-card-header>
+			<mat-card-title><h1>Izmena FAQ pitanja</h1></mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<form (ngSubmit)= "IzmeniFAQ()"> 	<!-- FORMA -->
+				<mat-form-field>   					<!-- Pitanje -->
+					<textarea matInput [formControl]="pitanje1" [(value)]="pitanjeSadr" placeholder="Promenite pitanje" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="10" required></textarea>
+					<!-- <mat-error *ngIf="pitanje.invalid">{{ greskaPitanje() }}</mat-error><br/><br/> -->
+				</mat-form-field><br/>
+				<div id="editor">					<!-- Odgovor - editor -->
+					<p>Upišite odgovor*</p>
+					<app-ngx-editor [placeholder]="'Unesite tekst ovde...'" [spellcheck]="true" [(ngModel)]="htmlContent" [ngModelOptions]="{standalone: true}" ></app-ngx-editor>
+				</div>
+				<button mat-raised-button type="submit" color="primary">
+					Izmeni
+				</button>
+			</form>
+		</mat-card-content>
+	</mat-card>
+</div>
