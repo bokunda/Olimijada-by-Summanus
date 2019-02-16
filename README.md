@@ -33,7 +33,7 @@ This repository contains all files from Olimijada projects on SVN.
 [![Screen Shot](https://i.imgur.com/8lh90y4.png)](#)<br>
 'Home page' (only front end validation)<br><br>
 
-[![Screen Shot](https://i.imgur.com/OACBHLP.png)](#)<br>
+[![Screen Shot](https://i.imgur.com/pxa4nsK.png)](#)<br>
 Login screen<br><br>
 
 [![Screen Shot](https://i.imgur.com/oyH2MUB.png)](#)<br>
