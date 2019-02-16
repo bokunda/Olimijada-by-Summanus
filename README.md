@@ -3,9 +3,9 @@ Node.js + Angular 5 + SQLite3 + Angular Material project.
 
 ## DEMO ##
 
-Access info: 
-Username: summanus 
-Password: Sarma?1418
+Access info: <br>
+Username: summanus <br>
+Password: Sarma?1418 <br>
 
 Welcome page: http://147.91.204.116:11000/
 
