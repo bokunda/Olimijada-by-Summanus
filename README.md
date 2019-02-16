@@ -90,5 +90,5 @@ Tournaments<br><br>
 
 Source code can be found on [github](https://github.com/georgeOsdDev/markdown-edit), licenced under [MIT](http://opensource.org/licenses/mit-license.php).
 
-Developed by [Bokunda] & Internship team(#) 
+Developed by Jelena Colic, Nikola Pajovic, David Anicic and [Bokunda].
 © 2018.
