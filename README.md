@@ -1,30 +1,14 @@
 # Olimijada-by-Summanus
-Node.js + Angular 5 + SQLite3 + Angular Material project.
 
-## DEMO ##
-
-Access info: <br>
-Username: summanus <br>
-Password: Sarma?1418 <br>
-
-Welcome page: http://147.91.204.116:11000/
-
-You can register!
-User portal: http://147.91.204.116:11002
-
-Admin Login:<br>
-Username: admin<br>
-Password: aDmIn?1312<br>
-
-Admin portal: http://147.91.204.116:11001/
+Technology stack
+- [Node.js](https://nodejs.org/en)
+- [Angular](https://angular.dev/)
+- [Angular material](https://material.angular.io/)
+- [SQLite3](https://www.sqlite.org/)
 
 ## About ##
 
 Web application designed for learning AI. Project contains three parts, OlimijadaTV - part where simulations are displayed, User portal - interface for users and Admin portal - interface for managing settings in User app. This is the first large project where I worked in a team. 
-
-Technologies: NodeJS, Angular 5, SQLite3, Angular Material
-
-This repository contains all files from Olimijada projects on SVN.
 
 ## Screenshots ##
 
